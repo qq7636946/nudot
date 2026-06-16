@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+ <title>Labs｜核點 Nudot Studio・AI 動態影像與 Gen-AI 視覺形象</title>
+
+  <script>
+    (function () {
+      try {
+        var raw = sessionStorage.getItem('nudot:page-transition');
+        if (!raw) return;
+        var payload = JSON.parse(raw);
+        if (payload && payload.at && Date.now() - payload.at < 12000) {
+          document.documentElement.classList.add('has-pending-page-transition');
+        }
+      } catch (error) { }
+    })();
+  </script>
+  <!-- Google Analytics 4 (GA4) -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N53QVZL8TL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N53QVZL8TL');
+  </script>
+
+  <!-- SEO -->
+  <meta name="description" content="NUDOT Labs — 核點創意的 AI 動態影像與 Gen-AI 視覺實驗室，探索 AI Motion、生成式影像與前端互動技術的創作邊界。">
+  <meta name="keywords" content="NUDOT Labs, Gen-AI Visual, AI 動態影像, AI Motion, 生成式影像, 互動技術, 前端創作實驗, 核點創意, NUDOT">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="核點 Nudot Studio">
+  <meta name="theme-color" content="#030303">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://nudot.com.tw/lab">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nudot.com.tw/lab">
+  <meta property="og:title" content="Labs｜核點 Nudot Studio・AI 動態影像與 Gen-AI 視覺實驗">
+  <meta property="og:description" content="NUDOT Labs — 探索 AI Motion、生成式影像與前端互動技術的創作邊界，持續推進視覺可能性。">
+  <meta property="og:image" content="https://nudot.com.tw/images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="核點 Nudot Studio">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Labs｜核點 Nudot Studio・AI 動態影像與 Gen-AI 視覺實驗">
+  <meta name="twitter:description" content="NUDOT Labs — 探索 AI Motion、生成式影像與前端互動技術的創作邊界。">
+  <meta name="twitter:image" content="https://nudot.com.tw/images/og.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pp-neue-montreal">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitcount+Grid+Single:wght@100..900&family=DM+Mono:wght@300;400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap">
+
+  <link rel="stylesheet" href="cursor-shared.css?v=1">
+   <link rel="stylesheet" href="nav-menu-shared.css?v=1">
+  <link rel="stylesheet" href="page-transitions.css?v=1">
+  <link rel="icon" href="images/fav.png" type="image/png">
+
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <script src="transitions.js?v=1" defer></script>
+  <script src="cursor-shared.js?v=1" defer></script>
+
+  <style>
+    /* ================================================================
+       RESET
+    ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ================================================================
+       DESIGN TOKENS
+    ================================================================ */
+    :root {
+      color-scheme: dark;
+      --font-family-body:    "PP Neue Montreal", "DM Sans", "Helvetica Neue", Arial, sans-serif;
+      --font-family-display: "Zalando Sans SemiExpanded", "PP Neue Montreal", sans-serif;
+
+      --dark-bg:    #1c1814;
+      --dark-fg:    #ede8df;
+      --dark-muted: #8a7b6e;
+      --light-bg:   #f0ece3;
+      --light-fg:   #0d0d14;
+      --light-muted:#9a9aaa;
+      --accent-dark: #d4a84b;
+      --accent-light:#3a6e00;
+
+      --bg:     var(--dark-bg);
+      --fg:     var(--dark-fg);
+      --muted:  var(--dark-muted);
+      --accent: var(--accent-dark);
+
+      --font-display: "Bebas Neue", var(--font-family-display), sans-serif;
+      --font-mono:    "DM Mono", monospace;
+      --hairline:     0.0625rem;
+      --ui-inset:     2rem;
+      --card-bg:      rgba(28, 24, 20, 0.82);
+      --card-border:  rgba(212, 168, 75, 0.2);
+      --nav-x:        calc(var(--ui-inset) + 0.125rem);
+      --reveal-offset:  0.625rem;
+      --reveal-duration:0.5s;
+      --z-cube-ui: 12;
+    }
+
+    /* ================================================================
+       BASE
+    ================================================================ */
+    html { color-scheme: dark; overflow-x: hidden; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-family-body);
+      overflow-x: hidden;
+    }
+
+    /* ================================================================
+       EDITORIAL GRID
+    ================================================================ */
+    :root {
+      --mie-black: #0a0a0a;
+      --white: #fff;
+      --col: calc(100vw / 48);
+      --grid-cols: repeat(48, 1fr);
+    }
+
+    body {
+      background-color: var(--mie-black);
+      color: var(--white);
+      font-family: "PP Neue Montreal", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; cursor: pointer; }
+    ul, ol { list-style: none; }
+
+    .app {
+      position: relative;
+      min-height: 100vh;
+      padding: 10vh 0 10vh;
+    }
+
+    .ps__list-wrap {
+      overflow: hidden;
+    }
+
+    .ps__list {
+      display: grid;
+      grid-template-columns: var(--grid-cols);
+      row-gap: calc(var(--col) * 2);
+      padding: 0;
+    }
+
+    .sb__item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sb__item:nth-child(10n + 1)  { grid-column: 2 / span 10; }
+    .sb__item:nth-child(10n + 2)  { grid-column: 14 / span 9; }
+    .sb__item:nth-child(10n + 3)  { grid-column: 25 / span 6; }
+    .sb__item:nth-child(10n + 4)  { grid-column: 33 / span 8; }
+    .sb__item:nth-child(10n + 5)  { grid-column: 42 / span 6; }
+    .sb__item:nth-child(10n + 6)  { grid-column: 2 / span 8; }
+    .sb__item:nth-child(10n + 7)  { grid-column: 12 / span 10; }
+    .sb__item:nth-child(10n + 8)  { grid-column: 24 / span 7; }
+    .sb__item:nth-child(10n + 9)  { grid-column: 33 / span 9; }
+    .sb__item:nth-child(10n + 10) { grid-column: 43 / span 5; }
+
+    .sb__item-link {
+      display: block;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      background: #fff;
+      clip-path: inset(100% 0% 0% 0%);
+    }
+
+    .sb__item-link::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      mix-blend-mode: difference;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.55s cubic-bezier(0.19, 1, 0.22, 1);
+      z-index: 1;
+    }
+
+    .sb__item-link img {
+      display: block;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      transition: filter 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                  opacity 0.45s ease;
+      will-change: transform, filter;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(0);
+      position: relative;
+      z-index: 0;
+    }
+
+    .sb__item:nth-child(10n + 1) .sb__item-link,
+    .sb__item:nth-child(10n + 5) .sb__item-link,
+    .sb__item:nth-child(10n + 7) .sb__item-link { aspect-ratio: 3/4; }
+
+    .sb__item:nth-child(10n + 3) .sb__item-link,
+    .sb__item:nth-child(10n + 8) .sb__item-link { aspect-ratio: 2/3; }
+
+    .sb__item:nth-child(10n + 4) .sb__item-link,
+    .sb__item:nth-child(10n + 9) .sb__item-link { aspect-ratio: 1/1; }
+
+    .sb__item:nth-child(10n + 2) .sb__item-link,
+    .sb__item:nth-child(10n + 6) .sb__item-link,
+    .sb__item:nth-child(10n + 10) .sb__item-link { aspect-ratio: 4/3; }
+
+    .sb__item:hover .sb__item-link::after {
+      opacity: 1;
+    }
+
+    .sb__item-desc {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 16px;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+      opacity: 0;
+    }
+
+    .sb__item:hover .sb__item-desc { transform: translateY(-4px); }
+
+    .paragraph.is--big {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.2;
+    
+      color: #fff;
+    }
+
+    .np__tags { display: flex; flex-direction: column; gap: 4px; }
+
+    .np__date {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .ll__list { display: flex; flex-wrap: wrap; gap: 0; }
+
+    .ll__item {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .ll__item + .ll__item::before { content: " "; margin-right: 4px; }
+
+    .link-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 8px;
+      transition: color 0.4s ease;
+      position: relative;
+      width: fit-content;
+    }
+
+    .sb__item:hover .link-group { color: #fff; }
+
+    .link-group::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      width: 0;
+      transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .sb__item:hover .link-group::after { width: 100%; }
+
+    .disclaimer {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    /* ================================================================
+       LIGHTBOX
+    ================================================================ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .lightbox.is-active {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .lightbox__bg {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(10, 10, 10, 0.95);
+      opacity: 0;
+      will-change: opacity;
+    }
+
+    .lightbox__content-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      max-height: 90vh;
+      overflow: hidden;
+      clip-path: inset(100% 0 0 0);
+      will-change: clip-path;
+      z-index: 1;
+    }
+
+    .lightbox__content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--mie-black);
+      width: 100%;
+      height: 100%;
+    }
+
+    .lightbox__media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--mie-black);
+      overflow: hidden;
+    }
+
+    .lightbox__img,
+    .lightbox__video,
+    .lightbox__yt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    .lightbox__yt {
+      border: 0;
+      top: -58px;
+      height: calc(100% + 58px);
+    }
+
+    /* ── Custom minimal YT overlay ── */
+    .yt-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: auto;
+      display: none;
+    }
+
+    .yt-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.35s ease, background 0.3s ease;
+      color: #fff;
+    }
+
+    .yt-play-btn:hover { background: rgba(255, 255, 255, 0.22); }
+
+    .yt-play-btn svg {
+      pointer-events: none;
+      width: 18px;
+      height: 18px;
+      fill: #fff;
+    }
+
+    .yt-overlay.is-playing .yt-play-btn { opacity: 0; }
+    .yt-overlay.is-playing:hover .yt-play-btn { opacity: 1; }
+
+    .yt-progress-wrap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+    }
+
+    .yt-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #fff;
+      pointer-events: none;
+      will-change: width;
+    }
+
+    .lightbox__img.is-active,
+    .lightbox__yt.is-active {
+      display: block;
+    }
+
+    .lightbox__text {
+      padding: 32px;
+      background: var(--mie-black);
+    }
+
+    .lightbox__text h3.paragraph.is--big { font-size: 28px; margin-bottom: 20px; }
+    .lightbox__text .np__tags { gap: 10px; }
+    .lightbox__text .np__date { font-size: 13px; }
+    .lightbox__text .ll__item { font-size: 13px; }
+    .lightbox__text .link-group { display: none; }
+
+    .lightbox__close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      opacity: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s ease;
+    }
+
+    .lightbox__close img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: invert(0);
+      pointer-events: none;
+    }
+
+    .lightbox__close:hover {
+      transform: rotate(90deg) scale(1.15);
+    }
+
+    .lightbox__share {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      width: 35px;
+      height: 35px;
+      padding: 0;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      opacity: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    .lightbox__share img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: invert(0);
+      pointer-events: none;
+    }
+    .lightbox__share:hover { transform: scale(1.2); }
+
+    .lightbox__toast {
+      position: absolute;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "DM Mono", monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 3;
+      white-space: nowrap;
+    }
+
+    .lightbox__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 0;
+      padding: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .lightbox__nav img {
+      width: 24px;
+      height: 24px;
+      display: block;
+      pointer-events: none;
+    }
+
+    .lightbox__nav:hover { transform: translateY(-50%) scale(1.2); }
+    .lightbox__prev { left: clamp(8px, 2vw, 20px); }
+    .lightbox__next { right: clamp(8px, 2vw, 20px); }
+
+    .video-mute-btn {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      display: none;
+      transition: background 0.2s ease;
+    }
+    .video-mute-btn.is-active { display: flex; }
+    .video-mute-btn:hover { background: rgba(0, 0, 0, 0.75); }
+    .video-mute-btn svg { width: 16px; height: 16px; pointer-events: none; }
+
+    @media (max-width: 480px) {
+      .lightbox__nav img { width: 20px; height: 20px; }
+      .video-mute-btn { width: 32px; height: 32px; }
+    }
+
+    /* film grain styling now lives in noise.js (unified) */
+
+    /* ================================================================
+       WORK-STYLE HERO
+    ================================================================ */
+    :root {
+      --work-side-pad: clamp(24px, 4vw, 60px);
+    }
+
+    .work-hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(130px, 18vh, 200px) var(--work-side-pad) 0;
+    }
+
+    .work-hero__top {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      column-gap: clamp(18px, 3vw, 48px);
+      padding-bottom: clamp(12px, 1.5vh, 20px);
+    }
+
+    .work-hero__title {
+      margin: 0;
+      font-family: "Zalando Sans SemiExpanded", "DM Sans", sans-serif;
+      font-size: clamp(64px, 9.5vw, 130px);
+      font-weight: 600;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      cursor: default;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(18vw) translateZ(0);
+      transition:
+        opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+    }
+
+    .work-hero__center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .work-hero__desc {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      align-self: center;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.35s;
+    }
+
+    .work-hero__code {
+      margin: 0;
+      font-family: "Zalando Sans SemiExpanded", "DM Sans", sans-serif;
+      font-size: clamp(64px, 9.5vw, 130px);
+      font-weight: 600;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: right;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      opacity: 0;
+      transform: translateX(-18vw) translateZ(0);
+      transition:
+        opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+    }
+
+    .work-hero__line {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.18);
+      transform-origin: center center;
+      transform: scaleX(0);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+    }
+
+    .work-hero__bottom {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: clamp(10px, 1.4vh, 18px) 0;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.45s;
+    }
+
+    .work-hero__year,
+    .work-hero__kicker,
+    .work-hero__tags {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    .work-hero__year {
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .work-hero__kicker {
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    .work-hero__tags {
+      font-size: 16px;
+      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .lab-filter-btn {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid transparent;
+      color: rgba(255,255,255,0.4);
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      padding: 4px 2px;
+      cursor: pointer;
+      border-radius: 0;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lab-filter-btn:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    .lab-filter-btn.is--active {
+      background: transparent;
+      border-color: #fff;
+      color: #fff;
+    }
+
+    .sb__item {
+      transition: filter 0.35s ease, opacity 0.35s ease;
+    }
+
+    .sb__item.is--filtered-out {
+      filter: grayscale(1);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    @media (max-width: 1024px) {
+      #lab-filter-tabs .lab-filter-btn { display: none; }
+      .sb__item.is--filtered-out {
+        filter: none;
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    .work-hero-entered .work-hero__title {
+      opacity: 1;
+      transform: translateX(0) translateZ(0);
+    }
+
+    .work-hero-entered .work-hero__code {
+      opacity: 1;
+      transform: translateX(0) translateZ(0);
+    }
+
+    .work-hero-entered .work-hero__line {
+      transform: scaleX(1);
+    }
+
+    .work-hero-entered .work-hero__desc,
+    .work-hero-entered .work-hero__bottom {
+      opacity: 1;
+    }
+
+    /* ================================================================
+       RESPONSIVE
+    ================================================================ */
+    @media (max-width: 1024px) {
+      :root { --grid-cols: repeat(24, 1fr); }
+
+      /* 每組 10 個項目重新分配到 24 欄 */
+      .sb__item:nth-child(10n + 1)  { grid-column: 2 / span 11; }
+      .sb__item:nth-child(10n + 2)  { grid-column: 14 / span 10; }
+      .sb__item:nth-child(10n + 3)  { grid-column: 2 / span 10; }
+      .sb__item:nth-child(10n + 4)  { grid-column: 13 / span 11; }
+      .sb__item:nth-child(10n + 5)  { grid-column: 2 / span 22; }
+      .sb__item:nth-child(10n + 6)  { grid-column: 2 / span 10; }
+      .sb__item:nth-child(10n + 7)  { grid-column: 13 / span 11; }
+      .sb__item:nth-child(10n + 8)  { grid-column: 2 / span 11; }
+      .sb__item:nth-child(10n + 9)  { grid-column: 14 / span 10; }
+      .sb__item:nth-child(10n + 10) { grid-column: 2 / span 22; }
+
+      .app { padding: 6vh 0 14vh; }
+
+      .lightbox { padding: 20px; }
+      .lightbox__content-wrap { max-height: 92vh; overflow-y: auto; }
+      .lightbox__text { padding: 24px; }
+      .lightbox__text h3.paragraph.is--big { font-size: 22px; }
+
+      .work-hero {
+        padding-top: clamp(110px, 15vh, 160px);
+      }
+
+      .work-hero__top {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 10px;
+        padding-bottom: 16px;
+      }
+
+      .work-hero__title {
+        text-align: center;
+      }
+
+      .work-hero__desc {
+        max-width: 18em;
+        font-size: 13px;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      .work-hero__bottom {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 14px 0 0;
+      }
+
+      .work-hero__code,
+      .work-hero__year {
+        display: none;
+      }
+      .work-hero__tags {
+        display: none;
+      }
+
+      /* Tablet: reduce slide distance so animation doesn't overflow */
+      .work-hero__title { transform: translateX(8vw) translateZ(0); }
+      .work-hero__code  { transform: translateX(-8vw) translateZ(0); }
+    }
+
+    @media (max-width: 768px) {
+      .ps__list {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        padding: 0 clamp(16px, 5vw, 32px);
+      }
+
+      .sb__item { width: 100%; }
+
+      .sb__item-link { aspect-ratio: 4/3 !important; }
+      .sb__item-link img { height: 100%; }
+
+      .app { padding: 4vh 0 10vh; }
+
+      /* ── lightbox mobile ── */
+      .lightbox {
+        padding: 0;
+        align-items: flex-start;
+      }
+      .lightbox__content-wrap {
+        max-height: 100dvh;
+        max-height: 100vh;
+        width: 100%;
+        border-radius: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: auto 0;
+      }
+      .lightbox__text { padding: 20px 16px; }
+      .lightbox__text h3.paragraph.is--big { font-size: 18px; margin-bottom: 14px; }
+      .lightbox__close { bottom: 16px; right: 16px; top: auto; width: 24px; height: 24px; }
+      .lightbox__share { bottom: 16px; left: 16px; top: auto; width: 30px; height: 30px; }
+      .lightbox__nav {
+        top: 50%;
+      }
+      .lightbox__prev { left: 6px; }
+      .lightbox__next { right: 6px; }
+
+      /* ── Hero: appear directly on mobile, no slide animation ── */
+      .work-hero__title,
+      .work-hero__code {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .work-hero__line {
+        transform: scaleX(1);
+        transition: none;
+      }
+      .work-hero__desc,
+      .work-hero__bottom {
+        opacity: 1;
+        transition: none;
+      }
+
+      .work-hero { padding-top: 104px; }
+      .work-hero__title { font-size: clamp(3.6rem, 20vw, 7rem); }
+      .work-hero__kicker, .work-hero__desc { font-size: 0.68rem; letter-spacing: 0.13em; }
+    }
+
+    @media (max-width: 480px) {
+      .ps__list { gap: 36px; padding: 0 16px; }
+
+      .lightbox__text { padding: 14px 12px; }
+      .lightbox__text h3.paragraph.is--big { font-size: 16px; }
+      .lightbox__close { bottom: 12px; right: 12px; top: auto; width: 20px; height: 20px; }
+      .lightbox__share { bottom: 12px; left: 12px; top: auto; width: 25px; height: 25px; }
+      .lightbox__nav img { width: 18px; height: 18px; }
+      .video-mute-btn { width: 30px; height: 30px; bottom: 8px; right: 8px; }
+
+      .work-hero__title { font-size: 65px; }
+      .disclaimer { font-size: 11px; }
+    }
+
+    /* ================================================================
+       GRID LINE OVERLAY
+    ================================================================ */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      padding: 0 var(--ui-inset, 2rem);
+      pointer-events: none;
+      z-index: 5;
+    }
+    .grid-overlay-inner {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.75rem;
+      height: 100%;
+    }
+    .grid-column {
+      border-left: 1px solid rgba(255, 255, 255, 0.07);
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    /* ================================================================
+       FOOTER
+    ================================================================ */
+    .site-footer {
+      position: relative;
+      overflow: visible;
+      color: #fff;
+      padding: 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .footer-top {
+      padding: 3vw 2.5vw;
+      position: relative;
+      z-index: 5;
+    
+    }
+
+    .footer-brand-title {
+      font-family: 'Zalando Sans SemiExpanded', 'DM Sans', sans-serif;
+      font-size: clamp(4rem, 15vw, 11.5rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 0.88;
+      letter-spacing: 0.02em;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .footer-brand-title sup {
+      font-size: 0.13em;
+      vertical-align: top;
+      letter-spacing: 0;
+    }
+
+    .footer-info-bar {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #222;
+      padding-top: 30px;
+      margin-bottom: 40px;
+      font-size: clamp(11px, 1.1vw, 16px);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .footer-main-content {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-description {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #666;
+      max-width: 450px;
+      margin-bottom: 32px;
+    }
+
+    .footer-contact-info a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      font-size: clamp(20px, 3.5vw, 50px);
+      font-weight: 400;
+      margin-bottom: 4px;
+      transition: opacity 0.2s;
+    }
+    .footer-contact-info a:hover { opacity: 0.6; }
+
+    .footer-contact-info span {
+      color: #ffffff;
+      font-size: clamp(18px, 2.5vw, 30px);
+    }
+
+    .footer-nav-links {
+      display: flex;
+      gap: 28px;
+      margin-top: 38px;
+    }
+
+    .footer-nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: opacity 0.2s;
+    }
+    .footer-nav-links a:hover { opacity: 0.5; }
+
+    .footer-right-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    .footer-video-thumb {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .footer-video-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .footer-copyright-bridge {
+      position: absolute;
+      bottom: 0;
+      right: 6%;
+      width: clamp(90px, 10vw, 148px);
+      height: clamp(90px, 10vw, 148px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(50%);
+      z-index: 20;
+    }
+
+    .footer-copyright-bridge span {
+      font-family: 'Zalando Sans SemiExpanded', 'DM Sans', sans-serif;
+      font-size: 180px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .footer-parallax-section {
+      height: 50vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-parallax-copy {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      z-index: 3;
+      color: rgba(255, 255, 255, 0.65);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+      pointer-events: none;
+    }
+
+     @media (max-width: 1440px) {
+     .footer-parallax-section {
+      height: 300px;
+      
+    }
+    }
+
+
+
+    .footer-parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: var(--footer-bg-image, none);
+      background-attachment: fixed;
+      background-size: contain;
+      background-position: bottom;
+      opacity: 1;
+      mix-blend-mode: luminosity;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-top { padding: 6vw 4vw; }
+      .footer-copyright-bridge,
+      .footer-parallax-section { display: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { padding: 32px 20px 40px; }
+      .footer-brand-title { margin-bottom: 24px; }
+      .footer-info-bar {
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .footer-main-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-right-panel {
+        align-items: flex-start;
+        margin-top: 0;
+      }
+      .footer-video-thumb { max-width: 100%; }
+      .footer-nav-links {
+        gap: 16px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      
+    }
+
+    @media (max-width: 480px) {
+      .footer-top { padding: 24px 16px 32px; }
+      .footer-nav-links { gap: 12px; }
+      .footer-contact-info span { font-size: 16px; }
+    }
+
+    /* ================================================================
+       MARQUEE
+    ================================================================ */
+    .lab-marquee {
+      width: 100%;
+      overflow: hidden;
+      background: var(--mie-black, #0a0a0a);
+      /* border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); */
+      padding: 10px;
+      border-top: 1px solid #313131;
+    border-bottom: 1px solid #313131;
+    }
+
+    .lab-marquee__track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+      will-change: transform;
+    }
+
+    .lab-marquee__item {
+      font-family: 'Bitcount Grid Single', monospace;
+      font-size: clamp(1.4rem, 4vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 0 clamp(20px, 3vw, 60px);
+    }
+
+    .lab-marquee__sep {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      width: clamp(20px, 2.8vw, 40px);
+    }
+
+    .lab-marquee__sep img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      animation: sep-spin 3s ease-in-out infinite;
+    }
+
+    @keyframes sep-spin {
+      0%   { transform: rotate(0deg); }
+      40%  { transform: rotate(180deg); }
+      60%  { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lab-marquee__track { transform: none !important; }
+    }
+  </style>
+</head>
+
+<body class="shared-nav-page">
+
+  <!-- ============================================================
+       PAGE TRANSITION SHELL
+  ============================================================ -->
+  <div class="page-transition-shell js-page-transition-shell" aria-hidden="true">
+    <div class="page-transition-curtain js-page-transition-curtain"></div>
+    <div class="page-transition-frame js-page-transition-frame">
+      <div class="page-transition-loader js-page-transition-loader"></div>
+      <div class="page-transition-counter js-page-transition-counter">[ <span class="js-page-transition-counter-num">00</span> ]</div>
+      <div class="page-transition-panel js-page-transition-panel">
+        <div class="page-transition-meta is-top-left">NUDOT</div>
+        <div class="page-transition-meta is-top-right js-page-transition-meta-to">lab.html</div>
+        <div class="page-transition-copy">
+          <div class="page-transition-eyebrow js-page-transition-eyebrow">NUDOT CREATIVE STUDIO</div>
+          <div class="page-transition-title js-page-transition-title">LABS</div>
+          <div class="page-transition-subtitle js-page-transition-subtitle">Nudot Labs — Editorial Grid</div>
+        </div>
+        <div class="page-transition-meta is-bottom-left">Digital / Motion / Interface</div>
+        <div class="page-transition-meta is-bottom-right">2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <div id="nav_scroll_container" aria-label="Primary navigation">
+    <nav id="nav_scroll">
+      <a class="ns-icon" href="contact" data-cursor="CONTACT" aria-label="Contact">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+      <a class="ns-logo" href="index" data-cursor="HOME" aria-label="NUDOT home">
+        <img src="images/pc_logo.svg" alt="NUDOT 核點創意" width="45" height="35" loading="lazy" decoding="async">
+      </a>
+      <button class="ns-icon ns-hamburger" id="nav-scroll-menu-btn" data-cursor="OPEN" aria-label="Open menu"
+        aria-expanded="false" aria-controls="nav-scroll-dropdown">
+        <svg class="ns-ham-svg" viewBox="0 0 24 24">
+          <line class="ns-ham-l1" x1="5" y1="9"  x2="19" y2="9"></line>
+          <line class="ns-ham-l2" x1="5" y1="15" x2="19" y2="15"></line>
+        </svg>
+      </button>
+    </nav>
+    <div class="ns-dropdown" id="nav-scroll-dropdown" aria-hidden="true">
+          <div class="ns-dropdown__inner" id="nav-scroll-dropdown-content">
+            <div class="ns-menu-stage">
+              <!-- <div class="ns-menu-topline ns-dropdown__item">
+              <span class="ns-menu-topline__brand">NUDOT CREATIVE STUDIO</span>
+              <a class="ns-menu-topline__contact" href="#site-footer">CONTACT</a>
+            </div> -->
+
+              <div class="ns-menu-rows">
+                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home">
+                  <span class="ns-showcase-row__index">( 首頁 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/1.webp" data-nav-src="images/nav/1.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">HOME</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">HOME</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/2.webp" data-nav-src="images/nav/2.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About">
+                  <span class="ns-showcase-row__index">( 核點創意 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/3.webp" data-nav-src="images/nav/3.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">ABOUT</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">ABOUT</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/4.webp" data-nav-src="images/nav/4.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work">
+                  <span class="ns-showcase-row__index">( 設計案例 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/5.webp" data-nav-src="images/nav/5.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">WORK</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">WORK</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/6.webp" data-nav-src="images/nav/6.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs">
+                  <span class="ns-showcase-row__index">( 核點實驗室 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">LABS</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">LABS</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/8.webp" data-nav-src="images/nav/8.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="contact.php" data-transition-label="Contact">
+                  <span class="ns-showcase-row__index">( 聯繫我們 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/9.webp" data-nav-src="images/nav/9.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">CONTACT</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">CONTACT</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/10.webp" data-nav-src="images/nav/10.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <div class="lightbox">
+    <div class="lightbox__bg"></div>
+    <div class="lightbox__content-wrap">
+      <div class="lightbox__content">
+        <div class="lightbox__media">
+          <img class="lightbox__img" src="" alt="Zoomed Image">
+          <video class="lightbox__video" id="lightbox-video" preload="none" playsinline loop></video>
+          <iframe class="lightbox__yt" id="lightbox-yt-frame" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="yt-overlay" id="yt-overlay">
+            <button class="yt-play-btn" id="yt-play-btn" aria-label="播放 / 暫停">
+              <svg id="yt-btn-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <div class="yt-progress-wrap" id="yt-progress-wrap">
+              <div class="yt-progress-fill" id="yt-progress-fill"></div>
+            </div>
+            <button class="video-mute-btn" id="video-mute-btn" aria-label="靜音切換">
+              <svg class="vm-icon vm-icon--muted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="#fff" stroke="none"/>
+                <line x1="23" y1="9" x2="17" y2="15"/>
+                <line x1="17" y1="9" x2="23" y2="15"/>
+              </svg>
+              <svg class="vm-icon vm-icon--sound" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="#fff" stroke="none"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="lightbox__text"></div>
+      </div>
+    </div>
+    <button class="lightbox__close" data-cursor="CLICK" aria-label="關閉">
+      <img src="images/lab/close.svg" alt="" aria-hidden="true">
+    </button>
+    <button class="lightbox__share" data-cursor="COPY" aria-label="複製連結">
+      <img src="images/lab/link.svg" alt="" aria-hidden="true">
+    </button>
+    <div class="lightbox__toast" id="lightbox-toast">COPIED</div>
+    <button class="lightbox__nav lightbox__prev" aria-label="上一個" data-label="PREV" data-cursor="PREV">
+      <img src="images/lab/prev.svg" alt="" aria-hidden="true">
+    </button>
+    <button class="lightbox__nav lightbox__next" aria-label="下一個" data-label="NEXT" data-cursor="NEXT">
+      <img src="images/lab/next.svg" alt="" aria-hidden="true">
+    </button>
+  </div>
+
+  <div class="grid-overlay" aria-hidden="true">
+    <div class="grid-overlay-inner">
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+      <div class="grid-column"></div>
+    </div>
+  </div>
+
+  <header class="work-hero work-reveal">
+    <div class="work-hero__top">
+      <h1 class="work-hero__title">LABS</h1>
+      <div class="work-hero__center">
+        <p class="work-hero__desc">VISUAL ENGINEERING<br>GENERATIVE PROTOTYPES</p>
+      </div>
+      <p class="work-hero__code">CORE</p>
+    </div>
+
+    <div class="work-hero__line"></div>
+
+    <div class="work-hero__bottom">
+      <p class="work-hero__year">EXPERIMENTAL ARCHIVE</p>
+      <p class="work-hero__kicker">（ 核點實驗室 ）</p>
+      <div class="work-hero__tags" id="lab-filter-tabs">
+        <button class="lab-filter-btn is--active" data-filter="ALL">ALL</button>
+        <button class="lab-filter-btn" data-filter="動態影像生成">動態影像生成</button>
+        <button class="lab-filter-btn" data-filter="高階商業視覺圖像生成">高階商業視覺圖像生成</button>
+        <!-- <button class="lab-filter-btn" data-filter="DESIGN">DESIGN</button>
+        <button class="lab-filter-btn" data-filter="TECHNOLOGY">TECHNOLOGY</button>
+        <button class="lab-filter-btn" data-filter="UX/UI">UX/UI</button> -->
+      </div>
+    </div>
+  </header>
+
+  <main class="app">
+    <div class="ps__list-wrap">
+      <div class="ps__list">
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/swatch.mp4">
+            <img src="images/lab/swatch.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">SKELETON WATCH VISUAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">MAY 25, 2025</span>
+                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/p1.webp" data-lightbox-alt="RING SCENARIO SHOWCASE">
+            <img src="images/lab/p1-1.webp" alt="RING SCENARIO SHOWCASE">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">RING SCENARIO SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">JANUARY 15, 2026</span>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/car.mp4">
+             <img src="images/lab/car.webp" alt="AI 動態影像 汽車">
+          </a>
+          <div class="sb__item-desc">
+              <h3 class="paragraph is--big">DYNAMIC SCENARIO: CROWN SPORT</h3>
+            <div class="np__tags">
+              <span class="np__date">OCTOBER 24, 2025</span>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          
+            
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/co.mp4">
+            <img src="images/lab/co.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">LUMINOUS CREAM SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">OCTOBER 14, 2025</span>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+               <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+           <a href="#" class="sb__item-link" data-lightbox-src="images/lab/lg_cont.webp" data-lightbox-alt="AI生成 檯燈展示">
+            <img src="images/lab/lg.webp" alt="RING SCENARIO SHOWCASE">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">ICONIC LIGHTING SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">FEBRUARY 14, 2025</span>
+            <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/cat_cont.webp" data-lightbox-alt="AI生成 杯子展示">
+            <img src="images/lab/cat.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">CERAMIC CUP VISUAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">OCTOBER 3, 2025</span>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/fo_cont.webp" data-lightbox-alt="AI生成 碗盤展示">
+            <img src="images/lab/fo.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">FINE TABLEWARE VISUAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">OCTOBER 2, 2025</span>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/lg2_cont.webp" data-lightbox-alt="AI生成 檯燈展示">
+            <img src="images/lab/lg2.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">DESK LAMP VISUAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">OCTOBER 1, 2025</span>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+        <a href="#" class="sb__item-link" data-lightbox-src="images/lab/ch_cont.webp" data-lightbox-alt="AI生成 坐墊展示">
+            <img src="images/lab/ch.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">CUSHION VISUAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">SEPTEMBER 28, 2025</span>
+                <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/k_cont.webp" data-lightbox-alt="AI生成 花瓶展示">
+            <img src="images/lab/k.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">VASE VISUAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">SEPTEMBER 24, 2025</span>
+               <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+        </article>
+
+        <article class="sb__item">
+         <a href="#" class="sb__item-link" data-video-src="images/lab/w.mp4">
+            <img src="images/lab/w.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">DARK GIRL GROUP DANCE VISUAL</h3>
+            <div class="np__tags">
+              <span class="np__date">AUGUST 15, 2025</span>
+             <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+           <a href="#" class="sb__item-link" data-video-src="images/lab/s.mp4">
+            <img src="images/lab/s.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">OUTDOOR SPORT SANDAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">AUGUST 02, 2025</span>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+
+        <article class="sb__item">
+         <a href="#" class="sb__item-link" data-lightbox-src="images/lab/lg3_cont.webp" data-lightbox-alt="AI生成 花瓶展示">
+            <img src="images/lab/lg3.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">VASE LIFESTYLE SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">JULY 10, 2025</span>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+
+           <article class="sb__item">
+         <a href="#" class="sb__item-link" data-video-src="images/lab/w2.mp4">
+            <img src="images/lab/w2.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">RETRO KOREA FASHION EDITORIAL</h3>
+            <div class="np__tags">
+              <span class="np__date">JULY 22, 2025</span>
+             <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+            <a href="#" class="sb__item-link" data-lightbox-src="images/lab/c_cont.webp?v=1" data-lightbox-alt="AI生成 地毯展示">
+            <img src="images/lab/c.webp?v=1" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">CARPET & RUG VISUAL SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">JUNE 30, 2025</span>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+        </article>
+
+        <article class="sb__item">
+             <a href="#" class="sb__item-link" data-video-src="images/lab/n.mp4">
+            <img src="images/lab/n.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">NUCLEAR SPORTS DRINK CAN DESIGN</h3>
+            <div class="np__tags">
+              <span class="np__date">JUNE 18, 2025</span>
+                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <!-- data-video-src 指定本機影片；data-yt-id 指定 YouTube -->
+          <a href="#" class="sb__item-link" data-video-src="images/lab/101.mp4">
+            <img src="images/lab/101.webp" alt="AI 動態影像 汽車 101">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">AI DRONE GENERATION TAIPEI 101</h3>
+            <div class="np__tags">
+              <span class="np__date">FEBRUARY 05, 2025</span>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/camp.mp4">
+            <img src="images/lab/camp.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">OUTDOOR LIFESTYLE CAMPAIGN</h3>
+            <div class="np__tags">
+              <span class="np__date">MAY 14, 2025</span>
+                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+
+           <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/cloth.mp4">
+            <img src="images/lab/cloth.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">NUDOT APPAREL VISUAL CONCEPT</h3>
+            <div class="np__tags">
+              <span class="np__date">MAY 14, 2025</span>
+                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+       
+
+        <article class="sb__item">
+           <a href="#" class="sb__item-link" data-video-src="images/lab/logocube.mp4">
+            <img src="images/lab/logocube.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">CREATIVE TOOLS GLASS CUBE CONCEPT</h3>
+            <div class="np__tags">
+              <span class="np__date">APRIL 10, 2025</span>
+               <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+
+
+
+             <article class="sb__item">
+             <a href="#" class="sb__item-link" data-video-src="images/lab/cc.mp4">
+            <img src="images/lab/cc.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">FLOATING ECOSYSTEM VISUAL CONCEPT</h3>
+            <div class="np__tags">
+              <span class="np__date">JUNE 18, 2025</span>
+                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+        <article class="sb__item">
+          <!-- data-video-src 指定本機影片；data-yt-id 指定 YouTube -->
+          <a href="#" class="sb__item-link" data-video-src="images/lab/lg_mc.mp4">
+            <img src="images/lab/lg_mc.webp" alt="AI 動態影像 檯燈黑膠唱片">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">MUSIC & LIGHT MOTION VISUAL</h3>
+            <div class="np__tags">
+              <span class="np__date">FEBRUARY 05, 2025</span>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+    <article class="sb__item">
+           <a href="#" class="sb__item-link" data-lightbox-src="images/lab/w1_cont.webp" data-lightbox-alt="AI生成 人物辦公室情境展示">
+            <img src="images/lab/w1.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">OFFICE LIFESTYLE SCENARIO</h3>
+            <div class="np__tags">
+              <span class="np__date">MAY 14, 2025</span>
+                <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+
+           <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/tk.mp4">
+            <img src="images/lab/tk.webp" alt="Presentation Screen">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">URBAN STREETWEAR VISUAL SCENE</h3>
+            <div class="np__tags">
+              <span class="np__date">MAY 14, 2025</span>
+                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+       
+
+           <article class="sb__item">
+           <a href="#" class="sb__item-link" data-lightbox-src="images/lab/k1_cont.webp" data-lightbox-alt="AI生成 兒童情境展示">
+            <img src="images/lab/k1.webp" alt="Shoe motion blur">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">CHILDREN FASHION LIFESTYLE SHOWCASE</h3>
+            <div class="np__tags">
+              <span class="np__date">MAY 14, 2025</span>
+                <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+          </div>
+        </article>
+
+
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       MARQUEE
+  ============================================================ -->
+  <div class="lab-marquee" aria-hidden="true">
+    <div class="lab-marquee__track">
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <!-- duplicate for seamless loop -->
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+    <footer class="site-footer" id="site-footer">
+        <div class="footer-top">
+          <div class="footer-main-content">
+            <div>
+              <div class="footer-contact-info">
+                <a href="mailto:hello@nudot.com.tw">hello@nudot.com.tw</a>
+                <span>+8869 83 750 522</span>
+              </div>
+              <div style="color:#575757;font-size:14px;margin-top:8px;">臺中市北屯區文心路三段447號</div>
+              <nav class="footer-nav-links">
+                <a href="https://www.instagram.com/nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Instagram">Instagram</a>
+                <a href="https://www.threads.com/@nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Threads">Threads</a>
+                <a href="https://www.facebook.com/profile.php?id=61588727983387&locale=zh_TW" target="_blank" rel="noopener noreferrer"
+                  data-transition-label="Facebook">Facebook</a>
+              </nav>
+            </div>
+            <div class="footer-right-panel">
+              <div class="footer-video-thumb">
+                <video autoplay muted loop playsinline preload="none" disableremoteplayback>
+                  <source src="images/footer.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="footer-parallax-section" id="footer-parallax-section">
+          <div class="footer-parallax-bg" id="footer-parallax-bg" data-bg="images/footer.webp"
+            style="--footer-bg-image: url('images/footer.webp');"></div>
+          <div class="footer-parallax-copy">
+            <div>核點創意有限公司</div>
+            <div>&#169; 2026 NUDOT STUDIO. ALL RIGHTS RESERVED.</div>
+          </div>        </div>
+
+      </footer>
+
+  <!-- ============================================================
+       FILM GRAIN
+  ============================================================ -->
+  <canvas id="film-grain-canvas" aria-hidden="true"></canvas>
+  <script src="noise.js?v=4"></script>
+  <!-- Google Analytics 4 (GA4) -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N53QVZL8TL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N53QVZL8TL');
+  </script>
+
+  <!-- ============================================================
+       CURSOR
+  ============================================================ -->
+  <div id="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true" data-cursor-label="EXPLORE" data-cursor-side="right"></div>
+
+  <!-- ============================================================
+       EDITORIAL GRID JS
+  ============================================================ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+      var lenis = null;
+
+      if (!isTouchDevice && typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+          duration: 1.5,
+          easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        });
+        window._lenis = lenis;
+      }
+
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (lenis) {
+        lenis.on('scroll', ScrollTrigger.update);
+        if (window._holdLabsFilmGrainDuringScroll) {
+          lenis.on('scroll', window._holdLabsFilmGrainDuringScroll);
+        }
+        gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      // Scroll-driven marquee — moves with page scroll
+      (function () {
+        var track = document.querySelector('.lab-marquee__track');
+        if (track) {
+          gsap.to(track, {
+            x: '-50%',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: document.body,
+              start: 'top top',
+              end: 'bottom bottom',
+              scrub: 1
+            }
+          });
+        }
+      })();
+
+      // Marquee reveal — slides up into view on scroll
+      gsap.from('.lab-marquee', {
+        clipPath: 'inset(100% 0 0 0)',
+        duration: 1.0,
+        ease: 'power3.inOut',
+        scrollTrigger: {
+          trigger: '.lab-marquee',
+          start: 'top 92%'
+        }
+      });
+
+      // Stagger hourglass spins so they don't all tick in unison
+      (function () {
+        var sepImgs = document.querySelectorAll('.lab-marquee__sep img');
+        var half    = Math.round(sepImgs.length / 2); // first set count
+        var period  = 3; // must match sep-spin duration in CSS
+        sepImgs.forEach(function (img, i) {
+          img.style.animationDelay = '-' + ((i % half) * (period / half)).toFixed(3) + 's';
+        });
+      })();
+
+      var items = document.querySelectorAll('.sb__item');
+      items.forEach(function (item) {
+        var imgWrap = item.querySelector('.sb__item-link');
+        var desc = item.querySelector('.sb__item-desc');
+
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: item, start: 'top 85%' }
+        });
+
+        tl.to(imgWrap, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 1.0,
+          ease: 'power3.inOut'
+        }).to(desc, {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out'
+        }, '-=0.6');
+      });
+
+      var lightbox             = document.querySelector('.lightbox');
+      var lightboxBg           = document.querySelector('.lightbox__bg');
+      var lightboxContentWrap  = document.querySelector('.lightbox__content-wrap');
+      var lightboxImg          = document.querySelector('.lightbox__img');
+      var lightboxVideo        = document.getElementById('lightbox-video');
+      var lightboxYt           = document.querySelector('.lightbox__yt');
+      var lightboxTextContainer = document.querySelector('.lightbox__text');
+      var lightboxClose        = document.querySelector('.lightbox__close');
+      var lightboxNavPrev      = document.querySelector('.lightbox__prev');
+      var lightboxNavNext      = document.querySelector('.lightbox__next');
+      var lightboxShare        = document.querySelector('.lightbox__share');
+      var lightboxToast        = document.getElementById('lightbox-toast');
+      var videoMuteBtn         = document.getElementById('video-mute-btn');
+      var lightboxTimeline     = null;
+      var currentIndex         = -1;
+      var toastTimeout         = null;
+
+      function updateHash(idx) {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#item-' + idx);
+      }
+      function clearHash() {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      function showToast() {
+        if (!lightboxToast) return;
+        clearTimeout(toastTimeout);
+        gsap.to(lightboxToast, { autoAlpha: 1, duration: 0.2 });
+        toastTimeout = setTimeout(function () {
+          gsap.to(lightboxToast, { autoAlpha: 0, duration: 0.4 });
+        }, 1800);
+      }
+      function copyCurrentUrl() {
+        var url = window.location.href;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(showToast).catch(function () { fallbackCopy(url); });
+        } else {
+          fallbackCopy(url);
+        }
+      }
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try { document.execCommand('copy'); showToast(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      // ── YouTube IFrame API ──
+      var ytApiReady = false;
+      var ytApiQueue = [];
+      window.onYouTubeIframeAPIReady = function () {
+        ytApiReady = true;
+        ytApiQueue.forEach(function (fn) { fn(); });
+        ytApiQueue = [];
+      };
+      (function () {
+        var s = document.createElement('script');
+        s.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(s);
+      }());
+      function whenYTReady(fn) {
+        if (ytApiReady && window.YT && window.YT.Player) { fn(); } else { ytApiQueue.push(fn); }
+      }
+
+      var ytPlayer = null;
+      var ytRaf = null;
+      var ytOverlay    = document.getElementById('yt-overlay');
+      var ytPlayBtn    = document.getElementById('yt-play-btn');
+      var ytBtnIcon    = document.getElementById('yt-btn-icon');
+      var ytProgressWrap = document.getElementById('yt-progress-wrap');
+      var ytProgressFill = document.getElementById('yt-progress-fill');
+      var PLAY_ICON  = '<polygon points="5,3 19,12 5,21"/>';
+      var PAUSE_ICON = '<rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/>';
+
+      function ytProgressLoop() {
+        if (!ytPlayer) return;
+        try {
+          var dur = ytPlayer.getDuration();
+          var cur = ytPlayer.getCurrentTime();
+          if (dur > 0) ytProgressFill.style.width = (cur / dur * 100) + '%';
+        } catch (e) {}
+        ytRaf = requestAnimationFrame(ytProgressLoop);
+      }
+
+      if (ytPlayBtn) {
+        ytPlayBtn.addEventListener('click', function () {
+          if (!ytPlayer) return;
+          try {
+            if (ytPlayer.getPlayerState() === 1) { ytPlayer.pauseVideo(); } else { ytPlayer.playVideo(); }
+          } catch (e) {}
+        });
+      }
+
+      if (ytProgressWrap) {
+        ytProgressWrap.addEventListener('click', function (e) {
+          if (!ytPlayer) return;
+          try {
+            var rect = ytProgressWrap.getBoundingClientRect();
+            var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            ytPlayer.seekTo(pct * ytPlayer.getDuration(), true);
+          } catch (e) {}
+        });
+      }
+
+      // ── Pre-build item data array ──
+      var itemsData = [];
+      items.forEach(function (item) {
+        var link     = item.querySelector('.sb__item-link');
+        var thumbImg = item.querySelector('img');
+        itemsData.push({
+          link:        link,
+          thumbImg:    thumbImg,
+          itemDesc:    item.querySelector('.sb__item-desc'),
+          ytId:        link.getAttribute('data-yt-id'),
+          videoSrc:    link.getAttribute('data-video-src'),
+          lightboxSrc: link.getAttribute('data-lightbox-src'),
+          lightboxAlt: link.getAttribute('data-lightbox-alt') || thumbImg.alt
+        });
+      });
+
+      // ── Mute icon toggle ──
+      function updateMuteIcon() {
+        if (!videoMuteBtn || !lightboxVideo) return;
+        var mutedIcon = videoMuteBtn.querySelector('.vm-icon--muted');
+        var soundIcon = videoMuteBtn.querySelector('.vm-icon--sound');
+        if (lightboxVideo.muted) {
+          if (mutedIcon) mutedIcon.style.display = '';
+          if (soundIcon) soundIcon.style.display = 'none';
+        } else {
+          if (mutedIcon) mutedIcon.style.display = 'none';
+          if (soundIcon) soundIcon.style.display = '';
+        }
+      }
+
+      // ── Load media + text for index ──
+      // skipVideoSetup=true when navigateLightbox already started the video synchronously
+      // muteVideo=true when opening without a real user gesture (hash auto-open)
+      function loadLightboxContent(idx, skipVideoSetup, muteVideo) {
+        var d = itemsData[idx];
+        // clear YT
+        cancelAnimationFrame(ytRaf);
+        if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) {} ytPlayer = null; }
+        if (ytOverlay) { ytOverlay.style.display = 'none'; ytOverlay.classList.remove('is-playing'); }
+        if (ytProgressFill) ytProgressFill.style.width = '0%';
+        lightboxYt.classList.remove('is-active');
+        lightboxYt.src = '';
+        // clear image
+        lightboxImg.classList.remove('is-active');
+        // clear video only when NOT continuing a video that was already started synchronously
+        if (!(skipVideoSetup && d.videoSrc)) {
+          if (lightboxVideo) { lightboxVideo.pause(); lightboxVideo.style.display = 'none'; }
+        }
+        // hide mute button by default
+        if (videoMuteBtn) videoMuteBtn.classList.remove('is-active');
+
+        if (d.videoSrc) {
+          lightboxVideo.style.display = 'block';
+          if (videoMuteBtn) { videoMuteBtn.classList.add('is-active'); updateMuteIcon(); }
+          if (!skipVideoSetup) {
+            // initial open — called synchronously in click handler, play() is safe
+            if (lightboxVideo.getAttribute('data-loaded') !== d.videoSrc) {
+              lightboxVideo.src = d.videoSrc;
+              lightboxVideo.setAttribute('data-loaded', d.videoSrc);
+            }
+            if (muteVideo) { lightboxVideo.muted = true; } else { lightboxVideo.muted = false; }
+            updateMuteIcon();
+            lightboxVideo.play().catch(function () {});
+          }
+        } else if (d.ytId) {
+          lightboxYt.classList.add('is-active');
+          if (ytOverlay) { ytOverlay.style.display = 'block'; ytOverlay.classList.remove('is-playing'); }
+          if (ytPlayBtn) ytPlayBtn.style.display = 'none';
+          if (ytProgressWrap) ytProgressWrap.style.display = 'none';
+          if (ytBtnIcon) ytBtnIcon.innerHTML = PLAY_ICON;
+          lightboxYt.src = 'https://www.youtube.com/embed/' + d.ytId + '?enablejsapi=1&rel=0&controls=0&modestbranding=1&iv_load_policy=3&playsinline=1&autoplay=1&mute=0';
+          whenYTReady(function () {
+            if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) {} ytPlayer = null; }
+            ytPlayer = new YT.Player(lightboxYt, {
+              events: {
+                onReady: function () {
+                  if (ytPlayBtn) ytPlayBtn.style.display = 'flex';
+                  if (ytProgressWrap) ytProgressWrap.style.display = 'block';
+                },
+                onStateChange: function (ev) {
+                  if (ev.data === 1) {
+                    if (ytOverlay) ytOverlay.classList.add('is-playing');
+                    if (ytBtnIcon) ytBtnIcon.innerHTML = PAUSE_ICON;
+                    cancelAnimationFrame(ytRaf);
+                    ytProgressLoop();
+                  } else {
+                    if (ytOverlay) ytOverlay.classList.remove('is-playing');
+                    if (ytBtnIcon) ytBtnIcon.innerHTML = PLAY_ICON;
+                    cancelAnimationFrame(ytRaf);
+                  }
+                }
+              }
+            });
+          });
+        } else {
+          lightboxImg.classList.add('is-active');
+          lightboxImg.src = d.lightboxSrc || d.thumbImg.src.replace('w=1200', 'w=1600');
+          lightboxImg.alt = d.lightboxAlt;
+        }
+
+        lightboxTextContainer.innerHTML = d.itemDesc.innerHTML;
+      }
+
+      // ── Update prev/next arrow visibility ──
+      function updateNavButtons() {
+        if (!lightboxNavPrev || !lightboxNavNext) return;
+        gsap.to(lightboxNavPrev, { autoAlpha: currentIndex > 0 ? 1 : 0, duration: 0.25, overwrite: true });
+        gsap.to(lightboxNavNext, { autoAlpha: currentIndex < itemsData.length - 1 ? 1 : 0, duration: 0.25, overwrite: true });
+      }
+
+      // ── Navigate while lightbox is open ──
+      function navigateLightbox(dir) {
+        var newIdx = currentIndex + dir;
+        if (newIdx < 0 || newIdx >= itemsData.length) return;
+        currentIndex = newIdx;
+        updateHash(currentIndex);
+
+        // Video must start inside the user-gesture (click/swipe) context
+        var nd = itemsData[currentIndex];
+        if (nd.videoSrc && lightboxVideo) {
+          if (lightboxVideo.getAttribute('data-loaded') !== nd.videoSrc) {
+            lightboxVideo.src = nd.videoSrc;
+            lightboxVideo.setAttribute('data-loaded', nd.videoSrc);
+          }
+          lightboxVideo.play().catch(function () {});
+        }
+
+        gsap.to(lightboxContentWrap, {
+          opacity: 0,
+          duration: 0.18,
+          ease: 'power2.in',
+          onComplete: function () {
+            // pass skipVideoSetup=true when new item is video (already started above)
+            loadLightboxContent(currentIndex, !!nd.videoSrc);
+            updateNavButtons();
+            var textEl = lightboxTextContainer.querySelectorAll('h3, .np__tags');
+            gsap.set(textEl, { opacity: 0, y: 12 });
+            gsap.to(lightboxContentWrap, { opacity: 1, duration: 0.25, ease: 'power2.out' });
+            gsap.to(textEl, { opacity: 1, y: 0, duration: 0.35, stagger: 0.05, ease: 'power3.out', delay: 0.1 });
+          }
+        });
+      }
+
+      // ── Open lightbox at index (extracted for reuse by click + hash auto-open) ──
+      function openLightboxAt(idx, muteVideo) {
+        currentIndex = idx;
+        if (lenis) lenis.stop();
+        loadLightboxContent(currentIndex, false, muteVideo);
+
+        var textElements = lightboxTextContainer.querySelectorAll('h3, .np__tags');
+        gsap.set(lightbox, { visibility: 'visible' });
+        gsap.set(lightboxBg, { opacity: 0 });
+        gsap.set(lightboxContentWrap, { clipPath: 'inset(100% 0 0 0)', opacity: 1 });
+        gsap.set(textElements, { opacity: 0, y: 40 });
+        gsap.set(lightboxClose, { autoAlpha: 0 });
+        gsap.set(lightboxShare, { autoAlpha: 0 });
+        gsap.set([lightboxNavPrev, lightboxNavNext].filter(Boolean), { autoAlpha: 0 });
+        updateHash(idx);
+
+        lightbox.classList.add('is-active');
+        lightboxTimeline = gsap.timeline({ defaults: { ease: 'expo.inOut' } });
+        lightboxTimeline
+          .to(lightboxBg, { opacity: 1, duration: 0.5 })
+          .to(lightboxContentWrap, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.85, ease: 'power4.inOut' }, '-=0.4')
+          .to(textElements, { opacity: 1, y: 0, duration: 0.6, stagger: 0.07, ease: 'power3.out' }, '-=0.5')
+          .to([lightboxClose, lightboxShare], { autoAlpha: 1, duration: 0.4 }, '-=0.4')
+          .add(function () { updateNavButtons(); }, '-=0.2');
+      }
+
+      // ── Bind click on each item ──
+      items.forEach(function (item, i) {
+        var link = itemsData[i].link;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          openLightboxAt(i, false);
+        });
+      });
+
+      function closeLightbox() {
+        if (!lightbox.classList.contains('is-active') || (lightboxTimeline && lightboxTimeline.isActive())) return;
+
+        var textElements = lightboxTextContainer.querySelectorAll('h3, .np__tags');
+        lightboxTimeline = gsap.timeline({
+          defaults: { ease: 'expo.inOut' },
+          onComplete: function () {
+            lightbox.classList.remove('is-active');
+            gsap.set(lightbox, { visibility: 'hidden' });
+            cancelAnimationFrame(ytRaf);
+            if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) {} ytPlayer = null; }
+            if (ytOverlay) { ytOverlay.style.display = 'none'; ytOverlay.classList.remove('is-playing'); }
+            if (ytProgressFill) ytProgressFill.style.width = '0%';
+            lightboxYt.src = '';
+            if (lightboxVideo) {
+              lightboxVideo.pause();
+              lightboxVideo.muted = false;
+              lightboxVideo.removeAttribute('data-loaded');
+              lightboxVideo.src = '';
+              lightboxVideo.style.display = 'none';
+            }
+            if (videoMuteBtn) videoMuteBtn.classList.remove('is-active');
+            if (lenis) lenis.start();
+            currentIndex = -1;
+            clearHash();
+          }
+        })
+        .to([lightboxClose, lightboxShare, lightboxNavPrev, lightboxNavNext].filter(Boolean), { autoAlpha: 0, duration: 0.25 })
+        .to(textElements, { opacity: 0, y: -20, duration: 0.35, stagger: 0.04, ease: 'power3.in' }, '-=0.1')
+        .to(lightboxContentWrap, { clipPath: 'inset(0 0 100% 0)', duration: 0.75, ease: 'power4.inOut' }, '-=0.2')
+        .to(lightboxBg, { opacity: 0, duration: 0.5 }, '-=0.5');
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      // only close when clicking directly on the dark overlay itself, not on any child element
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightboxBg) closeLightbox();
+      });
+      if (lightboxShare) lightboxShare.addEventListener('click', function (e) { e.stopPropagation(); copyCurrentUrl(); });
+      if (videoMuteBtn) {
+        videoMuteBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (!lightboxVideo) return;
+          lightboxVideo.muted = !lightboxVideo.muted;
+          if (!lightboxVideo.muted) lightboxVideo.removeAttribute('muted');
+          updateMuteIcon();
+        });
+      }
+      if (lightboxNavPrev) lightboxNavPrev.addEventListener('click', function (e) { e.stopPropagation(); navigateLightbox(-1); });
+      if (lightboxNavNext) lightboxNavNext.addEventListener('click', function (e) { e.stopPropagation(); navigateLightbox(1); });
+
+      // keyboard navigation
+      document.addEventListener('keydown', function (e) {
+        if (!lightbox.classList.contains('is-active')) return;
+        if (e.key === 'ArrowLeft')  navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+        if (e.key === 'Escape')     closeLightbox();
+      });
+
+      // auto-open from URL hash (not a user gesture — video starts muted, user can unmute)
+      (function () {
+        var m = window.location.hash.match(/^#item-(\d+)$/);
+        if (!m) return;
+        var idx = parseInt(m[1], 10);
+        if (isNaN(idx) || idx < 0 || idx >= itemsData.length) return;
+        setTimeout(function () { openLightboxAt(idx, true); }, 700);
+      }());
+
+      // touch swipe navigation
+      var touchStartX = 0;
+      var touchStartY = 0;
+      lightbox.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+      }, { passive: true });
+      // NOT passive — need preventDefault() to suppress the synthetic click iOS fires after a swipe
+      lightbox.addEventListener('touchend', function (e) {
+        if (!lightbox.classList.contains('is-active')) return;
+        var dx = e.changedTouches[0].clientX - touchStartX;
+        var dy = e.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+        e.preventDefault(); // kill the ~300ms synthetic click so it doesn't land on lightboxBg
+        if (dx < 0) navigateLightbox(1);
+        else        navigateLightbox(-1);
+      });
+    });
+  </script>
+
+  <script>
+    (function () {
+      var hero = document.querySelector('.work-hero');
+      if (!hero) return;
+
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          hero.classList.add('work-hero-entered');
+        });
+      });
+    }());
+  </script>
+
+  <!-- ============================================================
+       FOOTER ANIMATION
+  ============================================================ -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const footer   = document.getElementById("site-footer");
+      if (!footer) return;
+
+      const parallaxBg = document.getElementById("footer-parallax-bg");
+      if (parallaxBg && parallaxBg.dataset.bg) {
+        parallaxBg.style.setProperty("--footer-bg-image", `url("${parallaxBg.dataset.bg}")`);
+      }
+
+      const tl = gsap.timeline({ scrollTrigger: { trigger: footer, start: "top 85%" } });
+
+      const brandTitle  = footer.querySelector(".footer-brand-title");
+      const infoBar     = footer.querySelector(".footer-info-bar");
+      const description = footer.querySelector(".footer-description");
+      const contactInfo = footer.querySelector(".footer-contact-info");
+      const navLinks    = footer.querySelector(".footer-nav-links");
+      const thumb       = footer.querySelector(".footer-video-thumb");
+      const cBridge     = document.getElementById("footer-c-bridge");
+
+      if (brandTitle)  tl.from(brandTitle,  { y: 60, opacity: 0, duration: 1,   ease: "power3.out" }, 0);
+      if (infoBar)     tl.from(infoBar,     { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.2);
+      if (description) tl.from(description, { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.35);
+      if (contactInfo) tl.from(contactInfo, { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.45);
+      if (navLinks)    tl.from(navLinks,    { y: 15, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.55);
+      if (thumb)       tl.from(thumb,       { scale: 0.92, opacity: 0, duration: 0.9, ease: "power3.out" }, 0.3);
+      if (cBridge)     tl.from(cBridge,     { scale: 0, rotation: -45, duration: 0.9, ease: "back.out(1.7)" }, 0.5);
+    });
+  </script>
+
+  <script>
+    (function () {
+      var cols = document.querySelectorAll('.grid-column');
+      if (!cols.length || !window.gsap) return;
+      gsap.set(cols, { opacity: 0, scaleY: 0 });
+      gsap.to(cols, {
+        opacity: 1, scaleY: 1, duration: 1.2, stagger: 0.08,
+        ease: 'power2.out', transformOrigin: 'top',
+        onComplete: function () { cols.forEach(function (el) { el.style.willChange = 'auto'; }); }
+      });
+    }());
+  </script>
+
+  <!-- ============================================================
+       LAB FILTER TABS
+  ============================================================ -->
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll('.lab-filter-btn');
+      var items = document.querySelectorAll('.sb__item');
+      if (!tabs.length || !items.length) return;
+
+      tabs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.dataset.filter;
+
+          // Update active state
+          tabs.forEach(function (b) { b.classList.remove('is--active'); });
+          btn.classList.add('is--active');
+
+          // Active / inactive items
+          items.forEach(function (item) {
+            var tag = item.querySelector('.ll__item');
+            var category = tag ? tag.textContent.trim() : '';
+            if (filter === 'ALL' || category === filter) {
+              item.classList.remove('is--filtered-out');
+            } else {
+              item.classList.add('is--filtered-out');
+            }
+          });
+
+          // Refresh ScrollTrigger after layout change
+          if (window.ScrollTrigger) { ScrollTrigger.refresh(); }
+        });
+      });
+    }());
+  </script>
+
+  <!-- Footer Reveal -->
+  <style>
+    .frev-wrap { overflow: hidden; display: inline-block; vertical-align: bottom; }
+    .footer-video-cover { position: absolute; inset: 0; background: #0a0a0a; z-index: 2; pointer-events: none; transform-origin: right center; will-change: transform; }
+  </style>
+  <script>
+    (function () {
+      const footer = document.getElementById('site-footer');
+      if (!footer || !window.gsap) return;
+
+      const contactInfo = footer.querySelector('.footer-contact-info');
+      const addrDiv     = footer.querySelector('.footer-main-content > div > div[style]');
+      const navLinks    = footer.querySelector('.footer-nav-links');
+      const thumb       = footer.querySelector('.footer-video-thumb');
+
+      const contactEmail = contactInfo ? contactInfo.querySelector('a') : null;
+      const contactPhone = contactInfo ? contactInfo.querySelector('span') : null;
+
+      if (contactEmail) {
+        const ew = document.createElement('div');
+        ew.style.overflow = 'hidden';
+        contactEmail.parentNode.insertBefore(ew, contactEmail);
+        ew.appendChild(contactEmail);
+        gsap.set(contactEmail, { y: '105%' });
+      }
+      if (contactPhone) {
+        const pw = document.createElement('div');
+        pw.style.cssText = 'overflow:hidden;display:block;';
+        contactPhone.parentNode.insertBefore(pw, contactPhone);
+        pw.appendChild(contactPhone);
+        gsap.set(contactPhone, { display: 'inline-block', y: '105%' });
+      }
+
+      const navAnchors = navLinks ? [...navLinks.querySelectorAll('a')] : [];
+      navAnchors.forEach(a => {
+        const wrap = document.createElement('span');
+        wrap.className = 'frev-wrap';
+        a.parentNode.insertBefore(wrap, a);
+        wrap.appendChild(a);
+      });
+      gsap.set(navAnchors, { y: '120%' });
+
+      let videoCover = null;
+      if (thumb) {
+        videoCover = document.createElement('div');
+        videoCover.className = 'footer-video-cover';
+        thumb.appendChild(videoCover);
+      }
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: footer, start: 'top 82%' }
+      });
+
+      if (contactEmail) tl.to(contactEmail, { y: '0%', duration: 1.2, ease: 'power4.out' }, 0);
+      if (contactPhone) tl.to(contactPhone, { y: '0%', duration: 0.9, ease: 'power3.out' }, 0.2);
+      if (addrDiv)      tl.from(addrDiv,    { y: 14, opacity: 0, duration: 0.8, ease: 'power3.out' }, 0.35);
+      if (navAnchors.length) tl.to(navAnchors, { y: '0%', duration: 0.85, stagger: 0.07, ease: 'power4.out' }, 0.48);
+      if (videoCover) {
+        tl.fromTo(videoCover,
+          { scaleX: 1 },
+          { scaleX: 0, duration: 0.85, ease: 'power4.inOut', transformOrigin: 'right center' },
+          0.1
+        );
+      }
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="lenis">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+ <title>作品案例 Works｜核點 Nudot Studio・網頁設計 × 商業視覺 × AI 動態影像實績</title>
+
+  <script>
+    (function () {
+      try {
+        var raw = sessionStorage.getItem('nudot:page-transition');
+        if (!raw) return;
+        var payload = JSON.parse(raw);
+        if (payload && payload.at && Date.now() - payload.at < 12000) {
+          document.documentElement.classList.add('has-pending-page-transition');
+        }
+      } catch (error) { }
+    })();
+  </script>
+  <!-- Google Analytics 4 (GA4) -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N53QVZL8TL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N53QVZL8TL');
+  </script>
+
+
+
+ <meta name="description" content="瀏覽 核點 Nudot Studio作品集 — 涵蓋網頁設計、品牌識別、高階商業視覺與 AI 動態影像，跨足美妝、餐飲、工業、再生能源等多元產業案例。">
+  <meta name="keywords"
+    content="NUDOT 作品集, 核點創意作品, 網頁設計案例, 品牌設計案例, 高階商業視覺案例, AI 動態影像案例, Gen-AI Visual, 台中網頁設計, 互動網站作品, 商業攝影視覺, 品牌識別案例">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="核點 Nudot Studio">
+  <meta name="theme-color" content="#030303">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://nudot.com.tw/work">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nudot.com.tw/work">
+  <meta property="og:title" content="作品案例 Works｜核點 Nudot Studio・網頁設計 × 商業視覺 × AI 動態影像">
+  <meta property="og:description" content="核點 Nudot Studio作品集 — 涵蓋網頁設計、品牌識別、高階商業視覺與 AI 動態影像，跨足多元產業的視覺敘事案例。">
+  <meta property="og:image" content="https://nudot.com.tw/images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="核點 Nudot Studio">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="作品案例 Works｜核點 Nudot Studio・網頁設計 × 商業視覺 × AI 動態影像">
+  <meta name="twitter:description" content="核點 Nudot Studio作品集 — 網頁設計、品牌識別、高階商業視覺與 AI 動態影像案例。">
+  <meta name="twitter:image" content="https://nudot.com.tw/images/og.jpg">
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pp-neue-montreal">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&family=Bitcount+Grid+Single:wght@100..700&display=swap">
+  <link rel="stylesheet" href="cursor-shared.css?v=1">
+
+ <link rel="stylesheet" href="nav-menu-shared.css?v=1">
+  <link rel="stylesheet" href="page-transitions.css?v=1">
+  <link rel="stylesheet" href="project-creative-process.css?v=1">
+  <link rel="icon" href="images/fav.png" type="image/png">
+
+  <!-- GSAP 核心與 ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <!-- Lenis (Smooth Scroll) -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js" defer></script>
+  <script src="./transitions.js?v=1" defer></script>
+  <script src="project-creative-process.js?v=1" defer></script>
+  <script src="cursor-shared.js?v=1" defer></script>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       Hover Reveal — Frosted Glass + Desaturation Blend
+       Layer order (z-index): image(1) → blur(4) → blend(8) → video(9) → text(12)
+       ═══════════════════════════════════════════════════════════ */
+
+    /* Lift .work-video above blur/blend so it renders in full colour */
+    .work-video {
+      z-index: 9 !important;
+      background: transparent !important;
+    }
+
+    /* Neutralise CSS hover state on video — GSAP manages opacity */
+    .work-box:hover .work-video {
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0) scale(0.94);
+    }
+
+    /* Remove transform from cover’s CSS transition — GSAP drives scale */
+    .work-cover {
+      transition: opacity 0.72s var(--work-ease), filter 0.72s var(--work-ease) !important;
+    }
+
+    /* ── Frosted-glass blur overlay ──────────────────────────────── */
+    .work-blur {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.06);
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    /* ── Desaturation blend layer (mix-blend-mode: color) ──────────── */
+    .work-color-blend {
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      background: #000;
+      mix-blend-mode: color;
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    /* ── Slide-up text ──────────────────────────────────────── */
+    .work-text-bottom {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.4rem;
+      right: 1.4rem;
+      z-index: 12;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      pointer-events: none;
+      color: #fff;
+      will-change: transform, opacity;
+    }
+
+    .work-text-bottom__index {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+      opacity: 0.55;
+      line-height: 1;
+    }
+
+    .work-text-bottom__action {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+      opacity: 0.88;
+      line-height: 1;
+    }
+
+    /* Hide overlay layers on touch / small screens */
+    @media (max-width: 1024px),
+    (hover: none),
+    (pointer: coarse) {
+
+      .work-blur,
+      .work-color-blend,
+      .work-text-bottom {
+        display: none;
+      }
+    }
+
+    /* ── Project info (tablet/mobile only) ───────────────────────── */
+    .project-info {
+      display: none;
+      padding: 14px 0 4px;
+    }
+
+    .project-date {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-family: 'Zalando Sans SemiExpanded', 'DM Sans', sans-serif;
+      font-size: clamp(1rem, 3.5vw, 1.4rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .project-subtitle {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    @media (max-width: 1024px) {
+      .project-info {
+        display: block;
+      }
+    }
+
+    /* ── Site footer ────────────────────────────────────────────────── */
+    .site-footer {
+      position: relative;
+      overflow: visible;
+      color: #fff;
+      padding: 0;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .footer-top {
+      padding: 3vw 2.5vw;
+      position: relative;
+      z-index: 5;
+      line-height: normal;
+    }
+
+    .footer-main-content {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-contact-info a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      font-size: clamp(20px, 3.5vw, 50px);
+      font-weight: 400;
+      margin-bottom: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .footer-contact-info a:hover {
+      opacity: 0.6;
+    }
+
+    .footer-contact-info span {
+      color: #ffffff;
+      font-size: clamp(18px, 2.5vw, 30px);
+    }
+
+    .footer-nav-links {
+      display: flex;
+      gap: 28px;
+      margin-top: 38px;
+    }
+
+    .footer-nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: opacity 0.2s;
+    }
+
+    .footer-nav-links a:hover {
+      opacity: 0.5;
+    }
+
+    .footer-right-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    .footer-video-thumb {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .footer-video-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .footer-copyright-bridge {
+      position: absolute;
+      bottom: 0;
+      right: 6%;
+      width: clamp(90px, 10vw, 148px);
+      height: clamp(90px, 10vw, 148px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(50%);
+      z-index: 20;
+    }
+
+    .footer-copyright-bridge span {
+      font-family: 'Zalando Sans SemiExpanded', 'DM Sans', sans-serif;
+      font-size: 180px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1;
+    }
+
+   .footer-parallax-section {
+      height: 50vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-parallax-copy {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      z-index: 3;
+      color: rgba(255, 255, 255, 0.65);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+      pointer-events: none;
+    }
+
+     @media (max-width: 1440px) {
+     .footer-parallax-section {
+      height: 300px;
+      
+    }
+    }
+
+    .footer-parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: var(--footer-bg-image, none);
+      background-attachment: fixed;
+      background-size: contain;
+      background-position: bottom;
+      opacity: 1;
+      mix-blend-mode: luminosity;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-top {
+        padding: 6vw 4vw;
+      }
+
+      .footer-copyright-bridge,
+      .footer-parallax-section {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-top {
+        padding: 1.5rem;
+      }
+
+      .footer-main-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-right-panel {
+        align-items: flex-start;
+      }
+
+      .footer-video-thumb {
+        max-width: 100%;
+      }
+
+      .footer-nav-links {
+        gap: 16px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      
+    }
+
+    /* ================================================================
+       MARQUEE
+    ================================================================ */
+    .lab-marquee {
+      width: 100%;
+      overflow: hidden;
+      /* background: var(--mie-black, #0a0a0a); */
+      padding: 10px;
+      border-top: 1px solid #313131;
+      border-bottom: 1px solid #313131;
+    }
+    .lab-marquee__track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .lab-marquee__item {
+      font-family: 'Bitcount Grid Single', monospace;
+      font-size: clamp(1.4rem, 4vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 0 clamp(20px, 3vw, 60px);
+    }
+    .lab-marquee__sep {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      width: clamp(20px, 2.8vw, 40px);
+    }
+    .lab-marquee__sep img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      animation: sep-spin 3s ease-in-out infinite;
+    }
+    @keyframes sep-spin {
+      0%   { transform: rotate(0deg); }
+      40%  { transform: rotate(180deg); }
+      60%  { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .lab-marquee__track { transform: none !important; }
+    }
+  </style>
+
+</head>
+
+<body class="shared-nav-page page-work-pattern">
+
+  <div class="page-transition-shell js-page-transition-shell" aria-hidden="true">
+    <div class="page-transition-curtain js-page-transition-curtain"></div>
+    <div class="page-transition-frame js-page-transition-frame">
+      <div class="page-transition-loader js-page-transition-loader"></div>
+      <div class="page-transition-counter js-page-transition-counter">[ <span
+          class="js-page-transition-counter-num">00</span> ]</div>
+      <div class="page-transition-panel js-page-transition-panel">
+        <div class="page-transition-meta is-top-left">NUDOT</div>
+        <div class="page-transition-meta is-top-right js-page-transition-meta-to">work.html</div>
+        <div class="page-transition-copy">
+          <div class="page-transition-eyebrow js-page-transition-eyebrow">NUDOT CREATIVE STUDIO</div>
+          <div class="page-transition-title js-page-transition-title">WORK</div>
+          <div class="page-transition-subtitle js-page-transition-subtitle">Shared page-transition layer for the home
+            page and work archive.</div>
+        </div>
+        <div class="page-transition-meta is-bottom-left">Digital / Motion / Interface</div>
+        <div class="page-transition-meta is-bottom-right">2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="project">
+
+      <!-- 頂部 Logo -->
+
+   <div id="nav_scroll_container" aria-label="Primary navigation">
+        <nav id="nav_scroll">
+          <a class="ns-icon" href="contact" data-cursor="CONTACT" aria-label="Contact">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a class="ns-logo" href="index" data-cursor="HOME" aria-label="NUDOT home">
+            <img src="images/pc_logo.svg" alt="NUDOT 核點創意" width="45" height="35" loading="lazy" decoding="async">
+          </a>
+          <button class="ns-icon ns-hamburger" id="nav-scroll-menu-btn" data-cursor="OPEN" aria-label="Open menu"
+            aria-expanded="false" aria-controls="nav-scroll-dropdown">
+            <svg class="ns-ham-svg" viewBox="0 0 24 24">
+              <line class="ns-ham-l1" x1="5" y1="9" x2="19" y2="9"></line>
+              <line class="ns-ham-l2" x1="5" y1="15" x2="19" y2="15"></line>
+            </svg>
+          </button>
+        </nav>
+        <div class="ns-dropdown" id="nav-scroll-dropdown" aria-hidden="true">
+          <div class="ns-dropdown__inner" id="nav-scroll-dropdown-content">
+            <div class="ns-menu-stage">
+              <!-- <div class="ns-menu-topline ns-dropdown__item">
+            <span class="ns-menu-topline__brand">NUDOT CREATIVE STUDIO</span>
+            <a class="ns-menu-topline__contact" href="#site-footer">CONTACT</a>
+          </div> -->
+
+              <div class="ns-menu-rows">
+                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home">
+                  <span class="ns-showcase-row__index">( 首頁 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/1.webp" data-nav-src="images/nav/1.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">HOME</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">HOME</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/2.webp" data-nav-src="images/nav/2.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About">
+                  <span class="ns-showcase-row__index">( 核點創意 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/3.webp" data-nav-src="images/nav/3.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">ABOUT</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">ABOUT</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/4.webp" data-nav-src="images/nav/4.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work">
+                  <span class="ns-showcase-row__index">( 設計案例 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/5.webp" data-nav-src="images/nav/5.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">WORK</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">WORK</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/6.webp" data-nav-src="images/nav/6.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs">
+                  <span class="ns-showcase-row__index">( 核點實驗室 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">LABS</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">LABS</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/8.webp" data-nav-src="images/nav/8.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="contact.php" data-transition-label="Contact">
+                  <span class="ns-showcase-row__index">( 聯繫我們 )</span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/9.webp" data-nav-src="images/nav/9.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary">CONTACT</span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">CONTACT</span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/10.webp" data-nav-src="images/nav/10.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main class="work-archive" id="project-top">
+        <header class="work-hero work-reveal">
+
+          <!-- 上排：大標 -->
+          <div class="work-hero__top">
+            <h1 class="work-hero__title">WORK</h1>
+            <div class="work-hero__center">
+              <!-- <video class="work-hero__star-video" autoplay muted loop playsinline>
+                <source src="images/work/star.mp4" type="video/mp4">
+              </video> -->
+              <p class="work-hero__desc">DEFINING THE CORE DNA OF<br>BRAND AESTHETICS</p>
+            </div>
+            <p class="work-hero__code">DESIGN</p>
+          </div>
+
+          <!-- 分隔線 -->
+          <div class="work-hero__line"></div>
+
+          <!-- 下排：小字元資訊，三欄上下置中 -->
+          <div class="work-hero__bottom">
+            <p class="work-hero__year">©2025—2026</p>
+            <p class="work-hero__kicker">（ 設計案例 ）</p>
+            <p class="work-hero__tags">DIGITAL &nbsp;|&nbsp; WEB &nbsp;|&nbsp; BRANDING</p>
+          </div>
+
+        </header>
+
+        <section class="work-pattern" aria-label="Selected works">
+          <div class="work-row work-row--single">
+            <article class="work-card work-card--large-right" data-cursor="PREVIEW" style="position:relative;">
+              <a href="work_co" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-1</span>
+                
+              </div>
+              <div class="work-box is-active">
+                <img src="images/work/list/1.webp" alt="NUDOT selected work 01" class="work-cover" width="2560"
+                  height="1920" fetchpriority="high" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/1.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">Section 01</div>
+                <div class="project-title">HIGH-END SKINCARE</div>
+                <div class="project-subtitle">高階保養品形象網站</div>
+              </div>
+            </article>
+          </div>
+
+          <div class="work-row work-row--pair">
+
+            <article class="work-card work-card--small-right work-card--push" data-cursor="PREVIEW">
+              <a href="work_food" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-2</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/2.webp" alt="NUDOT selected work 06" class="work-cover" width="3000"
+                  height="2000" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/2.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">Section 02</div>
+                <div class="project-title">METERSEVEN</div>
+                <div class="project-subtitle">暮色食光</div>
+              </div>
+            </article>
+
+            <article class="work-card work-card--large-left" data-cursor="PREVIEW">
+                <a href="work_camp" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-3</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/3.webp" alt="NUDOT selected work 04" class="work-cover" width="2752"
+                  height="1536" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/3.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">Section 03</div>
+                <div class="project-title">COUNTRY CAMPING</div>
+                <div class="project-subtitle">森野奢旅</div>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="work-row work-row--single">
+            <article class="work-card work-card--center-left" data-cursor="PREVIEW">
+              <a href="work_oil" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-4</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/4.webp" alt="NUDOT selected work 05" class="work-cover" width="1200"
+                  height="860" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/4.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+
+              <div class="project-info">
+                <div class="project-date">Section 04</div>
+                <div class="project-title">PERFORMANCE FLUIDS</div>
+                <div class="project-subtitle">高效能潤滑科技</div>
+              </div>
+            </article>
+          </div>
+
+          <div class="work-row work-row--pair">
+
+            <article class="work-card work-card--large-right work-card--push" data-cursor="PREVIEW">
+                 <a href="work_ourattan" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-5</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/5.webp" alt="NUDOT selected work 03" class="work-cover" width="1280"
+                  height="960" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/5.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">SECTION 05</div>
+                <div class="project-title">OURATTAN</div>
+                <div class="project-subtitle"> 窩藤家具</div>
+              </div>
+            </article>
+
+            <article class="work-card work-card--small-left" data-cursor="PREVIEW">
+                  <a href="work_nod" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-6</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/6.webp" alt="NUDOT selected work 02" class="work-cover" width="2560"
+                  height="1920" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/6.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">SECTION 06</div>
+                <div class="project-title">HAND PULLED NOODLE</div>
+                <div class="project-subtitle">麵屋</div>
+              </div>
+            </article>
+          </div>
+          <div class="work-row work-row--pair">
+            <article class="work-card work-card--large-left" data-cursor="PREVIEW">
+              <a href="work_cnc" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-7</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/7.webp" alt="NUDOT selected work 05" class="work-cover" width="1280"
+                  height="853" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/7.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">SECTION 07</div>
+                <div class="project-title">PRECISION MACHINING</div>
+                <div class="project-subtitle">高精度加工</div>
+              </div>
+            </article>
+
+            <article class="work-card work-card--small-left" data-cursor="PREVIEW">
+              <a href="work_machine" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-8</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/8.webp" alt="NUDOT selected work 02" class="work-cover" width="2560"
+                  height="1920" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/8.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">SECTION 08</div>
+                <div class="project-title">STELLAR MACHINING</div>
+                <div class="project-subtitle">鋼鐵淬鍊，構築未來</div>
+              </div>
+            </article>
+          </div>
+
+
+          <div class="work-row work-row--pair">
+            <article class="work-card work-card--large-left" data-cursor="PREVIEW">
+               <a href="work_beauty" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-9</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/9.webp" alt="NUDOT selected work 05" class="work-cover" width="1280"
+                  height="853" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/9.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">SECTION 09</div>
+                <div class="project-title">MEDICAL AESTHETICS</div>
+                <div class="project-subtitle">喚醒肌膚的自然光采</div>
+              </div>
+            </article>
+
+            <article class="work-card work-card--small-left" data-cursor="PREVIEW">
+              <a href="work_sun" data-transition-label="Project" style="position:absolute;inset:0;z-index:2;"
+                aria-label="View project"></a>
+              <div class="work-meta">
+                <span>00-10</span>
+                <span class="work-meta__right">PREVIEW <span class="work-toggle" aria-hidden="true"></span></span>
+              </div>
+              <div class="work-box">
+                <img src="images/work/list/10.webp" alt="NUDOT selected work 02" class="work-cover" width="2560"
+                  height="1920" loading="lazy" decoding="async">
+                <div class="work-video" aria-hidden="true">
+                  <video muted loop playsinline preload="metadata">
+                    <source src="images/work/list/item/10.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <div class="project-info">
+                <div class="project-date">SECTION 10</div>
+                <div class="project-title">SOLAR ENERGY</div>
+                <div class="project-subtitle">永續動能，驅動未來</div>
+              </div>
+            </article>
+          </div>
+
+
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MARQUEE
+  ============================================================ -->
+  <div class="lab-marquee" aria-hidden="true">
+    <div class="lab-marquee__track">
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <!-- duplicate for seamless loop -->
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+      <span class="lab-marquee__item">COMING SOON</span>
+      <span class="lab-marquee__sep"><img src="images/lab/hourglass.svg" alt="" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-top">
+      <div class="footer-main-content">
+        <div>
+          <div class="footer-contact-info">
+            <a href="mailto:hello@nudot.com.tw">hello@nudot.com.tw</a>
+            <span>+8869 83 750 522</span>
+          </div>
+          <div style="color:#575757;font-size:14px;margin-top:8px;">臺中市北屯區文心路三段447號</div>
+          <nav class="footer-nav-links">
+            <a href="https://www.instagram.com/nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Instagram">Instagram</a>
+            <a href="https://www.threads.com/@nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Threads">Threads</a>
+            <a href="https://www.facebook.com/profile.php?id=61588727983387&locale=zh_TW" target="_blank" rel="noopener noreferrer" data-transition-label="Facebook">Facebook</a>
+          </nav>
+        </div>
+        <div class="footer-right-panel">
+          <div class="footer-video-thumb">
+            <video autoplay muted loop playsinline preload="none" disableremoteplayback>
+              <source src="images/footer.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="footer-copyright-bridge" id="footer-c-bridge">
+        <span>&copy;</span>
+      </div> -->
+    </div>
+    <div class="footer-parallax-section" id="footer-parallax-section">
+      <div class="footer-parallax-bg" id="footer-parallax-bg" data-bg="images/footer.webp"
+        style="--footer-bg-image: url('images/footer.webp');"></div>
+          <div class="footer-parallax-copy">
+            <div>核點創意有限公司</div>
+            <div>&#169; 2026 NUDOT CREATIVE STUDIO. ALL RIGHTS RESERVED.</div>
+          </div>    </div>
+  </footer>
+
+  <canvas id="film-grain-canvas" class="work-noise-canvas" aria-hidden="true"></canvas>
+  <script src="noise.js?v=3"></script>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true" data-cursor-label="EXPLORE" data-cursor-side="right"></div>
+
+  <script>
+    /* ─────────────────────────────────────────────────────────────────
+       Hover Reveal — GSAP-driven overlay animations
+       5 layers: image scale • blur fade • desaturate • video scale-in • text slide-up
+    ───────────────────────────────────────────────────────────────── */
+    (function () {
+      function initHoverReveal() {
+        var gsap = window.gsap;
+        if (!gsap) return;
+
+        var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (!canHover) return;
+
+        /* ─ 1. Inject DOM layers into every .work-box ─────────────────── */
+        document.querySelectorAll('.work-card').forEach(function (card) {
+          var box = card.querySelector('.work-box');
+          if (!box || box.dataset.hoverReveal) return;
+          box.dataset.hoverReveal = '1';
+
+          /* Frosted-glass layer */
+          var blur = document.createElement('div');
+          blur.className = 'work-blur';
+          blur.setAttribute('aria-hidden', 'true');
+
+          /* Desaturation blend layer */
+          var blend = document.createElement('div');
+          blend.className = 'work-color-blend';
+          blend.setAttribute('aria-hidden', 'true');
+
+          /* Slide-up text */
+          var text = document.createElement('div');
+          text.className = 'work-text-bottom';
+          text.setAttribute('aria-hidden', 'true');
+          var metaIdx = card.querySelector('.work-meta span:first-child');
+          text.innerHTML =
+            '<span class="work-text-bottom__index">' + (metaIdx ? metaIdx.textContent.trim() : '') + '</span>' +
+            '<span class="work-text-bottom__action">VIEW PROJECT </span>';
+
+          /* Insert blur + blend after the cover image, before the video */
+          var cover = box.querySelector('.work-cover');
+          var videoWrap = box.querySelector('.work-video');
+          if (cover) {
+            cover.after(blur, blend);
+          } else {
+            box.prepend(blur, blend);
+          }
+          box.appendChild(text);
+        });
+
+        /* ─ 2. GSAP initial states ─────────────────────────────── */
+        gsap.set('.work-blur', { opacity: 0 });
+        gsap.set('.work-color-blend', { opacity: 0 });
+        gsap.set('.work-text-bottom', { opacity: 0, y: 30 });
+        gsap.set('.work-video video', { scale: 0.5 });
+
+        /* ─ 3. Per-card hover timelines ─────────────────────────── */
+        document.querySelectorAll('.work-card').forEach(function (card) {
+          var box = card.querySelector('.work-box');
+          if (!box) return;
+          var cover = box.querySelector('.work-cover');
+          var blur = box.querySelector('.work-blur');
+          var blend = box.querySelector('.work-color-blend');
+          var videoWrap = box.querySelector('.work-video');
+          var videoEl = videoWrap ? videoWrap.querySelector('video') : null;
+          var text = box.querySelector('.work-text-bottom');
+
+          var tl = null;
+
+          card.addEventListener('mouseenter', function () {
+            if (tl) tl.kill();
+            tl = gsap.timeline();
+
+            /* 1. 背景圖微放大 */
+            if (cover) tl.to(cover, { scale: 1.05, duration: 0.6, ease: 'power1.inOut' }, 0);
+
+            /* 2. 毛玻璃遂即顯現 */
+            if (blur) tl.to(blur, { opacity: 1, duration: 0.1, ease: 'power1.in' }, 0);
+
+            /* 3. 去色滾鸡層 */
+            if (blend) tl.to(blend, { opacity: 1, duration: 0.6, ease: 'power1.inOut' }, 0);
+
+            /* 4. 影片 scale-in + 淡入 */
+            if (videoWrap) tl.to(videoWrap, { opacity: 1, duration: 0.4, ease: 'power2.inOut' }, 0);
+            if (videoEl) tl.to(videoEl, { scale: 1, duration: 0.4, ease: 'power2.inOut' }, 0);
+
+            /* 5. 文字上滑顯現 */
+            if (text) tl.to(text, { opacity: 1, y: 0, duration: 0.5, ease: 'power1.inOut' }, 0.05);
+          });
+
+          card.addEventListener('mouseleave', function () {
+            if (tl) tl.kill();
+            tl = gsap.timeline();
+
+            if (cover) tl.to(cover, { scale: 1, duration: 0.5, ease: 'power1.inOut' }, 0);
+            if (blur) tl.to(blur, { opacity: 0, duration: 0.35, ease: 'power1.out' }, 0);
+            if (blend) tl.to(blend, { opacity: 0, duration: 0.45, ease: 'power1.inOut' }, 0);
+            if (videoWrap) tl.to(videoWrap, { opacity: 0, duration: 0.35, ease: 'power2.inOut' }, 0);
+            if (videoEl) tl.to(videoEl, { scale: 0.5, duration: 0.35, ease: 'power2.inOut' }, 0);
+            if (text) tl.to(text, { opacity: 0, y: 30, duration: 0.3, ease: 'power1.inOut' }, 0);
+          });
+
+          /* Navigate on click if card has data-href */
+          var href = card.getAttribute('data-href');
+          var label = card.getAttribute('data-transition-label');
+          if (href) {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function (e) {
+              e.preventDefault();
+              if (window.barba && label) {
+                window.barba.go(href);
+              } else {
+                window.location.href = href;
+              }
+            });
+          }
+        });
+      }
+
+      /* ─ 連結點擊邏輯：所有裝置都需要，獨立於 hover reveal ─── */
+      function initCardLinks() {
+        /* 已由 HTML <a> 標籤處理，無需 JS */
+      }
+
+      /* Run after deferred scripts have loaded */
+      if (document.readyState === 'complete') {
+        initCardLinks();
+        initHoverReveal();
+      } else {
+        window.addEventListener('load', function () {
+          initCardLinks();
+          initHoverReveal();
+        });
+      }
+    })();
+  </script>
+  <!-- Marquee JS -->
+  <script>
+    (function () {
+      var track = document.querySelector('.lab-marquee__track');
+      if (track) {
+        gsap.to(track, {
+          x: '-50%',
+          ease: 'none',
+          scrollTrigger: {
+            trigger: document.body,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1
+          }
+        });
+      }
+
+      gsap.from('.lab-marquee', {
+        clipPath: 'inset(100% 0 0 0)',
+        duration: 1.0,
+        ease: 'power3.inOut',
+        scrollTrigger: {
+          trigger: '.lab-marquee',
+          start: 'top 92%'
+        }
+      });
+
+      (function () {
+        var sepImgs = document.querySelectorAll('.lab-marquee__sep img');
+        var half    = Math.round(sepImgs.length / 2);
+        var period  = 3;
+        sepImgs.forEach(function (img, i) {
+          img.style.animationDelay = '-' + ((i % half) * (period / half)).toFixed(3) + 's';
+        });
+      })();
+    })();
+  </script>
+
+  <!-- Footer Reveal -->
+  <style>
+    .frev-wrap { overflow: hidden; display: inline-block; vertical-align: bottom; }
+    .footer-video-cover { position: absolute; inset: 0; background: #0a0a0a; z-index: 2; pointer-events: none; transform-origin: right center; will-change: transform; }
+  </style>
+  <script>
+    (function () {
+      const footer = document.getElementById('site-footer');
+      if (!footer || !window.gsap) return;
+
+      const contactInfo = footer.querySelector('.footer-contact-info');
+      const addrDiv     = footer.querySelector('.footer-main-content > div > div[style]');
+      const navLinks    = footer.querySelector('.footer-nav-links');
+      const thumb       = footer.querySelector('.footer-video-thumb');
+
+      const contactEmail = contactInfo ? contactInfo.querySelector('a') : null;
+      const contactPhone = contactInfo ? contactInfo.querySelector('span') : null;
+
+      if (contactEmail) {
+        const ew = document.createElement('div');
+        ew.style.overflow = 'hidden';
+        contactEmail.parentNode.insertBefore(ew, contactEmail);
+        ew.appendChild(contactEmail);
+        gsap.set(contactEmail, { y: '105%' });
+      }
+      if (contactPhone) {
+        const pw = document.createElement('div');
+        pw.style.cssText = 'overflow:hidden;display:block;';
+        contactPhone.parentNode.insertBefore(pw, contactPhone);
+        pw.appendChild(contactPhone);
+        gsap.set(contactPhone, { display: 'inline-block', y: '105%' });
+      }
+
+      const navAnchors = navLinks ? [...navLinks.querySelectorAll('a')] : [];
+      navAnchors.forEach(a => {
+        const wrap = document.createElement('span');
+        wrap.className = 'frev-wrap';
+        a.parentNode.insertBefore(wrap, a);
+        wrap.appendChild(a);
+      });
+      gsap.set(navAnchors, { y: '120%' });
+
+      let videoCover = null;
+      if (thumb) {
+        videoCover = document.createElement('div');
+        videoCover.className = 'footer-video-cover';
+        thumb.appendChild(videoCover);
+      }
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: footer, start: 'top 82%' }
+      });
+
+      if (contactEmail) tl.to(contactEmail, { y: '0%', duration: 1.2, ease: 'power4.out' }, 0);
+      if (contactPhone) tl.to(contactPhone, { y: '0%', duration: 0.9, ease: 'power3.out' }, 0.2);
+      if (addrDiv)      tl.from(addrDiv,    { y: 14, opacity: 0, duration: 0.8, ease: 'power3.out' }, 0.35);
+      if (navAnchors.length) tl.to(navAnchors, { y: '0%', duration: 0.85, stagger: 0.07, ease: 'power4.out' }, 0.48);
+      if (videoCover) {
+        tl.fromTo(videoCover,
+          { scaleX: 1 },
+          { scaleX: 0, duration: 0.85, ease: 'power4.inOut', transformOrigin: 'right center' },
+          0.1
+        );
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      // 1. Lenis smooth scroll — exposed as window._lenis for transitions.js
+      var lenis = new Lenis({
+        duration: 1.2,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 0.85,
+        touchMultiplier: 1.2,
+      });
+      window._lenis = lenis;
+      function raf(time) { lenis.raf(time); window.requestAnimationFrame(raf); }
+      window.requestAnimationFrame(raf);
+    })();
+  </script>
+
+
+</body>
+
+</html>

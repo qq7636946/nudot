@@ -1,0 +1,572 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 Not Found - 核點 Nudot Studio</title>
+  <meta name="description" content="找不到您要的頁面。請返回 核點 Nudot Studio首頁繼續探索網頁設計、品牌識別與 AI 動態影像作品。">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nudot.com.tw/404">
+  <meta property="og:title" content="404 找不到頁面｜核點 Nudot Studio">
+  <meta property="og:description" content="找不到您要的頁面。請返回 核點 Nudot Studio首頁。">
+  <meta property="og:image" content="https://nudot.com.tw/images/og.jpg">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="核點 Nudot Studio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="404 找不到頁面｜核點 Nudot Studio">
+  <meta name="twitter:description" content="找不到您要的頁面。請返回 核點 Nudot Studio首頁。">
+  <meta name="twitter:image" content="https://nudot.com.tw/images/og.jpg">
+  <link rel="icon" href="images/fav.png" type="image/png">
+
+  <!-- 引入 Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+  <style>
+    /* 基礎設定與變數 */
+    :root {
+      --bg-color: #000000;
+      --text-main: #ffffff;
+      --accent-color: #ffffff;
+      --glitch-color1: #777777;
+      --glitch-color2: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: "Zalando Sans SemiExpanded", "Microsoft JhengHei", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      cursor: crosshair;
+      animation: screenFlicker 8s infinite; /* 螢幕微閃爍特效 */
+    }
+
+    /* CRT 掃描線覆蓋層 */
+    .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%,
+        rgba(0, 0, 0, 0.25)
+      );
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    @keyframes screenFlicker {
+      0%, 96%, 98%, 100% { opacity: 1; }
+      97% { opacity: 0.8; }
+      99% { opacity: 0.9; }
+    }
+
+    .page {
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 10;
+    }
+
+    /* 像素 404 插圖 */
+    .graphic-wrap {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+      transition: transform 0.1s ease-out;
+      will-change: transform;
+    }
+    
+    .graphic-wrap svg {
+      width: 100%;
+      height: auto;
+      image-rendering: pixelated;
+    }
+
+    /* 眼球眨眼與追蹤 */
+    #eyes-track {
+      transition: transform 0.05s ease-out; /* 讓眼球追蹤滑順一點 */
+    }
+    .eye {
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: blink 4s infinite;
+    }
+    @keyframes blink {
+      0%, 46%, 48%, 50%, 100% { transform: scaleY(1); }
+      47%, 49% { transform: scaleY(0.1); }
+    }
+
+    /* Glitch 故障標題特效 */
+    .heading {
+      font-family: 'Bitcount Grid Single', sans-serif;
+      font-size: 2rem;
+      font-weight: 300;
+      margin: 0;
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .heading::before, .heading::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-color);
+      z-index: -1;
+    }
+
+    .heading::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--glitch-color1);
+      clip-path: inset(45% 0 51% 0);
+      animation: glitch-anim 2.5s infinite linear alternate-reverse;
+    }
+
+    .heading::after {
+      left: -2px;
+      text-shadow: -2px 0 var(--glitch-color2);
+      clip-path: inset(12% 0 81% 0);
+      animation: glitch-anim2 3s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim {
+      0% { clip-path: inset(80% 0 1% 0); }
+      20% { clip-path: inset(23% 0 65% 0); }
+      40% { clip-path: inset(5% 0 13% 0); }
+      60% { clip-path: inset(43% 0 22% 0); }
+      80% { clip-path: inset(12% 0 78% 0); }
+      100% { clip-path: inset(54% 0 31% 0); }
+    }
+    @keyframes glitch-anim2 {
+      0% { clip-path: inset(12% 0 78% 0); }
+      20% { clip-path: inset(54% 0 31% 0); }
+      40% { clip-path: inset(80% 0 1% 0); }
+      60% { clip-path: inset(23% 0 65% 0); }
+      80% { clip-path: inset(43% 0 22% 0); }
+      100% { clip-path: inset(5% 0 13% 0); }
+    }
+
+    /* 打字機訊息區塊 */
+    .message {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+      min-height: 3.2rem;
+      color: #aaa;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background-color: var(--accent-color);
+      vertical-align: bottom;
+      margin-left: 4px;
+      animation: blink-cursor 1s step-end infinite;
+    }
+
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* 按鈕樣式 */
+    .btn-home {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--accent-color);
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .btn-home:hover {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      box-shadow: 0 0 15px var(--accent-color);
+    }
+
+    /* 頁尾 */
+    .footer-row {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: #666;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* =========================================
+       底部的 Google 恐龍場景 
+       ========================================= */
+    .dino-scene {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 130px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 計分板 */
+    .score-board {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      font-family: 'Bitcount Grid Single', monospace;
+      font-size: 1.2rem;
+      color: #888;
+      letter-spacing: 2px;
+    }
+    .score-board #current-score {
+      color: var(--text-main);
+    }
+
+    /* 像素雲朵 */
+    .cloud {
+      position: absolute;
+      color: var(--text-main);
+      opacity: 0.3;
+      right: -100px;
+      animation: cloudMove linear infinite;
+    }
+    @keyframes cloudMove {
+      from { transform: translateX(100px); }
+      to { transform: translateX(-120vw); }
+    }
+
+    /* 地板與軌道 */
+    .dino-track {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--text-main) 0, var(--text-main) 12px, transparent 12px, transparent 24px);
+      animation: trackScroll 0.8s linear infinite;
+    }
+
+    @keyframes trackScroll {
+      from { background-position: 0 0; }
+      to { background-position: -24px 0; }
+    }
+
+    /* 小恐龍本體 (22x24 原版比例放大) */
+    .dino {
+      position: absolute;
+      bottom: 20px;
+      left: 15%;
+      width: 44px;
+      height: 48px;
+      color: var(--text-main);
+    }
+
+    /* 小恐龍跳躍動畫 */
+    .dino.jump {
+      animation: dinoJump 0.6s cubic-bezier(0.3, 0.1, 0.3, 1);
+    }
+
+    @keyframes dinoJump {
+      0%, 100% { bottom: 20px; }
+      50% { bottom: 100px; } 
+    }
+
+    /* 恐龍跑步替換腿動畫 */
+    @keyframes leg1Run {
+      0%, 49.9% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes leg2Run {
+      0%, 49.9% { opacity: 0; }
+      50%, 100% { opacity: 1; }
+    }
+    .dino-leg-1 { animation: leg1Run 0.16s infinite; }
+    .dino-leg-2 { animation: leg2Run 0.16s infinite; }
+
+    /* 跳躍時鎖定腿部動作 */
+    .dino.jump .dino-leg-1 { opacity: 1; animation: none; }
+    .dino.jump .dino-leg-2 { opacity: 0; animation: none; }
+
+    /* 仙人掌障礙物 */
+    .cactus {
+      position: absolute;
+      bottom: 20px;
+      right: -50px;
+      width: 24px;
+      height: 48px;
+      color: var(--text-main);
+      animation: cactusMove 2.5s linear infinite;
+    }
+
+    @keyframes cactusMove {
+      0% { transform: translateX(50px); }
+      100% { transform: translateX(-110vw); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CRT 掃描線 -->
+  <div class="scanlines"></div>
+
+  <main class="page" id="main-404">
+    <!-- Pixel 404 character -->
+    <div class="graphic-wrap" aria-label="404 像素插圖">
+      <svg viewBox="0 0 27 7" xmlns="http://www.w3.org/2000/svg">
+        <g fill="currentColor">
+          <rect x="3" y="1" width="1" height="1"></rect>
+          <rect x="2" y="2" width="1" height="1"></rect>
+          <rect x="1" y="3" width="1" height="1"></rect>
+          <rect x="0" y="4" width="6" height="1"></rect>
+          <rect x="4" y="0" width="1" height="7"></rect>
+          
+          <rect x="9" y="0" width="7" height="1"></rect>
+          <rect x="9" y="6" width="7" height="1"></rect>
+          <rect x="9" y="0" width="1" height="7"></rect>
+          <rect x="15" y="0" width="1" height="7"></rect>
+          
+          <!-- 將眼睛包裝在群組中，用來做滑鼠追蹤 -->
+          <g id="eyes-track">
+            <rect x="11" y="2" width="1" height="1" class="eye"></rect>
+            <rect x="13" y="2" width="1" height="1" class="eye"></rect>
+          </g>
+          
+          <rect x="11" y="4" width="3" height="1"></rect>
+          
+          <rect x="22" y="1" width="1" height="1"></rect>
+          <rect x="21" y="2" width="1" height="1"></rect>
+          <rect x="20" y="3" width="1" height="1"></rect>
+          <rect x="19" y="4" width="6" height="1"></rect>
+          <rect x="23" y="0" width="1" height="7"></rect>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Glitch heading -->
+    <h1 class="heading" data-text="ERROR 404: PAGE NOT FOUND">ERROR 404: PAGE NOT FOUND</h1>
+
+    <!-- Typewriter --> 
+    <p class="message">
+      <span id="tw-text"></span><span class="cursor-blink"></span>
+    </p>
+
+    <!-- 手動返回按鈕 -->
+    <div>
+      <a href="index" class="btn-home">鎖定核心，重新連線</a>
+    </div>
+
+    <!-- Footer row -->
+    <div class="footer-row">
+      
+      <span class="footer-copy">© 2026 NUDOT CREATIVE STUDIO. 核點創意有限公司 ALL RIGHTS RESERVED.</span>
+     
+    </div>
+  </main>
+
+  <!-- ===============================
+       小恐龍動畫場景 
+       =============================== -->
+  <div class="dino-scene">
+    <!-- 計分板 -->
+    <div class="score-board">HI 00404 <span id="current-score">00000</span></div>
+
+    <!-- 像素雲朵 (利用 SVG 與不同動畫延遲創造層次感) -->
+    <div class="cloud" style="top: 15px; animation-duration: 35s;">
+      <svg viewBox="0 0 24 12" width="48" height="24" shape-rendering="crispEdges">
+        <g fill="currentColor">
+          <rect x="4" y="8" width="16" height="4"/>
+          <rect x="8" y="4" width="8" height="4"/>
+          <rect x="10" y="0" width="4" height="4"/>
+        </g>
+      </svg>
+    </div>
+    <div class="cloud" style="top: 40px; animation-duration: 25s; animation-delay: -10s;">
+      <svg viewBox="0 0 24 12" width="36" height="18" shape-rendering="crispEdges">
+        <g fill="currentColor">
+          <rect x="4" y="8" width="16" height="4"/>
+          <rect x="8" y="4" width="8" height="4"/>
+          <rect x="10" y="0" width="4" height="4"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 地面軌道 -->
+    <div class="dino-track"></div>
+    
+    <!-- 經典仙人掌 -->
+    <div class="cactus" id="cactus-obstacle">
+      <svg viewBox="0 0 24 48" width="100%" height="100%" shape-rendering="crispEdges">
+        <g fill="currentColor">
+          <rect x="10" y="8" width="6" height="40"/>
+          <rect x="2" y="18" width="6" height="14"/>
+          <rect x="2" y="32" width="14" height="6"/>
+          <rect x="18" y="14" width="6" height="16"/>
+          <rect x="12" y="30" width="12" height="6"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- 精確 100% 還原設計圖的 22x24 小恐龍 (完全保留不變) -->
+    <div class="dino" id="dino-player">
+      <svg viewBox="0 0 22 24" width="100%" height="100%" shape-rendering="crispEdges">
+        <g fill="currentColor">
+          <rect x="11" y="0" width="9" height="1" />
+          <rect x="10" y="1" width="12" height="1" />
+          <rect x="10" y="2" width="2" height="1" />
+          <rect x="13" y="2" width="9" height="1" />
+          <rect x="10" y="3" width="12" height="2" />
+          <rect x="10" y="5" width="7" height="1" />
+          <rect x="10" y="6" width="10" height="1" />
+          <rect x="11" y="7" width="6" height="1" />
+          <rect x="10" y="8" width="7" height="1" />
+          <rect x="9" y="9" width="8" height="1" />
+          <rect x="8" y="10" width="9" height="1" />
+          <rect x="7" y="11" width="10" height="1" />
+          <rect x="6" y="12" width="11" height="1" />
+          <rect x="5" y="13" width="12" height="1" />
+          <rect x="4" y="14" width="13" height="1" />
+          <rect x="3" y="15" width="14" height="1" />
+          <rect x="18" y="13" width="2" height="2" />
+          <rect x="0" y="14" width="1" height="1" />
+          <rect x="0" y="15" width="2" height="1" />
+          <rect x="0" y="16" width="15" height="1" />
+          <rect x="1" y="17" width="13" height="1" />
+          <rect x="2" y="18" width="11" height="1" />
+          <rect x="3" y="19" width="8" height="1" />
+        </g>
+        <g class="dino-leg-1" fill="currentColor">
+          <rect x="4" y="20" width="3" height="1" />
+          <rect x="4" y="21" width="2" height="2" />
+          <rect x="4" y="23" width="4" height="1" />
+          <rect x="9" y="20" width="2" height="2" />
+          <rect x="11" y="21" width="2" height="1" />
+        </g>
+        <g class="dino-leg-2" fill="currentColor" style="opacity: 0;">
+          <rect x="4" y="20" width="3" height="1" />
+          <rect x="4" y="21" width="2" height="1" />
+          <rect x="6" y="21" width="2" height="1" />
+          <rect x="9" y="20" width="2" height="3" />
+          <rect x="9" y="23" width="4" height="1" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. 打字機效果設定
+      const textToType = "您尋找的「點」不存在，脫離了我們的核心很容易迷失方向。";
+      const typeTarget = document.getElementById("tw-text");
+      let typeIndex = 0;
+      
+      function typeWriter() {
+        if (typeIndex < textToType.length) {
+          if (textToType.charAt(typeIndex) === '\n') {
+            typeTarget.innerHTML += '<br>';
+          } else {
+            typeTarget.innerHTML += textToType.charAt(typeIndex);
+          }
+          typeIndex++;
+          const typeSpeed = Math.floor(Math.random() * 100) + 50;
+          setTimeout(typeWriter, typeSpeed);
+        }
+      }
+
+      setTimeout(typeWriter, 500);
+
+      // 2. 互動：像素 404 插圖滑鼠視差跟隨 + 眼球追蹤
+      const graphic = document.querySelector('.graphic-wrap');
+      const eyesTrack = document.getElementById('eyes-track');
+      
+      document.addEventListener('mousemove', (e) => {
+        // 臉部整體的微幅 3D 視差
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+        graphic.style.transform = `translate(${xAxis}px, ${yAxis}px)`;
+
+        // 眼球的精確追蹤 (限制在 SVG 的 1 單元格內移動)
+        const eyeX = ((e.pageX / window.innerWidth) - 0.5) * 1.5; 
+        const eyeY = ((e.pageY / window.innerHeight) - 0.5) * 1.5;
+        eyesTrack.style.transform = `translate(${eyeX}px, ${eyeY}px)`;
+      });
+
+      // 3. 計分板邏輯
+      let score = 0;
+      const scoreDisplay = document.getElementById('current-score');
+      // 每 100 毫秒增加一分
+      setInterval(() => {
+        score++;
+        scoreDisplay.innerText = score.toString().padStart(5, '0');
+      }, 100);
+
+      // 4. 互動：小恐龍跳躍與自動避障邏輯
+      const dino = document.getElementById('dino-player');
+      const cactus = document.getElementById('cactus-obstacle');
+      
+      function triggerJump() {
+        if (!dino.classList.contains('jump')) {
+          dino.classList.add('jump');
+          setTimeout(() => {
+            dino.classList.remove('jump');
+          }, 600);
+        }
+      }
+
+      function checkAutoJump() {
+        const dinoRect = dino.getBoundingClientRect();
+        const cactusRect = cactus.getBoundingClientRect();
+        const distance = cactusRect.left - dinoRect.right;
+
+        // 當障礙物靠近時自動跳躍
+        if (distance > 0 && distance < 90 && !dino.classList.contains('jump')) {
+          triggerJump();
+        }
+        requestAnimationFrame(checkAutoJump);
+      }
+
+      checkAutoJump();
+
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+          e.preventDefault(); 
+          triggerJump();
+        }
+      });
+      document.addEventListener('click', triggerJump);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,795 @@
+[10-Jun-2026 15:54:06 UTC] PHP Warning:  require_once(/home/nudotcom/nudot.com.tw/vendor/autoload.php): Failed to open stream: No such file or directory in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[10-Jun-2026 15:54:06 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nudotcom/nudot.com.tw/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/nudotcom/nudot.com.tw/contact.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[11-Jun-2026 07:39:38 UTC] PHP Warning:  require_once(/home/nudotcom/nudot.com.tw/vendor/autoload.php): Failed to open stream: No such file or directory in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[11-Jun-2026 07:39:38 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nudotcom/nudot.com.tw/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/nudotcom/nudot.com.tw/contact.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[11-Jun-2026 07:39:48 UTC] PHP Warning:  require_once(/home/nudotcom/nudot.com.tw/vendor/autoload.php): Failed to open stream: No such file or directory in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[11-Jun-2026 07:39:48 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nudotcom/nudot.com.tw/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/nudotcom/nudot.com.tw/contact.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[11-Jun-2026 07:39:50 UTC] PHP Warning:  require_once(/home/nudotcom/nudot.com.tw/vendor/autoload.php): Failed to open stream: No such file or directory in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[11-Jun-2026 07:39:50 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nudotcom/nudot.com.tw/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/nudotcom/nudot.com.tw/contact.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/nudotcom/nudot.com.tw/contact.php on line 3
+[11-Jun-2026 07:44:38 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/nudotcom/nudot.com.tw/contact.php:11
+Stack trace:
+#0 /home/nudotcom/nudot.com.tw/contact.php(118): makeMailer(Array)
+#1 {main}
+  thrown in /home/nudotcom/nudot.com.tw/contact.php on line 11
+[11-Jun-2026 07:44:59 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/nudotcom/nudot.com.tw/contact.php:11
+Stack trace:
+#0 /home/nudotcom/nudot.com.tw/contact.php(118): makeMailer(Array)
+#1 {main}
+  thrown in /home/nudotcom/nudot.com.tw/contact.php on line 11
+[14-Jun-2026 10:08:33 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 11:21:12 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:15:46 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:16:01 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:36:09 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:44:30 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:47:26 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:53:49 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:54:26 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:54:30 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:56:17 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 12:58:09 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:02:11 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:03:37 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:16:50 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:17:10 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:26:16 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:26:16 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:26:19 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:26:27 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:26:27 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:26:41 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:26:48 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:26:48 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:27:42 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:27:42 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:28:25 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:28:25 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:30:10 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:30:15 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:30:42 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:30:42 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:35:39 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:35:47 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:35:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:37:30 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:37:41 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:37:41 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 163
+[14-Jun-2026 13:40:43 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:40:50 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:40:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 41
+[14-Jun-2026 13:40:50 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:40:50 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 171
+[14-Jun-2026 13:40:54 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:40:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 41
+[14-Jun-2026 13:40:54 UTC] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in /home/nudotcom/nudot.com.tw/contact.php on line 2
+[14-Jun-2026 13:40:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/nudotcom/nudot.com.tw/contact.php:1) in /home/nudotcom/nudot.com.tw/contact.php on line 171
+[14-Jun-2026 13:42:51 UTC] PHP Parse error:  Unclosed '{' on line 162 in /home/nudotcom/nudot.com.tw/contact.php on line 1784
+[14-Jun-2026 13:42:52 UTC] PHP Parse error:  Unclosed '{' on line 162 in /home/nudotcom/nudot.com.tw/contact.php on line 1784
+[14-Jun-2026 13:42:54 UTC] PHP Parse error:  Unclosed '{' on line 162 in /home/nudotcom/nudot.com.tw/contact.php on line 1784
+[14-Jun-2026 13:43:05 UTC] PHP Parse error:  Unclosed '{' on line 162 in /home/nudotcom/nudot.com.tw/contact.php on line 1784
+[14-Jun-2026 13:43:13 UTC] PHP Parse error:  Unclosed '{' on line 162 in /home/nudotcom/nudot.com.tw/contact.php on line 1784
+[16-Jun-2026 06:51:15 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d2e1a72fcca58-8434b07c5c2sm12113544b3a.61 - gsmtp
+
+[16-Jun-2026 06:51:15 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 06:51:16 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 06:51:16 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 06:51:16 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 06:51:16 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:51:16 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 06:51:16 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:51:16 UTC] SMTP: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-8434b07c5c2sm12113544b3a.61 - gsmtp
+
+[16-Jun-2026 06:51:16 UTC] SMTP: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-8434b07c5c2sm12113544b3a.61 - gsmtp
+
+[16-Jun-2026 06:51:16 UTC] SMTP: SMTP Error: Could not authenticate.
+[16-Jun-2026 06:51:16 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 06:51:16 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-8434b07c5c2sm12113544b3a.61 - gsmtp
+
+[16-Jun-2026 06:51:16 UTC] SMTP: SMTP Error: Could not authenticate.
+[16-Jun-2026 06:55:29 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP 98e67ed59e1d1-37c521ef803sm1723628a91.11 - gsmtp
+
+[16-Jun-2026 06:55:29 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 06:55:29 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 06:55:29 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 06:55:29 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 06:55:29 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:55:29 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 06:55:29 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:55:30 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 06:55:30 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK 98e67ed59e1d1-37c521ef803sm1723628a91.11 - gsmtp
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<hello@nudot.com.tw>
+
+[16-Jun-2026 06:55:30 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK 98e67ed59e1d1-37c521ef803sm1723628a91.11 - gsmtp
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 06:55:30 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead 98e67ed59e1d1-37c521ef803sm1723628a91.11 - gsmtp
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 06:55:28 +0000
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: To: hello@nudot.com.tw
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: Reply-To: =?UTF-8?B?5p2O5piT6KGh?= <qq7636946@gmail.com>
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W+iBr+e1oeihqOWWrl0g5L6G6Ieq57ay56uZ55qE6Kmi5ZWP?=
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: Message-ID: <Jz7VBVAj66j14biasqJJQrM5JxPu6UJBJKfbKSoaE@nudot.com.tw>
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: 姓名：李易衡
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: Email：qq7636946@gmail.com
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: 電話：+886983750522
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: 公司：(未填)
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: 預算/服務：網站設計 ／ 預算：網站設計: NT$ 50,000 — 100,000
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: ─────────────────────
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:30 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 06:55:31 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781592931 98e67ed59e1d1-37c521ef803sm1723628a91.11 - gsmtp
+
+[16-Jun-2026 06:55:31 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 06:55:31 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection 98e67ed59e1d1-37c521ef803sm1723628a91.11 - gsmtp
+
+[16-Jun-2026 06:55:32 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP 98e67ed59e1d1-37c522a0098sm2068055a91.13 - gsmtp
+
+[16-Jun-2026 06:55:32 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 06:55:32 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 06:55:32 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 06:55:33 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 06:55:33 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:55:33 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 06:55:33 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:55:33 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 06:55:33 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 06:55:33 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK 98e67ed59e1d1-37c522a0098sm2068055a91.13 - gsmtp
+
+[16-Jun-2026 06:55:33 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<qq7636946@gmail.com>
+
+[16-Jun-2026 06:55:33 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK 98e67ed59e1d1-37c522a0098sm2068055a91.13 - gsmtp
+
+[16-Jun-2026 06:55:33 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 06:55:34 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead 98e67ed59e1d1-37c522a0098sm2068055a91.13 - gsmtp
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 06:55:31 +0000
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: To: =?UTF-8?B?5p2O5piT6KGh?= <qq7636946@gmail.com>
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W05VRE9UIENyZWF0aXZlIFN0dWRpb10g5oSf6Kyd?=
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER:  =?UTF-8?B?5oKo55qE6KiK5oGv77yM5oiR5YCR5bey5pS25Yiw5oKo55qE6Kmi5ZWP?=
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: Message-ID: <D5QTOK8uf1cwkrx0tPQJCa3OTsBtRz0lxlcNqF0CM@nudot.com.tw>
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 親愛的 李易衡 您好，
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 感謝您聯繫 NUDOT Creative Studio，
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 我們已收到您的訊息，將盡快回覆您，請耐心等候。
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: ── 您的訊息摘要 ──────────────────
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: ──────────────────────────────────
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 此信為系統自動發送，請勿直接回覆。
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: NUDOT Creative Studio 敬上
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:55:34 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 06:55:35 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781592935 98e67ed59e1d1-37c522a0098sm2068055a91.13 - gsmtp
+
+[16-Jun-2026 06:55:35 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 06:55:35 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection 98e67ed59e1d1-37c522a0098sm2068055a91.13 - gsmtp
+
+[16-Jun-2026 06:58:53 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP 98e67ed59e1d1-37c522c3a41sm1747801a91.17 - gsmtp
+
+[16-Jun-2026 06:58:53 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 06:58:53 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 06:58:53 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 06:58:53 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 06:58:53 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:58:53 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 06:58:53 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:58:54 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 06:58:54 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK 98e67ed59e1d1-37c522c3a41sm1747801a91.17 - gsmtp
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<hello@nudot.com.tw>
+
+[16-Jun-2026 06:58:54 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK 98e67ed59e1d1-37c522c3a41sm1747801a91.17 - gsmtp
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 06:58:54 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead 98e67ed59e1d1-37c522c3a41sm1747801a91.17 - gsmtp
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 06:58:52 +0000
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: To: hello@nudot.com.tw
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: Reply-To: =?UTF-8?B?5p2O5piT6KGh?= <qq7636946@gmail.com>
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W+iBr+e1oeihqOWWrl0g5L6G6Ieq57ay56uZ55qE6Kmi5ZWP?=
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: Message-ID: <e0VJkTbdajBIgrhBPGaguKUWsoBCZsAOprxPP6fjY@nudot.com.tw>
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: 姓名：李易衡
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: Email：qq7636946@gmail.com
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: 電話：+886983750522
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: 公司：(未填)
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: 預算/服務：品牌識別 ／ 預算：品牌識別: NT$ 15,000 — 30,000
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: ─────────────────────
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:54 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 06:58:55 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781593135 98e67ed59e1d1-37c522c3a41sm1747801a91.17 - gsmtp
+
+[16-Jun-2026 06:58:55 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 06:58:55 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection 98e67ed59e1d1-37c522c3a41sm1747801a91.17 - gsmtp
+
+[16-Jun-2026 06:58:56 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d2e1a72fcca58-8434b020b53sm11639803b3a.47 - gsmtp
+
+[16-Jun-2026 06:58:56 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 06:58:56 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 06:58:56 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 06:58:57 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 06:58:57 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:58:57 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 06:58:57 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 06:58:57 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 06:58:57 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 06:58:57 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK d2e1a72fcca58-8434b020b53sm11639803b3a.47 - gsmtp
+
+[16-Jun-2026 06:58:57 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<qq7636946@gmail.com>
+
+[16-Jun-2026 06:58:57 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK d2e1a72fcca58-8434b020b53sm11639803b3a.47 - gsmtp
+
+[16-Jun-2026 06:58:57 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 06:58:58 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead d2e1a72fcca58-8434b020b53sm11639803b3a.47 - gsmtp
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 06:58:55 +0000
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: To: =?UTF-8?B?5p2O5piT6KGh?= <qq7636946@gmail.com>
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W05VRE9UIENyZWF0aXZlIFN0dWRpb10g5oSf6Kyd?=
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER:  =?UTF-8?B?5oKo55qE6KiK5oGv77yM5oiR5YCR5bey5pS25Yiw5oKo55qE6Kmi5ZWP?=
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: Message-ID: <QDNP1a59yKLrH8rH2OMvVHFLtJ2u6Ohv3No8N8o5L8@nudot.com.tw>
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 親愛的 李易衡 您好，
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 感謝您聯繫 NUDOT Creative Studio，
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 我們已收到您的訊息，將盡快回覆您，請耐心等候。
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: ── 您的訊息摘要 ──────────────────
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: ──────────────────────────────────
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 此信為系統自動發送，請勿直接回覆。
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: NUDOT Creative Studio 敬上
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 06:58:58 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781593138 d2e1a72fcca58-8434b020b53sm11639803b3a.47 - gsmtp
+
+[16-Jun-2026 06:58:58 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 06:58:59 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-8434b020b53sm11639803b3a.47 - gsmtp
+
+[16-Jun-2026 07:03:41 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d2e1a72fcca58-8434ac9df57sm12343393b3a.7 - gsmtp
+
+[16-Jun-2026 07:03:41 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 07:03:41 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 07:03:41 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 07:03:41 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 07:03:41 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:03:42 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 07:03:42 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:03:42 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 07:03:42 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 07:03:42 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK d2e1a72fcca58-8434ac9df57sm12343393b3a.7 - gsmtp
+
+[16-Jun-2026 07:03:42 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<hello@nudot.com.tw>
+
+[16-Jun-2026 07:03:42 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK d2e1a72fcca58-8434ac9df57sm12343393b3a.7 - gsmtp
+
+[16-Jun-2026 07:03:42 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 07:03:43 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead d2e1a72fcca58-8434ac9df57sm12343393b3a.7 - gsmtp
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 07:03:40 +0000
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: To: hello@nudot.com.tw
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: Reply-To: =?UTF-8?B?5p2O5piT6KGh?= <qq7636946@gmail.com>
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W+iBr+e1oeihqOWWrl0g5L6G6Ieq57ay56uZ55qE6Kmi5ZWP?=
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: Message-ID: <st09SsFew7PlZx2Hk2KiO4jD23O9JeDJE3Juk546g@nudot.com.tw>
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: 姓名：李易衡
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: Email：qq7636946@gmail.com
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: 電話：+886983750522
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: 公司：(未填)
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: 預算/服務：網站設計 ／ 預算：網站設計: NT$ 50,000 — 100,000
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: ─────────────────────
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:43 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 07:03:44 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781593423 d2e1a72fcca58-8434ac9df57sm12343393b3a.7 - gsmtp
+
+[16-Jun-2026 07:03:44 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 07:03:44 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-8434ac9df57sm12343393b3a.7 - gsmtp
+
+[16-Jun-2026 07:03:44 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d9443c01a7336-2c6a1878426sm5635775ad.64 - gsmtp
+
+[16-Jun-2026 07:03:44 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 07:03:44 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 07:03:44 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 07:03:44 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 07:03:44 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:03:44 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 07:03:44 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:03:45 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 07:03:45 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK d9443c01a7336-2c6a1878426sm5635775ad.64 - gsmtp
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<qq7636946@gmail.com>
+
+[16-Jun-2026 07:03:45 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK d9443c01a7336-2c6a1878426sm5635775ad.64 - gsmtp
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 07:03:45 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead d9443c01a7336-2c6a1878426sm5635775ad.64 - gsmtp
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 07:03:44 +0000
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: To: =?UTF-8?B?5p2O5piT6KGh?= <qq7636946@gmail.com>
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W05VRE9UIENyZWF0aXZlIFN0dWRpb10g5oSf6Kyd?=
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER:  =?UTF-8?B?5oKo55qE6KiK5oGv77yM5oiR5YCR5bey5pS25Yiw5oKo55qE6Kmi5ZWP?=
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: Message-ID: <VECv1a9Ktp3zdjXPgANlwFqervan69CIb8rCm3WX0@nudot.com.tw>
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 親愛的 李易衡 您好，
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 感謝您聯繫 NUDOT Creative Studio，
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 我們已收到您的訊息，將盡快回覆您，請耐心等候。
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: ── 您的訊息摘要 ──────────────────
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: ──────────────────────────────────
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 此信為系統自動發送，請勿直接回覆。
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: NUDOT Creative Studio 敬上
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:03:45 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 07:03:46 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781593426 d9443c01a7336-2c6a1878426sm5635775ad.64 - gsmtp
+
+[16-Jun-2026 07:03:46 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 07:03:46 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d9443c01a7336-2c6a1878426sm5635775ad.64 - gsmtp
+
+[16-Jun-2026 07:35:22 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d2e1a72fcca58-8434accae18sm12733304b3a.17 - gsmtp
+
+[16-Jun-2026 07:35:22 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 07:35:22 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 07:35:22 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 07:35:22 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 07:35:22 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:35:22 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 07:35:22 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:35:23 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:23 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK d2e1a72fcca58-8434accae18sm12733304b3a.17 - gsmtp
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:23 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK d2e1a72fcca58-8434accae18sm12733304b3a.17 - gsmtp
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 07:35:23 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead d2e1a72fcca58-8434accae18sm12733304b3a.17 - gsmtp
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 07:35:21 +0000
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: To: hello@nudot.com.tw
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: Reply-To: Yi Heng Lee <hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W+iBr+e1oeihqOWWrl0g5L6G6Ieq57ay56uZ55qE6Kmi5ZWP?=
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: Message-ID: <j8jspi3tld5rNXU7lDZZXVQ10lhSh8LK0TwblpJ8XE@nudot.com.tw>
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: 姓名：Yi Heng Lee
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: Email：hello@nudot.com.tw
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: 電話：0983750522
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: 公司：(未填)
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: 預算/服務：網站設計
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: ─────────────────────
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:23 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 07:35:24 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781595324 d2e1a72fcca58-8434accae18sm12733304b3a.17 - gsmtp
+
+[16-Jun-2026 07:35:24 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 07:35:24 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d2e1a72fcca58-8434accae18sm12733304b3a.17 - gsmtp
+
+[16-Jun-2026 07:35:25 UTC] SMTP: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP d9443c01a7336-2c4330782b2sm131931365ad.67 - gsmtp
+
+[16-Jun-2026 07:35:25 UTC] SMTP: CLIENT -> SERVER: EHLO nudot.com.tw
+
+[16-Jun-2026 07:35:25 UTC] SMTP: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [103.138.189.74]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+[16-Jun-2026 07:35:25 UTC] SMTP: CLIENT -> SERVER: AUTH LOGIN
+
+[16-Jun-2026 07:35:26 UTC] SMTP: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+[16-Jun-2026 07:35:26 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:35:26 UTC] SMTP: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+[16-Jun-2026 07:35:26 UTC] SMTP: CLIENT -> SERVER: [credentials hidden]
+[16-Jun-2026 07:35:26 UTC] SMTP: SERVER -> CLIENT: 235 2.7.0 Accepted
+
+[16-Jun-2026 07:35:26 UTC] SMTP: CLIENT -> SERVER: MAIL FROM:<hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:26 UTC] SMTP: SERVER -> CLIENT: 250 2.1.0 OK d9443c01a7336-2c4330782b2sm131931365ad.67 - gsmtp
+
+[16-Jun-2026 07:35:26 UTC] SMTP: CLIENT -> SERVER: RCPT TO:<hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:26 UTC] SMTP: SERVER -> CLIENT: 250 2.1.5 OK d9443c01a7336-2c4330782b2sm131931365ad.67 - gsmtp
+
+[16-Jun-2026 07:35:26 UTC] SMTP: CLIENT -> SERVER: DATA
+
+[16-Jun-2026 07:35:27 UTC] SMTP: SERVER -> CLIENT: 354 Go ahead d9443c01a7336-2c4330782b2sm131931365ad.67 - gsmtp
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: Date: Tue, 16 Jun 2026 07:35:24 +0000
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: To: Yi Heng Lee <hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: From: NUDOT Creative Studio <hello@nudot.com.tw>
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: Subject: =?UTF-8?B?W05VRE9UIENyZWF0aXZlIFN0dWRpb10g5oSf6Kyd?=
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER:  =?UTF-8?B?5oKo55qE6KiK5oGv77yM5oiR5YCR5bey5pS25Yiw5oKo55qE6Kmi5ZWP?=
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: Message-ID: <RYAbkfDiy9ZIqREANkeMCONgAWeSt39YeksOr88wI@nudot.com.tw>
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: X-Mailer: PHPMailer 7.1.1 (https://github.com/PHPMailer/PHPMailer)
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: MIME-Version: 1.0
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: Content-Type: text/plain; charset=UTF-8
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: Content-Transfer-Encoding: 8bit
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 親愛的 Yi Heng Lee 您好，
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 感謝您聯繫 NUDOT Creative Studio，
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 我們已收到您的訊息，將盡快回覆您，請耐心等候。
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: ── 您的訊息摘要 ──────────────────
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: ──────────────────────────────────
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 此信為系統自動發送，請勿直接回覆。
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: NUDOT Creative Studio 敬上
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: 
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: .
+
+[16-Jun-2026 07:35:27 UTC] SMTP: SERVER -> CLIENT: 250 2.0.0 OK  1781595327 d9443c01a7336-2c4330782b2sm131931365ad.67 - gsmtp
+
+[16-Jun-2026 07:35:27 UTC] SMTP: CLIENT -> SERVER: QUIT
+
+[16-Jun-2026 07:35:28 UTC] SMTP: SERVER -> CLIENT: 221 2.0.0 closing connection d9443c01a7336-2c4330782b2sm131931365ad.67 - gsmtp
+

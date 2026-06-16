@@ -1,0 +1,176 @@
+#cursor-dot,
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+}
+
+#cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  margin: -3px 0 0 -3px;
+  mix-blend-mode: difference;
+  transition: transform 0.03s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+  will-change: transform;
+  opacity: 0;
+}
+
+#cursor-ring {
+  --cursor-label-enter-duration: 0.22s;
+  --cursor-label-exit-duration: 0.18s;
+  --cursor-label-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  width: 36px;
+  height: 36px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  margin: -18px 0 0 -18px;
+  position: fixed;
+  mix-blend-mode: difference;
+  will-change: transform;
+  transition: width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.45s ease,
+    opacity 0.35s ease;
+}
+
+.mouseTracker--01 {
+  animation: mouseTracker_fadeOut 1s forwards;
+  border-radius: 2px;
+  opacity: 1;
+  pointer-events: none;
+  position: fixed;
+  z-index: 99999;
+}
+
+@keyframes mouseTracker_fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+#cursor-dot.is-link {
+  opacity: 0;
+}
+
+#cursor-ring.is-link,
+#cursor-ring.is-leaving {
+  position: fixed;
+  display: block;
+  background: rgba(255, 255, 255, 0);
+  border-color: transparent;
+  mix-blend-mode: difference;
+  translate: none;
+  transition: width 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease;
+}
+
+#cursor-ring.is-link:not(.is-leaving) {
+  width: 68px;
+  height: 68px;
+  margin: -34px 0 0 -34px;
+  border-radius: 50%;
+  background: #fff;
+  border-color: transparent;
+  overflow: hidden;
+}
+
+#cursor-ring.is-leaving {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0);
+  border-color: transparent;
+}
+
+#cursor-ring.is-link::after,
+#cursor-ring.is-leaving::after {
+  content: attr(data-cursor-label);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52px;
+  height: 52px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  will-change: opacity;
+}
+
+#cursor-ring.is-link::after {
+  animation:
+    nd-cursor-label-fade-in var(--cursor-label-enter-duration) var(--cursor-label-ease) forwards;
+}
+
+#cursor-ring.is-leaving::after {
+  animation:
+    nd-cursor-label-fade-out var(--cursor-label-exit-duration) ease forwards;
+}
+
+#cursor-ring.is-link[data-cursor-side="left"]::after,
+#cursor-ring.is-leaving[data-cursor-side="left"]::after {
+  left: 50%;
+  right: auto;
+}
+
+@keyframes nd-cursor-label-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nd-cursor-label-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* 🎯 自訂鼠標只在 PC(可 hover、精細指標、寬度 > 1024px)顯示;
+   iPad/手機/任何觸控裝置一律隱藏 */
+@media (max-width: 1024px), (hover: none), (pointer: coarse) {
+  #cursor-dot,
+  #cursor-ring,
+  .mouseTracker--01 {
+    display: none;
+  }
+}
+
+/* 🖱 VIDEO 類型連結：強制顯示原生手指頭游標 */
+[data-cursor="VIDEO"],
+[data-cursor="VIDEO"] * {
+  cursor: pointer !important;
+}
+
+/* 📱 手機板雜訊保留 — 由各頁面 JS 自行控制開關 */

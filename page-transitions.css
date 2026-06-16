@@ -1,0 +1,106 @@
+:root {
+  --pt-bg: #000;
+  --pt-top: -102%;
+  --pt-bottom: 102%;
+}
+
+html.is-page-transitioning,
+html.is-page-transitioning body {
+  cursor: progress;
+}
+
+.page-transition-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 300000;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.page-transition-shell.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+html.has-pending-page-transition .page-transition-shell {
+  opacity: 1;
+  visibility: visible;
+}
+
+.page-transition-curtain {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  --pt-top: -102%;
+  --pt-bottom: 102%;
+}
+
+.page-transition-curtain::before,
+.page-transition-curtain::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  background: var(--pt-bg);
+  border-radius: 0;
+  box-shadow: none;
+  will-change: transform;
+}
+
+.page-transition-curtain::before {
+  top: 0;
+  transform: translateY(var(--pt-top));
+}
+
+.page-transition-curtain::after {
+  bottom: 0;
+  transform: translateY(var(--pt-bottom));
+}
+
+html.has-pending-page-transition .page-transition-curtain {
+  opacity: 1;
+  --pt-top: 0%;
+  --pt-bottom: 0%;
+}
+
+.page-transition-frame {
+  display: none !important;
+}
+
+html.has-pending-page-transition .page-transition-frame {
+  display: none !important;
+}
+
+.page-transition-loader {
+  display: none !important;
+}
+
+html.has-pending-page-transition .page-transition-loader {
+  display: none !important;
+}
+
+.page-transition-counter {
+  display: none !important;
+}
+
+.page-transition-counter span {
+  display: none !important;
+}
+
+.page-transition-panel {
+  display: none !important;
+}
+
+html.has-pending-page-transition .page-transition-panel {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .page-transition-curtain::before,
+  .page-transition-curtain::after {
+    height: 58vh;
+    border-radius: 0;
+  }
+}
