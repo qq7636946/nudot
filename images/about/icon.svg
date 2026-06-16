@@ -1,0 +1,208 @@
+<svg width="71" height="111" viewBox="0 0 71 111" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+  #pixel-sprite {
+    animation: idle-bob 1.55s steps(2, end) 1.45s infinite;
+    transform-box: view-box;
+    transform-origin: 35px 55px;
+  }
+
+  #pixel-sprite path {
+    animation: pixel-in 4800ms linear both infinite;
+    fill: #050505;
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  #pixel-sprite path:nth-of-type(1) { animation-delay: 680ms; }
+  #pixel-sprite path:nth-of-type(2) { animation-delay: 650ms; }
+  #pixel-sprite path:nth-of-type(3) { animation-delay: 1110ms; }
+  #pixel-sprite path:nth-of-type(4) { animation-delay: 80ms; }
+  #pixel-sprite path:nth-of-type(5) { animation-delay: 1060ms; }
+  #pixel-sprite path:nth-of-type(6) { animation-delay: 1160ms; }
+  #pixel-sprite path:nth-of-type(7) { animation-delay: 260ms; }
+  #pixel-sprite path:nth-of-type(8) { animation-delay: 230ms; }
+  #pixel-sprite path:nth-of-type(9) { animation-delay: 160ms; }
+  #pixel-sprite path:nth-of-type(10) { animation-delay: 310ms; }
+  #pixel-sprite path:nth-of-type(11) { animation-delay: 620ms; }
+  #pixel-sprite path:nth-of-type(12) { animation-delay: 590ms; }
+  #pixel-sprite path:nth-of-type(13) { animation-delay: 560ms; }
+  #pixel-sprite path:nth-of-type(14) { animation-delay: 530ms; }
+  #pixel-sprite path:nth-of-type(15) { animation-delay: 340ms; }
+  #pixel-sprite path:nth-of-type(16) { animation-delay: 390ms; }
+  #pixel-sprite path:nth-of-type(17) { animation-delay: 420ms; }
+  #pixel-sprite path:nth-of-type(18) { animation-delay: 450ms; }
+  #pixel-sprite path:nth-of-type(19) { animation-delay: 480ms; }
+  #pixel-sprite path:nth-of-type(20) { animation-delay: 510ms; }
+  #pixel-sprite path:nth-of-type(21) { animation-delay: 500ms; }
+  #pixel-sprite path:nth-of-type(22) { animation-delay: 470ms; }
+  #pixel-sprite path:nth-of-type(23) { animation-delay: 440ms; }
+  #pixel-sprite path:nth-of-type(24) { animation-delay: 470ms; }
+  #pixel-sprite path:nth-of-type(25) { animation-delay: 340ms; }
+  #pixel-sprite path:nth-of-type(26) { animation-delay: 390ms; }
+  #pixel-sprite path:nth-of-type(27) { animation-delay: 420ms; }
+  #pixel-sprite path:nth-of-type(28) { animation-delay: 450ms; }
+  #pixel-sprite path:nth-of-type(29) { animation-delay: 480ms; }
+  #pixel-sprite path:nth-of-type(30) { animation-delay: 510ms; }
+  #pixel-sprite path:nth-of-type(31) { animation-delay: 680ms; }
+  #pixel-sprite path:nth-of-type(32) { animation-delay: 650ms; }
+  #pixel-sprite path:nth-of-type(33) { animation-delay: 620ms; }
+  #pixel-sprite path:nth-of-type(34) { animation-delay: 590ms; }
+  #pixel-sprite path:nth-of-type(35) { animation-delay: 560ms; }
+  #pixel-sprite path:nth-of-type(36) { animation-delay: 530ms; }
+  #pixel-sprite path:nth-of-type(37) { animation-delay: 500ms; }
+  #pixel-sprite path:nth-of-type(38) { animation-delay: 470ms; }
+  #pixel-sprite path:nth-of-type(39) { animation-delay: 500ms; }
+  #pixel-sprite path:nth-of-type(40) { animation-delay: 300ms; }
+  #pixel-sprite path:nth-of-type(41) { animation-delay: 270ms; }
+  #pixel-sprite path:nth-of-type(42) { animation-delay: 330ms; }
+  #pixel-sprite path:nth-of-type(43) { animation-delay: 240ms; }
+  #pixel-sprite path:nth-of-type(44) { animation-delay: 410ms; }
+  #pixel-sprite path:nth-of-type(45) { animation-delay: 980ms; }
+  #pixel-sprite path:nth-of-type(46) { animation-delay: 950ms; }
+  #pixel-sprite path:nth-of-type(47) { animation-delay: 1010ms; }
+  #pixel-sprite path:nth-of-type(48) { animation-delay: 610ms; }
+  #pixel-sprite path:nth-of-type(49) { animation-delay: 920ms; }
+  #pixel-sprite path:nth-of-type(50) { animation-delay: 890ms; }
+  #pixel-sprite path:nth-of-type(51) { animation-delay: 920ms; }
+  #pixel-sprite path:nth-of-type(52) { animation-delay: 830ms; }
+  #pixel-sprite path:nth-of-type(53) { animation-delay: 830ms; }
+  #pixel-sprite path:nth-of-type(54) { animation-delay: 860ms; }
+  #pixel-sprite path:nth-of-type(55) { animation-delay: 360ms; }
+  #pixel-sprite path:nth-of-type(56) { animation-delay: 360ms; }
+  #pixel-sprite path:nth-of-type(57) { animation-delay: 500ms; }
+
+  #scanline {
+    animation: scan 2.35s linear 1.85s infinite;
+    opacity: 0;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes pixel-in {
+    0% {
+      opacity: 0;
+      transform: translateY(7px) scale(.2);
+      animation-timing-function: cubic-bezier(.19, 1, .22, 1);
+    }
+    11% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation-timing-function: linear;
+    }
+    72% {
+      opacity: 1;
+    }
+    87% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    95% {
+      opacity: 0;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(7px) scale(.2);
+    }
+  }
+
+  @keyframes idle-bob {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+
+  @keyframes scan {
+    0% {
+      opacity: 0;
+      transform: translateY(-24px);
+    }
+    16% {
+      opacity: .46;
+    }
+    34% {
+      opacity: 0;
+      transform: translateY(118px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(118px);
+    }
+  }
+</style>
+<defs>
+<linearGradient id="scanGlow" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#7DF9FF" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#7DF9FF" stop-opacity="0.65"/>
+<stop offset="1" stop-color="#7DF9FF" stop-opacity="0"/>
+</linearGradient>
+<clipPath id="clip0_918_164">
+<rect width="70.18" height="110.58" fill="white"/>
+</clipPath>
+</defs>
+<g clip-path="url(#clip0_918_164)">
+<g id="pixel-sprite">
+<path d="M64.7601 67.8516H59.3501V94.3316H64.7601V67.8516Z" fill="black"/>
+<path d="M59.3499 67.8516H53.9399V73.2616H59.3499V67.8516Z" fill="black"/>
+<path d="M70.18 99.75H64.77V105.16H70.18V99.75Z" fill="black"/>
+<path d="M4.75 99.75H0V105.16H4.75V99.75Z" fill="black"/>
+<path d="M70.18 94.3398H0V99.7498H70.18V94.3398Z" fill="black"/>
+<path d="M70.18 105.16H0V110.57H70.18V105.16Z" fill="black"/>
+<path d="M70.18 5.41016H64.77V10.8202H70.18V5.41016Z" fill="black"/>
+<path d="M4.75 5.41016H0V10.8202H4.75V5.41016Z" fill="black"/>
+<path d="M70.18 0H0V5.41H70.18V0Z" fill="black"/>
+<path d="M70.18 10.8281H0V16.2381H70.18V10.8281Z" fill="black"/>
+<path d="M59.3499 62.4414H53.9399V67.8514H59.3499V62.4414Z" fill="black"/>
+<path d="M53.9398 62.4414H48.5298V67.8514H53.9398V62.4414Z" fill="black"/>
+<path d="M53.9398 57.0312H48.5298V62.4412H53.9398V57.0312Z" fill="black"/>
+<path d="M48.5199 57.0312H43.1099V62.4412H48.5199V57.0312Z" fill="black"/>
+<path d="M64.7601 16.2383H59.3501V35.3783H64.7601V16.2383Z" fill="black"/>
+<path d="M59.3499 29.9609H53.9399V35.3709H59.3499V29.9609Z" fill="black"/>
+<path d="M59.3499 35.3789H53.9399V40.7889H59.3499V35.3789Z" fill="black"/>
+<path d="M53.9398 35.3789H48.5298V40.7889H53.9398V35.3789Z" fill="black"/>
+<path d="M53.9398 40.7891H48.5298V46.1991H53.9398V40.7891Z" fill="black"/>
+<path d="M48.5199 40.7891H43.1099V46.1991H48.5199V40.7891Z" fill="black"/>
+<path d="M48.5199 51.6211H43.1099V57.0311H48.5199V51.6211Z" fill="black"/>
+<path d="M43.1102 51.6211H37.7002V57.0311H43.1102V51.6211Z" fill="black"/>
+<path d="M43.1102 46.1992H37.7002V51.6092H43.1102V46.1992Z" fill="black"/>
+<path d="M48.5199 46.1992H43.1099V51.6092H48.5199V46.1992Z" fill="black"/>
+<path d="M10.6302 16.2383H5.22021V35.3783H10.6302V16.2383Z" fill="black"/>
+<path d="M16.0501 29.9609H10.6401V35.3709H16.0501V29.9609Z" fill="black"/>
+<path d="M16.0501 35.3789H10.6401V40.7889H16.0501V35.3789Z" fill="black"/>
+<path d="M21.4598 35.3789H16.0498V40.7889H21.4598V35.3789Z" fill="black"/>
+<path d="M21.4598 40.7891H16.0498V46.1991H21.4598V40.7891Z" fill="black"/>
+<path d="M26.87 40.7891H21.46V46.1991H26.87V40.7891Z" fill="black"/>
+<path d="M10.6302 67.8516H5.22021V94.3316H10.6302V67.8516Z" fill="black"/>
+<path d="M16.0501 67.8516H10.6401V73.2616H16.0501V67.8516Z" fill="black"/>
+<path d="M16.0501 62.4414H10.6401V67.8514H16.0501V62.4414Z" fill="black"/>
+<path d="M21.4598 62.4414H16.0498V67.8514H21.4598V62.4414Z" fill="black"/>
+<path d="M21.4598 57.0312H16.0498V62.4412H21.4598V57.0312Z" fill="black"/>
+<path d="M26.87 57.0312H21.46V62.4412H26.87V57.0312Z" fill="black"/>
+<path d="M26.87 46.1992H21.46V51.6092H26.87V46.1992Z" fill="black"/>
+<path d="M32.2801 46.1992H26.8701V51.6092H32.2801V46.1992Z" fill="black"/>
+<path d="M32.2801 51.6211H26.8701V57.0311H32.2801V51.6211Z" fill="black"/>
+<path d="M37.7899 27.2617H32.3799V32.6717H37.7899V27.2617Z" fill="black"/>
+<path d="M26.9701 27.2617H21.5601V32.6717H26.9701V27.2617Z" fill="black"/>
+<path d="M48.5199 27.2617H43.1099V32.6717H48.5199V27.2617Z" fill="black"/>
+<path d="M32.3802 21.8398H26.9702V27.2498H32.3802V21.8398Z" fill="black"/>
+<path d="M37.7899 38.0781H32.3799V43.4881H37.7899V38.0781Z" fill="black"/>
+<path d="M43.1102 88.9219H37.7002V94.3319H43.1102V88.9219Z" fill="black"/>
+<path d="M32.3802 88.9219H26.9702V94.3319H32.3802V88.9219Z" fill="black"/>
+<path d="M53.9398 88.9219H48.5298V94.3319H53.9398V88.9219Z" fill="black"/>
+<path d="M37.7899 59.7305H32.3799V65.1405H37.7899V59.7305Z" fill="black"/>
+<path d="M21.5501 88.9219H16.1401V94.3319H21.5501V88.9219Z" fill="black"/>
+<path d="M37.7899 83.5117H32.3799V88.9217H37.7899V83.5117Z" fill="black"/>
+<path d="M48.5199 83.5117H43.1099V88.9217H48.5199V83.5117Z" fill="black"/>
+<path d="M43.1102 78.1016H37.7002V83.5116H43.1102V78.1016Z" fill="black"/>
+<path d="M32.3802 78.1016H26.9702V83.5116H32.3802V78.1016Z" fill="black"/>
+<path d="M26.9701 83.5117H21.5601V88.9217H26.9701V83.5117Z" fill="black"/>
+<path d="M32.3802 32.6719H26.9702V38.0819H32.3802V32.6719Z" fill="black"/>
+<path d="M43.1102 32.6719H37.7002V38.0819H43.1102V32.6719Z" fill="black"/>
+<path d="M26.87 51.6211H21.46V57.0311H26.87V51.6211Z" fill="black"/>
+</g>
+<rect id="scanline" x="0" y="0" width="70.18" height="18" fill="url(#scanGlow)"/>
+</g>
+</svg>
