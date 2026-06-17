@@ -95,6 +95,94 @@
     };
   }
 
+  // ── Pixel 轉場（取代原本的 curtain 動畫，效果來自 PixelTransition demo2）──
+  var pixelGrid = {
+    el: null,
+    cells: [],
+    rows: 9,
+    columns: 17,
+    built: false
+  };
+
+  function buildPixelGrid(shell) {
+    if (!shell) return null;
+    if (pixelGrid.built && pixelGrid.el && pixelGrid.el.isConnected) return pixelGrid;
+
+    var el = document.createElement('div');
+    el.className = 'page-transition-pixels';
+    el.setAttribute('aria-hidden', 'true');
+    el.style.position = 'absolute';
+    el.style.inset = '0';
+    el.style.display = 'grid';
+    el.style.gridTemplateColumns = 'repeat(' + pixelGrid.columns + ', 1fr)';
+    el.style.gridTemplateRows = 'repeat(' + pixelGrid.rows + ', 1fr)';
+    el.style.opacity = '0';
+    el.style.pointerEvents = 'none';
+
+    var cells = [];
+    var total = pixelGrid.rows * pixelGrid.columns;
+    for (var i = 0; i < total; i++) {
+      var cell = document.createElement('div');
+      cell.style.background = 'var(--pt-bg, #000)';
+      cell.style.willChange = 'transform, opacity';
+      el.appendChild(cell);
+      cells.push(cell);
+    }
+
+    shell.appendChild(el);
+    pixelGrid.el = el;
+    pixelGrid.cells = cells;
+    pixelGrid.built = true;
+    return pixelGrid;
+  }
+
+  function pixelStagger(from, each) {
+    return {
+      grid: [pixelGrid.rows, pixelGrid.columns],
+      from: from,
+      each: each
+    };
+  }
+
+  // 顯示 overlay：cell 從 0 放大蓋滿畫面
+  function pixelShow(config) {
+    return new Promise(function (resolve) {
+      if (!gsap || !pixelGrid.el) { resolve(); return; }
+      gsap.set(pixelGrid.el, { opacity: 1 });
+      gsap.fromTo(pixelGrid.cells, {
+        scale: 0,
+        opacity: 0,
+        transformOrigin: '50% 50%'
+      }, {
+        duration: config.duration,
+        ease: config.ease,
+        scale: 1.03,
+        opacity: 1,
+        stagger: config.stagger,
+        onComplete: resolve
+      });
+    });
+  }
+
+  // 隱藏 overlay：cell 縮回 0 露出頁面
+  function pixelHide(config) {
+    return new Promise(function (resolve) {
+      if (!gsap || !pixelGrid.el) { resolve(); return; }
+      gsap.to(pixelGrid.cells, {
+        duration: config.duration,
+        ease: config.ease,
+        scale: 0,
+        opacity: 0,
+        transformOrigin: '50% 50%',
+        stagger: config.stagger,
+        onComplete: function () {
+          gsap.set(pixelGrid.el, { opacity: 0 });
+          resolve();
+        }
+      });
+    });
+  }
+
   function deriveLabel(url, fallback) {
     if (fallback) return fallback.trim().toUpperCase();
     if (url.hash) {
@@ -159,6 +247,15 @@
       refs.shell.removeAttribute('style');
     }
 
+    if (pixelGrid.el) {
+      if (gsap) {
+        gsap.killTweensOf(pixelGrid.cells);
+        gsap.set(pixelGrid.el, { opacity: 0 });
+      } else {
+        pixelGrid.el.style.opacity = '0';
+      }
+    }
+
     document.documentElement.classList.remove('has-pending-page-transition');
   }
 
@@ -174,7 +271,7 @@
 
     refs.shell.classList.add('is-active');
 
-    if (!gsap || !refs.curtain) {
+    if (!gsap) {
       refs.shell.classList.remove('is-active');
       document.documentElement.classList.remove('has-pending-page-transition');
       return;
@@ -185,33 +282,28 @@
       state.entryCleanupTimer = null;
     }
 
+    // 建立 pixel grid，並讓它「滿格」蓋住整個畫面，無縫接手原本 curtain 提供的黑幕
+    buildPixelGrid(refs.shell);
     gsap.set(refs.shell, { autoAlpha: 1 });
-    gsap.set(refs.curtain, {
-      autoAlpha: 1,
-      '--pt-top': '0%',
-      '--pt-bottom': '0%'
-    });
+    if (pixelGrid.el) {
+      gsap.set(pixelGrid.el, { opacity: 1 });
+      gsap.set(pixelGrid.cells, { scale: 1.03, opacity: 1, transformOrigin: '50% 50%' });
+    }
+    // 隱藏舊的 curtain 黑幕（pixel grid 已接手覆蓋）
+    if (refs.curtain) gsap.set(refs.curtain, { autoAlpha: 0 });
 
     state.entryCleanupTimer = window.setTimeout(function () {
       finalizeEntryTransition(refs);
     }, 1500);
 
-    gsap.timeline({
-      delay: 0.04,
-      defaults: { ease: 'expo.out' },
-      onComplete: function () {
-        finalizeEntryTransition(refs);
-      }
-    })
-      .to(refs.curtain, {
-        '--pt-bottom': '102%',
-        duration: 0.76,
-      }, 0)
-      .to(refs.curtain, {
-        '--pt-top': '-102%',
-        duration: 0.76,
-      }, 0.06)
-      .to(refs.curtain, { autoAlpha: 0, duration: 0.22, ease: 'power2.out' }, 0.68);
+    // pixel grid 由中心往外縮回，逐格露出新頁面
+    pixelHide({
+      duration: 0.3,
+      ease: 'power1',
+      stagger: pixelStagger('center', 0.022)
+    }).then(function () {
+      finalizeEntryTransition(refs);
+    });
   }
 
   function armEntryFailSafe(payload) {
@@ -264,35 +356,34 @@
     stopLenis();
     document.documentElement.classList.add('is-page-transitioning');
 
-    if (!refs.shell || !gsap || !refs.curtain) {
+    if (!refs.shell || !gsap) {
       window.location.href = destination.href;
       return;
     }
 
     updateOverlayContent(refs, destination, label || '');
+    buildPixelGrid(refs.shell);
     refs.shell.classList.add('is-active');
+    if (refs.curtain) gsap.set(refs.curtain, { autoAlpha: 0 });
 
-    var fallbackTimer = window.setTimeout(function () {
+    var navigated = false;
+    function go() {
+      if (navigated) return;
+      navigated = true;
       window.location.href = destination.href;
-    }, 600);
+    }
 
-    resetReveal(refs);
+    var fallbackTimer = window.setTimeout(go, 1000);
 
-    gsap.timeline({
-      defaults: { ease: 'power3.in' },
-      onComplete: function () {
-        window.clearTimeout(fallbackTimer);
-        window.location.href = destination.href;
-      }
-    })
-      .to(refs.curtain, {
-        '--pt-top': '0%',
-        duration: 0.3,
-      }, 0)
-      .to(refs.curtain, {
-        '--pt-bottom': '0%',
-        duration: 0.3,
-      }, 0.03);
+    // pixel grid 由中心往外放大，逐格蓋滿畫面後再導頁
+    pixelShow({
+      duration: 0.28,
+      ease: 'power1.in',
+      stagger: pixelStagger('center', 0.022)
+    }).then(function () {
+      window.clearTimeout(fallbackTimer);
+      go();
+    });
   }
 
   window._nudotNavigate = navigateWithTransition;
