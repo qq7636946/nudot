@@ -95,12 +95,12 @@
     };
   }
 
-  // ── Pixel 轉場（取代原本的 curtain 動畫，效果來自 PixelTransition demo1）──
+  // ── Pixel 轉場（取代原本的 curtain 動畫，效果來自 PixelTransition demo2）──
   var pixelGrid = {
     el: null,
     cells: [],
-    rows: 8,
-    columns: 14,
+    rows: 9,
+    columns: 17,
     built: false
   };
 
@@ -136,17 +136,11 @@
     return pixelGrid;
   }
 
-  // demo1 的逐列 + 隨機 stagger（由上而下像雨點/溶解般展開）
-  function pixelRowStagger(reverse) {
-    var cols = pixelGrid.columns;
-    var total = pixelGrid.rows * pixelGrid.columns;
-    var rnd = (gsap && gsap.utils && gsap.utils.random)
-      ? gsap.utils.random
-      : function (a, b) { return a + Math.random() * (b - a); };
-    return function (index) {
-      var i = reverse ? (total - index - 1) : index;
-      var row = Math.floor(i / cols);
-      return 0.03 * (row + rnd(0, 5));
+  function pixelStagger(from, each) {
+    return {
+      grid: [pixelGrid.rows, pixelGrid.columns],
+      from: from,
+      each: each
     };
   }
 
@@ -158,11 +152,11 @@
       gsap.fromTo(pixelGrid.cells, {
         scale: 0,
         opacity: 0,
-        transformOrigin: config.transformOrigin || '50% 0%'
+        transformOrigin: '50% 50%'
       }, {
         duration: config.duration,
         ease: config.ease,
-        scale: 1.01,
+        scale: 1.03,
         opacity: 1,
         stagger: config.stagger,
         onComplete: resolve
@@ -174,13 +168,12 @@
   function pixelHide(config) {
     return new Promise(function (resolve) {
       if (!gsap || !pixelGrid.el) { resolve(); return; }
-      gsap.fromTo(pixelGrid.cells, {
-        transformOrigin: config.transformOrigin || '50% 100%'
-      }, {
+      gsap.to(pixelGrid.cells, {
         duration: config.duration,
         ease: config.ease,
         scale: 0,
         opacity: 0,
+        transformOrigin: '50% 50%',
         stagger: config.stagger,
         onComplete: function () {
           gsap.set(pixelGrid.el, { opacity: 0 });
@@ -294,7 +287,7 @@
     gsap.set(refs.shell, { autoAlpha: 1 });
     if (pixelGrid.el) {
       gsap.set(pixelGrid.el, { opacity: 1 });
-      gsap.set(pixelGrid.cells, { scale: 1.01, opacity: 1, transformOrigin: '50% 100%' });
+      gsap.set(pixelGrid.cells, { scale: 1.03, opacity: 1, transformOrigin: '50% 50%' });
     }
     // 隱藏舊的 curtain 黑幕（pixel grid 已接手覆蓋）
     if (refs.curtain) gsap.set(refs.curtain, { autoAlpha: 0 });
@@ -303,12 +296,11 @@
       finalizeEntryTransition(refs);
     }, 1500);
 
-    // pixel grid 逐列由下往上隨機縮回，露出新頁面
+    // pixel grid 由中心往外縮回，逐格露出新頁面
     pixelHide({
-      duration: 0.4,
-      ease: 'power2',
-      transformOrigin: '50% 100%',
-      stagger: pixelRowStagger(false)
+      duration: 0.3,
+      ease: 'power1',
+      stagger: pixelStagger('center', 0.022)
     }).then(function () {
       finalizeEntryTransition(refs);
     });
@@ -381,14 +373,13 @@
       window.location.href = destination.href;
     }
 
-    var fallbackTimer = window.setTimeout(go, 1200);
+    var fallbackTimer = window.setTimeout(go, 1000);
 
-    // pixel grid 逐列由上往下隨機放大蓋滿畫面後再導頁
+    // pixel grid 由中心往外放大，逐格蓋滿畫面後再導頁
     pixelShow({
-      duration: 0.4,
-      ease: 'power3.inOut',
-      transformOrigin: '50% 0%',
-      stagger: pixelRowStagger(false)
+      duration: 0.28,
+      ease: 'power1.in',
+      stagger: pixelStagger('center', 0.022)
     }).then(function () {
       window.clearTimeout(fallbackTimer);
       go();
