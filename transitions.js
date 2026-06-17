@@ -99,8 +99,8 @@
   var pixelGrid = {
     el: null,
     cells: [],
-    rows: 9,
-    columns: 17,
+    rows: 20,
+    columns: 4,
     built: false
   };
 
@@ -144,19 +144,19 @@
     };
   }
 
-  // 顯示 overlay：cell 從 0 放大蓋滿畫面
+  // 顯示 overlay：直條 cell 由 scaleY 0 縱向長滿蓋住畫面
   function pixelShow(config) {
     return new Promise(function (resolve) {
       if (!gsap || !pixelGrid.el) { resolve(); return; }
       gsap.set(pixelGrid.el, { opacity: 1 });
       gsap.fromTo(pixelGrid.cells, {
-        scale: 0,
+        scaleY: 0,
         opacity: 0,
-        transformOrigin: '50% 50%'
+        transformOrigin: config.transformOrigin || '50% 100%'
       }, {
         duration: config.duration,
         ease: config.ease,
-        scale: 1.03,
+        scaleY: 1.03,
         opacity: 1,
         stagger: config.stagger,
         onComplete: resolve
@@ -164,16 +164,17 @@
     });
   }
 
-  // 隱藏 overlay：cell 縮回 0 露出頁面
+  // 隱藏 overlay：直條 cell 縱向縮回 0 露出頁面
   function pixelHide(config) {
     return new Promise(function (resolve) {
       if (!gsap || !pixelGrid.el) { resolve(); return; }
-      gsap.to(pixelGrid.cells, {
+      gsap.fromTo(pixelGrid.cells, {
+        transformOrigin: config.transformOrigin || '50% 0%'
+      }, {
         duration: config.duration,
         ease: config.ease,
-        scale: 0,
+        scaleY: 0,
         opacity: 0,
-        transformOrigin: '50% 50%',
         stagger: config.stagger,
         onComplete: function () {
           gsap.set(pixelGrid.el, { opacity: 0 });
@@ -287,7 +288,7 @@
     gsap.set(refs.shell, { autoAlpha: 1 });
     if (pixelGrid.el) {
       gsap.set(pixelGrid.el, { opacity: 1 });
-      gsap.set(pixelGrid.cells, { scale: 1.03, opacity: 1, transformOrigin: '50% 50%' });
+      gsap.set(pixelGrid.cells, { scaleY: 1.03, opacity: 1, transformOrigin: '50% 0%' });
     }
     // 隱藏舊的 curtain 黑幕（pixel grid 已接手覆蓋）
     if (refs.curtain) gsap.set(refs.curtain, { autoAlpha: 0 });
@@ -296,11 +297,12 @@
       finalizeEntryTransition(refs);
     }, 1500);
 
-    // pixel grid 由中心往外縮回，逐格露出新頁面
+    // 直條由上往下縱向縮回、由左至右依序露出新頁面
     pixelHide({
       duration: 0.3,
-      ease: 'power1',
-      stagger: pixelStagger('center', 0.022)
+      ease: 'power3',
+      transformOrigin: '50% 0%',
+      stagger: pixelStagger('start', 0.02)
     }).then(function () {
       finalizeEntryTransition(refs);
     });
@@ -375,11 +377,12 @@
 
     var fallbackTimer = window.setTimeout(go, 1000);
 
-    // pixel grid 由中心往外放大，逐格蓋滿畫面後再導頁
+    // 直條由下往上長滿、由左至右依序蓋住畫面後再導頁
     pixelShow({
-      duration: 0.28,
+      duration: 0.3,
       ease: 'power1.in',
-      stagger: pixelStagger('center', 0.022)
+      transformOrigin: '50% 100%',
+      stagger: pixelStagger('start', 0.02)
     }).then(function () {
       window.clearTimeout(fallbackTimer);
       go();
