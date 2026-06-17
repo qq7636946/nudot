@@ -159,6 +159,7 @@
         scale: 1.03,
         opacity: 1,
         stagger: config.stagger,
+        overwrite: 'auto',
         onComplete: resolve
       });
     });
@@ -175,6 +176,7 @@
         opacity: 0,
         transformOrigin: '50% 50%',
         stagger: config.stagger,
+        overwrite: 'auto',
         onComplete: function () {
           gsap.set(pixelGrid.el, { opacity: 0 });
           resolve();
@@ -311,6 +313,8 @@
 
     function finalizeIfStuck() {
       state.entryFailSafeTimer = null;
+      // 離場進行中時絕不動遮罩：避免 load/pageshow 重新排程的 fail-safe 把離場 cover 清掉
+      if (state.leaving) return;
       var refs = getShellRefs();
       if (!refs.shell) {
         document.documentElement.classList.remove('has-pending-page-transition');
@@ -342,6 +346,17 @@
     if (state.leaving) return;
     state.leaving = true;
 
+    // 清掉進場轉場殘留的計時器，避免它們在離場 cover 進行中觸發 finalizeEntryTransition，
+    // 把 pixel 遮罩硬清掉造成畫面硬跳（快速連點時最常見）。
+    if (state.entryCleanupTimer) {
+      window.clearTimeout(state.entryCleanupTimer);
+      state.entryCleanupTimer = null;
+    }
+    if (state.entryFailSafeTimer) {
+      window.clearTimeout(state.entryFailSafeTimer);
+      state.entryFailSafeTimer = null;
+    }
+
     var refs = getShellRefs();
     var destination = new URL(href, window.location.href);
 
@@ -363,6 +378,9 @@
 
     updateOverlayContent(refs, destination, label || '');
     buildPixelGrid(refs.shell);
+    // 若進場揭開動畫還沒跑完，先 kill 掉，讓離場蓋上動畫從乾淨狀態接管同一組格子
+    if (pixelGrid.cells.length) gsap.killTweensOf(pixelGrid.cells);
+    if (pixelGrid.el) gsap.set(pixelGrid.el, { opacity: 1 });
     refs.shell.classList.add('is-active');
     if (refs.curtain) gsap.set(refs.curtain, { autoAlpha: 0 });
 
@@ -984,6 +1002,10 @@
   });
 
   function boot() {
+    // 重新同步 gsap 參照：IIFE 載入當下若 gsap 尚未就緒（例如有人調動 script 順序／移除 defer），
+    // 仍能在 boot 時補抓到，避免整個轉場因抓不到 gsap 而靜默失效。
+    if (!gsap && window.gsap) gsap = window.gsap;
+
     var payload = consumePayload();
     initBarbaMarkers();
     initSharedMenu();
