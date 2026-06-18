@@ -2861,7 +2861,8 @@
         clip-path 0.78s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ★ 確保容器有 overflow: hidden，且一開始處於完全裁切 (不可見) 狀態 */
+    /* ★ 預設為可見（fallback）：若 GSAP / JS 在 LINE 等內建瀏覽器載入失敗或延遲，
+       圖片仍會正常顯示，只是沒有進場動畫，而不是整塊空白。 */
     .pg-img-wrap {
       position: relative;
       width: 100%;
@@ -2869,6 +2870,10 @@
       overflow: hidden;
       background-color: #0d0d0d;
       border-radius: 2px;
+    }
+
+    /* ★ 只有確認 GSAP 就緒（已加上 pg-anim-ready）後才裁切，準備進場遮罩動畫。 */
+    html.pg-anim-ready .pg-img-wrap {
       clip-path: inset(100% 0% 0% 0%);
     }
 
@@ -5900,7 +5905,7 @@
 
             <div class="footer-right-panel">
               <div class="footer-video-thumb">
-                <video autoplay muted loop playsinline preload="none" disableRemotePlayback data-lazy-video>
+                <video autoplay muted loop playsinline preload="metadata" width="320" height="180" disableRemotePlayback data-lazy-video>
                   <source data-src="images/footer.mp4" type="video/mp4">
                 </video>
               </div>
@@ -7830,6 +7835,11 @@
       //   才建立 pg-item ScrollTriggers，否則 pin 造成的位移會讓 trigger 位置算錯
       runWhenNear(document.querySelector('.pg-gallery') || document.querySelector('.gallery-header'), function () {
         setTimeout(function initPgItems() {
+          // ★ 確認 GSAP 已就緒，才啟用「裁切→進場」機制（對應 CSS 的 html.pg-anim-ready）。
+          //   若 gsap 不存在（LINE 等內建瀏覽器 CDN 失敗），直接放棄遮罩動畫，圖片維持可見。
+          if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+          document.documentElement.classList.add('pg-anim-ready');
+
           // ── core-capabilities 垂直線條進場（必須在 refresh 後才能取得正確 trigger 位置）──
           const ccapSection = document.getElementById('core-capabilities');
           /* .gh-vline 元素已隨 DXM 區塊移除 */
@@ -7950,6 +7960,30 @@
           });
           // 建完所有 pg-item triggers 後再做一次 refresh，確保位置精準
           if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+
+          // ★ LINE 等內建瀏覽器保險 1：lazy 圖片載入後會改變版面高度，導致 trigger 位置算錯
+          //   → 圖片載入完成時補做一次 refresh，修正「捲到了卻不顯示／等很久」。
+          document.querySelectorAll('.pg-gallery .pg-img-wrap img').forEach((img) => {
+            if (img.complete) return;
+            img.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+            img.addEventListener('error', () => ScrollTrigger.refresh(), { once: true });
+          });
+
+          // ★ LINE 等內建瀏覽器保險 2：逾時看門狗。若 ScrollTrigger 始終未把目前在
+          //   視窗內的項目 reveal（仍維持 inset(100%) 完全裁切），就強制打開，避免空白。
+          const pgRevealStuck = () => {
+            document.querySelectorAll('.pg-gallery .pg-item').forEach((item) => {
+              const wrap = item.querySelector('.pg-img-wrap');
+              if (!wrap) return;
+              const rect = item.getBoundingClientRect();
+              const inView = rect.top < window.innerHeight * 0.98 && rect.bottom > 0;
+              const clipped = (getComputedStyle(wrap).clipPath || '').indexOf('100%') !== -1;
+              if (inView && clipped) gsap.set(wrap, { clipPath: 'inset(0% 0% 0% 0%)' });
+            });
+          };
+          setTimeout(pgRevealStuck, 1500);
+          setTimeout(pgRevealStuck, 4000);
+          window.addEventListener('load', () => setTimeout(pgRevealStuck, 600), { once: true });
         }, 0);
       }, '2200px 0px');
 
@@ -9515,7 +9549,7 @@
   </script>
 
   <canvas id="film-grain-canvas" aria-hidden="true"></canvas>
-  <script src="noise.js?v=5"></script>
+  <script src="noise.js?v=5" defer></script>
 
   <!-- =========================================================
        SECTION 3: CORE CAPABILITIES (3D Ring Gallery JS)
