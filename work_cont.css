@@ -21,18 +21,27 @@
             font-family: var(--font-main);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            /* 自訂捲軸 — 與 index.html 一致 */
         }
+        /* 自訂捲軸 — 與 index.html 一致。
+           overflow-y: scroll 讓捲軸常駐，nav 開啟鎖捲動（body overflow:hidden）
+           時不會因捲軸消失導致版面變寬「跳一下」。 */
+        html {
+            overflow-y: scroll;
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: rgba(255, 255, 255, 0.18) #000;
+        }
+        html::-webkit-scrollbar,
         body::-webkit-scrollbar { width: 6px; }
+        html::-webkit-scrollbar-track,
         body::-webkit-scrollbar-track { background: #000; }
+        html::-webkit-scrollbar-thumb,
         body::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.18);
             border-radius: 3px;
             transition: background-color .25s ease;
         }
+        html::-webkit-scrollbar-thumb:hover,
         body::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.32); }
-        /* Firefox */
-        html { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.18) #000; }
 
         /* ==========================================================================
            Grain / Noise Effect
