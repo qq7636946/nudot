@@ -7961,22 +7961,17 @@
           // 建完所有 pg-item triggers 後再做一次 refresh，確保位置精準
           if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
 
-          // ★ LINE 等內建瀏覽器保險 1：lazy 圖片載入後會改變版面高度，導致 trigger 位置算錯
-          //   → 圖片載入完成時補做一次 refresh，修正「捲到了卻不顯示／等很久」。
-          document.querySelectorAll('.pg-gallery .pg-img-wrap img').forEach((img) => {
-            if (img.complete) return;
-            img.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
-            img.addEventListener('error', () => ScrollTrigger.refresh(), { once: true });
-          });
+          // ── 註：pg-item 高度以 vw 固定、圖片為 position:absolute 填滿，圖片載入不會
+          //   改變版面，故不需在每張圖 load 後再 refresh（那會讓 scrub 視差瞬間 snap、跳一下）。
 
-          // ★ LINE 等內建瀏覽器保險 2：逾時看門狗。若 ScrollTrigger 始終未把目前在
+          // ★ LINE 等內建瀏覽器保險：逾時看門狗。若 ScrollTrigger 始終未把目前在
           //   視窗內的項目 reveal（仍維持 inset(100%) 完全裁切），就強制打開，避免空白。
           const pgRevealStuck = () => {
             document.querySelectorAll('.pg-gallery .pg-item').forEach((item) => {
               const wrap = item.querySelector('.pg-img-wrap');
               if (!wrap) return;
               const rect = item.getBoundingClientRect();
-              const inView = rect.top < window.innerHeight * 0.98 && rect.bottom > 0;
+              const inView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
               const clipped = (getComputedStyle(wrap).clipPath || '').indexOf('100%') !== -1;
               if (inView && clipped) gsap.set(wrap, { clipPath: 'inset(0% 0% 0% 0%)' });
             });
