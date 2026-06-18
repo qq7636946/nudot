@@ -8236,7 +8236,7 @@
           autoAlpha: 0,
           clipPath: (_, target) => getNavShowcaseThumbHiddenClip(target)
         });
-        gsap.set(images, { scale: NAV_SCROLL_THUMB_IDLE_SCALE });
+        if (images.length) gsap.set(images, { scale: NAV_SCROLL_THUMB_IDLE_SCALE });
       }
 
       function resetNavShowcaseHoverState(row = null) {
@@ -8278,7 +8278,7 @@
             autoAlpha: 0,
             clipPath: (_, target) => getNavShowcaseThumbHiddenClip(target)
           });
-          gsap.set(images, { scale: NAV_SCROLL_THUMB_IDLE_SCALE });
+          if (images.length) gsap.set(images, { scale: NAV_SCROLL_THUMB_IDLE_SCALE });
           gsap.set(track, { x: 0 });
           gsap.set(primary, { yPercent: 0 });
           gsap.set(accent, { yPercent: NAV_SCROLL_TITLE_SHIFT });
@@ -8303,18 +8303,20 @@
             duration: 0.42,
             ease: 'expo.out',
             stagger: 0.025
-          }, 0)
-            .to(images, {
+          }, 0);
+          if (images.length) {
+            tl.to(images, {
               scale: 1,
               duration: 0.46,
               ease: 'expo.out',
               stagger: 0.025
-            }, 0.02)
-            .to(primary, {
-              yPercent: -NAV_SCROLL_TITLE_SHIFT,
-              duration: 0.46,
-              ease: 'expo.out'
-            }, 0.02)
+            }, 0.02);
+          }
+          tl.to(primary, {
+            yPercent: -NAV_SCROLL_TITLE_SHIFT,
+            duration: 0.46,
+            ease: 'expo.out'
+          }, 0.02)
             .to(accent, {
               yPercent: 0,
               duration: 0.46,
@@ -8404,7 +8406,7 @@
             backgroundColor: NAV_SCROLL_OPEN_BG
           });
           gsap.set(navScrollDropdown, { opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0%)', filter: 'blur(0px)' });
-          gsap.set(navScrollDropdownItems, { y: 0, opacity: 1, filter: 'blur(0px)' });
+          if (navScrollDropdownItems.length) gsap.set(navScrollDropdownItems, { y: 0, opacity: 1, filter: 'blur(0px)' });
           return;
         }
 
@@ -8416,7 +8418,7 @@
           backgroundColor: NAV_SCROLL_CLOSED_BG
         });
         gsap.set(navScrollDropdown, { opacity: 0, y: 24, clipPath: 'inset(6% 0% 0% 0%)', filter: 'blur(12px)' });
-        gsap.set(navScrollDropdownItems, { y: 34, opacity: 0, filter: 'blur(14px)' });
+        if (navScrollDropdownItems.length) gsap.set(navScrollDropdownItems, { y: 34, opacity: 0, filter: 'blur(14px)' });
         resetNavShowcaseHoverState();
       }
 
@@ -8865,7 +8867,7 @@
               span.appendChild(wrap);
               return inner;
             });
-            gsap.set(spanInners, { y: '110%' });
+            if (spanInners.length) gsap.set(spanInners, { y: '110%' });
 
             // ── 3. Wrap nav links for y-clip reveal
             const navAnchors = navLinks ? [...navLinks.querySelectorAll('a')] : [];
@@ -8875,7 +8877,7 @@
               a.parentNode.insertBefore(wrap, a);
               wrap.appendChild(a);
             });
-            gsap.set(navAnchors, { y: '120%' });
+            if (navAnchors.length) gsap.set(navAnchors, { y: '120%' });
 
             // ── 4. Wrap email / phone individually for y reveal
             const contactEmail = contactInfo ? contactInfo.querySelector('a') : null;
