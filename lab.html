@@ -114,6 +114,18 @@
     ================================================================ */
     html { color-scheme: dark; overflow-x: hidden; }
 
+    /* 自訂捲軸 — 與 index.html 一致 */
+    body::-webkit-scrollbar { width: 6px; }
+    body::-webkit-scrollbar-track { background: #000; }
+    body::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 3px;
+      transition: background-color .25s ease;
+    }
+    body::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.32); }
+    /* Firefox */
+    html { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.18) #000; }
+
     body {
       background: var(--bg);
       color: var(--fg);
@@ -1929,7 +1941,7 @@
             </div>
             <div class="footer-right-panel">
               <div class="footer-video-thumb">
-                <video autoplay muted loop playsinline preload="none" disableremoteplayback>
+                <video autoplay muted loop playsinline preload="metadata" width="320" height="180" disableremoteplayback>
                   <source src="images/footer.mp4" type="video/mp4">
                 </video>
               </div>

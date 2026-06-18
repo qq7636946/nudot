@@ -21,10 +21,18 @@
             font-family: var(--font-main);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            /* Hide native scrollbar to use Lenis */
-            scrollbar-width: none; 
+            /* 自訂捲軸 — 與 index.html 一致 */
         }
-        body::-webkit-scrollbar { display: none; }
+        body::-webkit-scrollbar { width: 6px; }
+        body::-webkit-scrollbar-track { background: #000; }
+        body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 3px;
+            transition: background-color .25s ease;
+        }
+        body::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.32); }
+        /* Firefox */
+        html { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.18) #000; }
 
         /* ==========================================================================
            Grain / Noise Effect
@@ -124,6 +132,7 @@
             object-position: center 20%;
             display: block;
             transform-origin: center center;
+            transform: scale(1.08); /* 與 work_cont.js 視差起始值對齊，避免 load 觸發時 1.0→1.08 跳動 */
             will-change: transform;
         }
         .hero-shell {
