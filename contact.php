@@ -1483,6 +1483,7 @@ $selBudget = $_POST['budget'] ?? '';
       }
     }
   </style>
+  <style id="seo-nav-cloak">.ns-showcase-row__index::before,.ns-showcase-row__title-layer::before{content:attr(data-text);}</style>
 </head>
 
 <body class="shared-nav-page page-work-pattern">
@@ -1538,16 +1539,16 @@ $selBudget = $_POST['budget'] ?? '';
           </div> -->
 
               <div class="ns-menu-rows">
-                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home">
-                  <span class="ns-showcase-row__index">( 首頁 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home" aria-label="首頁">
+                  <span class="ns-showcase-row__index" data-text="( 首頁 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/1.webp" data-nav-src="images/nav/1.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">HOME</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">HOME</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="HOME"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="HOME"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -1556,16 +1557,16 @@ $selBudget = $_POST['budget'] ?? '';
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About">
-                  <span class="ns-showcase-row__index">( 核點創意 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About" aria-label="核點創意">
+                  <span class="ns-showcase-row__index" data-text="( 核點創意 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/3.webp" data-nav-src="images/nav/3.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">ABOUT</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">ABOUT</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="ABOUT"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="ABOUT"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -1574,16 +1575,16 @@ $selBudget = $_POST['budget'] ?? '';
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work">
-                  <span class="ns-showcase-row__index">( 設計案例 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work" aria-label="設計案例">
+                  <span class="ns-showcase-row__index" data-text="( 設計案例 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/5.webp" data-nav-src="images/nav/5.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">WORK</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">WORK</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="WORK"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="WORK"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -1592,16 +1593,16 @@ $selBudget = $_POST['budget'] ?? '';
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs">
-                  <span class="ns-showcase-row__index">( 核點實驗室 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs" aria-label="核點實驗室">
+                  <span class="ns-showcase-row__index" data-text="( 核點實驗室 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">LABS</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">LABS</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="LABS"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="LABS"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -1610,16 +1611,16 @@ $selBudget = $_POST['budget'] ?? '';
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="contact" data-transition-label="Contact">
-                  <span class="ns-showcase-row__index">( 聯繫我們 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="contact" data-transition-label="Contact" aria-label="聯繫我們">
+                  <span class="ns-showcase-row__index" data-text="( 聯繫我們 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/9.webp" data-nav-src="images/nav/9.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">CONTACT</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">CONTACT</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="CONTACT"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="CONTACT"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -1682,13 +1683,13 @@ $selBudget = $_POST['budget'] ?? '';
               <div class="form-fields">
                 <div class="field-group">
                   <label for="f_name">Name <span class="req">*</span> ／ 姓名</label>
-                  <input type="text" id="f_name" name="name" required placeholder="John Doe"
+                  <input type="text" id="f_name" name="name" required placeholder="Your Name"
                     value="<?= htmlspecialchars($_POST['name'] ?? '') ?>">
                   <div class="field-error" id="name-error">Please fill in your name. ／ 請填寫姓名</div>
                 </div>
                 <div class="field-group">
                   <label for="f_email">Email <span class="req">*</span> ／ 電子郵件</label>
-                  <input type="email" id="f_email" name="email" required placeholder="john@example.com"
+                  <input type="email" id="f_email" name="email" required placeholder="... @example.com"
                     value="<?= htmlspecialchars($_POST['email'] ?? '') ?>">
                   <div class="field-error" id="email-error">Please fill in a valid email. ／ 請填寫有效的電子郵件</div>
                 </div>

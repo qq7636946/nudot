@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
- <title>Labs｜核點 Nudot Studio・AI 動態影像與 Gen-AI 視覺形象</title>
+  <title>Labs｜核點 Nudot Studio・AI 動態影像與 Gen-AI 視覺形象</title>
 
   <script>
     (function () {
@@ -40,7 +41,7 @@
   <meta property="og:url" content="https://nudot.com.tw/lab">
   <meta property="og:title" content="Labs｜核點 Nudot Studio・AI 動態影像與 Gen-AI 視覺實驗">
   <meta property="og:description" content="NUDOT Labs — 探索 AI Motion、生成式影像與前端互動技術的創作邊界，持續推進視覺可能性。">
-  <meta property="og:image" content="https://nudot.com.tw/images/og.jpg">
+  <meta property="og:image" content="https://nudot.com.tw/images/oglab.jpg?v=4">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="zh_TW">
@@ -58,7 +59,7 @@
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bitcount+Grid+Single:wght@100..900&family=DM+Mono:wght@300;400&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap">
 
   <link rel="stylesheet" href="cursor-shared.css?v=1">
-   <link rel="stylesheet" href="nav-menu-shared.css?v=1">
+  <link rel="stylesheet" href="nav-menu-shared.css?v=1">
   <link rel="stylesheet" href="page-transitions.css?v=1">
   <link rel="icon" href="images/fav.png" type="image/png">
 
@@ -73,58 +74,80 @@
     /* ================================================================
        RESET
     ================================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     /* ================================================================
        DESIGN TOKENS
     ================================================================ */
     :root {
       color-scheme: dark;
-      --font-family-body:    "PP Neue Montreal", "DM Sans", "Helvetica Neue", Arial, sans-serif;
+      --font-family-body: "PP Neue Montreal", "DM Sans", "Helvetica Neue", Arial, sans-serif;
       --font-family-display: "Zalando Sans SemiExpanded", "PP Neue Montreal", sans-serif;
 
-      --dark-bg:    #1c1814;
-      --dark-fg:    #ede8df;
+      --dark-bg: #1c1814;
+      --dark-fg: #ede8df;
       --dark-muted: #8a7b6e;
-      --light-bg:   #f0ece3;
-      --light-fg:   #0d0d14;
-      --light-muted:#9a9aaa;
+      --light-bg: #f0ece3;
+      --light-fg: #0d0d14;
+      --light-muted: #9a9aaa;
       --accent-dark: #d4a84b;
-      --accent-light:#3a6e00;
+      --accent-light: #3a6e00;
 
-      --bg:     var(--dark-bg);
-      --fg:     var(--dark-fg);
-      --muted:  var(--dark-muted);
+      --bg: var(--dark-bg);
+      --fg: var(--dark-fg);
+      --muted: var(--dark-muted);
       --accent: var(--accent-dark);
 
       --font-display: "Bebas Neue", var(--font-family-display), sans-serif;
-      --font-mono:    "DM Mono", monospace;
-      --hairline:     0.0625rem;
-      --ui-inset:     2rem;
-      --card-bg:      rgba(28, 24, 20, 0.82);
-      --card-border:  rgba(212, 168, 75, 0.2);
-      --nav-x:        calc(var(--ui-inset) + 0.125rem);
-      --reveal-offset:  0.625rem;
-      --reveal-duration:0.5s;
+      --font-mono: "DM Mono", monospace;
+      --hairline: 0.0625rem;
+      --ui-inset: 2rem;
+      --card-bg: rgba(28, 24, 20, 0.82);
+      --card-border: rgba(212, 168, 75, 0.2);
+      --nav-x: calc(var(--ui-inset) + 0.125rem);
+      --reveal-offset: 0.625rem;
+      --reveal-duration: 0.5s;
       --z-cube-ui: 12;
     }
 
     /* ================================================================
        BASE
     ================================================================ */
-    html { color-scheme: dark; overflow-x: hidden; }
+    html {
+      color-scheme: dark;
+      overflow-x: hidden;
+    }
 
     /* 自訂捲軸 — 與 index.html 一致 */
-    body::-webkit-scrollbar { width: 6px; }
-    body::-webkit-scrollbar-track { background: #000; }
+    body::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    body::-webkit-scrollbar-track {
+      background: #000;
+    }
+
     body::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.18);
       border-radius: 3px;
       transition: background-color .25s ease;
     }
-    body::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.32); }
+
+    body::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.32);
+    }
+
     /* Firefox */
-    html { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.18) #000; }
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.18) #000;
+    }
 
     body {
       background: var(--bg);
@@ -153,8 +176,16 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; cursor: pointer; }
-    ul, ol { list-style: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
 
     .app {
       position: relative;
@@ -179,16 +210,45 @@
       flex-direction: column;
     }
 
-    .sb__item:nth-child(10n + 1)  { grid-column: 2 / span 10; }
-    .sb__item:nth-child(10n + 2)  { grid-column: 14 / span 9; }
-    .sb__item:nth-child(10n + 3)  { grid-column: 25 / span 6; }
-    .sb__item:nth-child(10n + 4)  { grid-column: 33 / span 8; }
-    .sb__item:nth-child(10n + 5)  { grid-column: 42 / span 6; }
-    .sb__item:nth-child(10n + 6)  { grid-column: 2 / span 8; }
-    .sb__item:nth-child(10n + 7)  { grid-column: 12 / span 10; }
-    .sb__item:nth-child(10n + 8)  { grid-column: 24 / span 7; }
-    .sb__item:nth-child(10n + 9)  { grid-column: 33 / span 9; }
-    .sb__item:nth-child(10n + 10) { grid-column: 43 / span 5; }
+    .sb__item:nth-child(10n + 1) {
+      grid-column: 2 / span 10;
+    }
+
+    .sb__item:nth-child(10n + 2) {
+      grid-column: 14 / span 9;
+    }
+
+    .sb__item:nth-child(10n + 3) {
+      grid-column: 25 / span 6;
+    }
+
+    .sb__item:nth-child(10n + 4) {
+      grid-column: 33 / span 8;
+    }
+
+    .sb__item:nth-child(10n + 5) {
+      grid-column: 42 / span 6;
+    }
+
+    .sb__item:nth-child(10n + 6) {
+      grid-column: 2 / span 8;
+    }
+
+    .sb__item:nth-child(10n + 7) {
+      grid-column: 12 / span 10;
+    }
+
+    .sb__item:nth-child(10n + 8) {
+      grid-column: 24 / span 7;
+    }
+
+    .sb__item:nth-child(10n + 9) {
+      grid-column: 33 / span 9;
+    }
+
+    .sb__item:nth-child(10n + 10) {
+      grid-column: 43 / span 5;
+    }
 
     .sb__item-link {
       display: block;
@@ -217,7 +277,7 @@
       height: 120%;
       object-fit: cover;
       transition: filter 0.8s cubic-bezier(0.19, 1, 0.22, 1),
-                  opacity 0.45s ease;
+        opacity 0.45s ease;
       will-change: transform, filter;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
@@ -228,17 +288,25 @@
 
     .sb__item:nth-child(10n + 1) .sb__item-link,
     .sb__item:nth-child(10n + 5) .sb__item-link,
-    .sb__item:nth-child(10n + 7) .sb__item-link { aspect-ratio: 3/4; }
+    .sb__item:nth-child(10n + 7) .sb__item-link {
+      aspect-ratio: 3/4;
+    }
 
     .sb__item:nth-child(10n + 3) .sb__item-link,
-    .sb__item:nth-child(10n + 8) .sb__item-link { aspect-ratio: 2/3; }
+    .sb__item:nth-child(10n + 8) .sb__item-link {
+      aspect-ratio: 2/3;
+    }
 
     .sb__item:nth-child(10n + 4) .sb__item-link,
-    .sb__item:nth-child(10n + 9) .sb__item-link { aspect-ratio: 1/1; }
+    .sb__item:nth-child(10n + 9) .sb__item-link {
+      aspect-ratio: 1/1;
+    }
 
     .sb__item:nth-child(10n + 2) .sb__item-link,
     .sb__item:nth-child(10n + 6) .sb__item-link,
-    .sb__item:nth-child(10n + 10) .sb__item-link { aspect-ratio: 4/3; }
+    .sb__item:nth-child(10n + 10) .sb__item-link {
+      aspect-ratio: 4/3;
+    }
 
     .sb__item:hover .sb__item-link::after {
       opacity: 1;
@@ -253,35 +321,48 @@
       opacity: 0;
     }
 
-    .sb__item:hover .sb__item-desc { transform: translateY(-4px); }
+    .sb__item:hover .sb__item-desc {
+      transform: translateY(-4px);
+    }
 
     .paragraph.is--big {
       font-size: 15px;
       font-weight: 500;
       line-height: 1.2;
-    
+
       color: #fff;
     }
 
-    .np__tags { display: flex; flex-direction: column; gap: 4px; }
+    .np__tags {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
 
     .np__date {
       font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
 
-    .ll__list { display: flex; flex-wrap: wrap; gap: 0; }
+    .ll__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
 
     .ll__item {
       font-size: 11px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255, 255, 255, 0.6);
     }
 
-    .ll__item + .ll__item::before { content: " "; margin-right: 4px; }
+    .ll__item+.ll__item::before {
+      content: " ";
+      margin-right: 4px;
+    }
 
     .link-group {
       display: flex;
@@ -290,14 +371,16 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255, 255, 255, 0.3);
       margin-top: 8px;
       transition: color 0.4s ease;
       position: relative;
       width: fit-content;
     }
 
-    .sb__item:hover .link-group { color: #fff; }
+    .sb__item:hover .link-group {
+      color: #fff;
+    }
 
     .link-group::after {
       content: '';
@@ -310,7 +393,9 @@
       transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
-    .sb__item:hover .link-group::after { width: 100%; }
+    .sb__item:hover .link-group::after {
+      width: 100%;
+    }
 
     .disclaimer {
       font-size: 12px;
@@ -423,7 +508,9 @@
       color: #fff;
     }
 
-    .yt-play-btn:hover { background: rgba(255, 255, 255, 0.22); }
+    .yt-play-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
 
     .yt-play-btn svg {
       pointer-events: none;
@@ -432,8 +519,13 @@
       fill: #fff;
     }
 
-    .yt-overlay.is-playing .yt-play-btn { opacity: 0; }
-    .yt-overlay.is-playing:hover .yt-play-btn { opacity: 1; }
+    .yt-overlay.is-playing .yt-play-btn {
+      opacity: 0;
+    }
+
+    .yt-overlay.is-playing:hover .yt-play-btn {
+      opacity: 1;
+    }
 
     .yt-progress-wrap {
       position: absolute;
@@ -463,11 +555,26 @@
       background: var(--mie-black);
     }
 
-    .lightbox__text h3.paragraph.is--big { font-size: 28px; margin-bottom: 20px; }
-    .lightbox__text .np__tags { gap: 10px; }
-    .lightbox__text .np__date { font-size: 13px; }
-    .lightbox__text .ll__item { font-size: 13px; }
-    .lightbox__text .link-group { display: none; }
+    .lightbox__text h3.paragraph.is--big {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .lightbox__text .np__tags {
+      gap: 10px;
+    }
+
+    .lightbox__text .np__date {
+      font-size: 13px;
+    }
+
+    .lightbox__text .ll__item {
+      font-size: 13px;
+    }
+
+    .lightbox__text .link-group {
+      display: none;
+    }
 
     .lightbox__close {
       position: absolute;
@@ -516,6 +623,7 @@
       justify-content: center;
       transition: transform 0.3s ease;
     }
+
     .lightbox__share img {
       width: 100%;
       height: 100%;
@@ -523,7 +631,10 @@
       filter: invert(0);
       pointer-events: none;
     }
-    .lightbox__share:hover { transform: scale(1.2); }
+
+    .lightbox__share:hover {
+      transform: scale(1.2);
+    }
 
     .lightbox__toast {
       position: absolute;
@@ -570,9 +681,17 @@
       pointer-events: none;
     }
 
-    .lightbox__nav:hover { transform: translateY(-50%) scale(1.2); }
-    .lightbox__prev { left: clamp(8px, 2vw, 20px); }
-    .lightbox__next { right: clamp(8px, 2vw, 20px); }
+    .lightbox__nav:hover {
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .lightbox__prev {
+      left: clamp(8px, 2vw, 20px);
+    }
+
+    .lightbox__next {
+      right: clamp(8px, 2vw, 20px);
+    }
 
     .video-mute-btn {
       position: absolute;
@@ -592,13 +711,31 @@
       display: none;
       transition: background 0.2s ease;
     }
-    .video-mute-btn.is-active { display: flex; }
-    .video-mute-btn:hover { background: rgba(0, 0, 0, 0.75); }
-    .video-mute-btn svg { width: 16px; height: 16px; pointer-events: none; }
+
+    .video-mute-btn.is-active {
+      display: flex;
+    }
+
+    .video-mute-btn:hover {
+      background: rgba(0, 0, 0, 0.75);
+    }
+
+    .video-mute-btn svg {
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
 
     @media (max-width: 480px) {
-      .lightbox__nav img { width: 20px; height: 20px; }
-      .video-mute-btn { width: 32px; height: 32px; }
+      .lightbox__nav img {
+        width: 20px;
+        height: 20px;
+      }
+
+      .video-mute-btn {
+        width: 32px;
+        height: 32px;
+      }
     }
 
     /* film grain styling now lives in noise.js (unified) */
@@ -733,7 +870,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 6px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
@@ -741,7 +878,7 @@
       background: transparent;
       border: none;
       border-bottom: 1px solid transparent;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
       font-family: "DM Sans", sans-serif;
       font-size: 11px;
       font-weight: 400;
@@ -754,7 +891,7 @@
 
     .lab-filter-btn:hover {
       color: #fff;
-      border-color: rgba(255,255,255,0.5);
+      border-color: rgba(255, 255, 255, 0.5);
     }
 
     .lab-filter-btn.is--active {
@@ -774,7 +911,10 @@
     }
 
     @media (max-width: 1024px) {
-      #lab-filter-tabs .lab-filter-btn { display: none; }
+      #lab-filter-tabs .lab-filter-btn {
+        display: none;
+      }
+
       .sb__item.is--filtered-out {
         filter: none;
         opacity: 1;
@@ -805,26 +945,71 @@
        RESPONSIVE
     ================================================================ */
     @media (max-width: 1024px) {
-      :root { --grid-cols: repeat(24, 1fr); }
+      :root {
+        --grid-cols: repeat(24, 1fr);
+      }
 
       /* 每組 10 個項目重新分配到 24 欄 */
-      .sb__item:nth-child(10n + 1)  { grid-column: 2 / span 11; }
-      .sb__item:nth-child(10n + 2)  { grid-column: 14 / span 10; }
-      .sb__item:nth-child(10n + 3)  { grid-column: 2 / span 10; }
-      .sb__item:nth-child(10n + 4)  { grid-column: 13 / span 11; }
-      .sb__item:nth-child(10n + 5)  { grid-column: 2 / span 22; }
-      .sb__item:nth-child(10n + 6)  { grid-column: 2 / span 10; }
-      .sb__item:nth-child(10n + 7)  { grid-column: 13 / span 11; }
-      .sb__item:nth-child(10n + 8)  { grid-column: 2 / span 11; }
-      .sb__item:nth-child(10n + 9)  { grid-column: 14 / span 10; }
-      .sb__item:nth-child(10n + 10) { grid-column: 2 / span 22; }
+      .sb__item:nth-child(10n + 1) {
+        grid-column: 2 / span 11;
+      }
 
-      .app { padding: 6vh 0 14vh; }
+      .sb__item:nth-child(10n + 2) {
+        grid-column: 14 / span 10;
+      }
 
-      .lightbox { padding: 20px; }
-      .lightbox__content-wrap { max-height: 92vh; overflow-y: auto; }
-      .lightbox__text { padding: 24px; }
-      .lightbox__text h3.paragraph.is--big { font-size: 22px; }
+      .sb__item:nth-child(10n + 3) {
+        grid-column: 2 / span 10;
+      }
+
+      .sb__item:nth-child(10n + 4) {
+        grid-column: 13 / span 11;
+      }
+
+      .sb__item:nth-child(10n + 5) {
+        grid-column: 2 / span 22;
+      }
+
+      .sb__item:nth-child(10n + 6) {
+        grid-column: 2 / span 10;
+      }
+
+      .sb__item:nth-child(10n + 7) {
+        grid-column: 13 / span 11;
+      }
+
+      .sb__item:nth-child(10n + 8) {
+        grid-column: 2 / span 11;
+      }
+
+      .sb__item:nth-child(10n + 9) {
+        grid-column: 14 / span 10;
+      }
+
+      .sb__item:nth-child(10n + 10) {
+        grid-column: 2 / span 22;
+      }
+
+      .app {
+        padding: 6vh 0 14vh;
+      }
+
+      .lightbox {
+        padding: 20px;
+      }
+
+      .lightbox__content-wrap {
+        max-height: 92vh;
+        overflow-y: auto;
+      }
+
+      .lightbox__text {
+        padding: 24px;
+      }
+
+      .lightbox__text h3.paragraph.is--big {
+        font-size: 22px;
+      }
 
       .work-hero {
         padding-top: clamp(110px, 15vh, 160px);
@@ -858,13 +1043,19 @@
       .work-hero__year {
         display: none;
       }
+
       .work-hero__tags {
         display: none;
       }
 
       /* Tablet: reduce slide distance so animation doesn't overflow */
-      .work-hero__title { transform: translateX(8vw) translateZ(0); }
-      .work-hero__code  { transform: translateX(-8vw) translateZ(0); }
+      .work-hero__title {
+        transform: translateX(8vw) translateZ(0);
+      }
+
+      .work-hero__code {
+        transform: translateX(-8vw) translateZ(0);
+      }
     }
 
     @media (max-width: 768px) {
@@ -875,18 +1066,28 @@
         padding: 0 clamp(16px, 5vw, 32px);
       }
 
-      .sb__item { width: 100%; }
+      .sb__item {
+        width: 100%;
+      }
 
-      .sb__item-link { aspect-ratio: 4/3 !important; }
-      .sb__item-link img { height: 100%; }
+      .sb__item-link {
+        aspect-ratio: 4/3 !important;
+      }
 
-      .app { padding: 4vh 0 10vh; }
+      .sb__item-link img {
+        height: 100%;
+      }
+
+      .app {
+        padding: 4vh 0 10vh;
+      }
 
       /* ── lightbox mobile ── */
       .lightbox {
         padding: 0;
         align-items: flex-start;
       }
+
       .lightbox__content-wrap {
         max-height: 100dvh;
         max-height: 100vh;
@@ -896,15 +1097,43 @@
         -webkit-overflow-scrolling: touch;
         margin: auto 0;
       }
-      .lightbox__text { padding: 20px 16px; }
-      .lightbox__text h3.paragraph.is--big { font-size: 18px; margin-bottom: 14px; }
-      .lightbox__close { bottom: 16px; right: 16px; top: auto; width: 24px; height: 24px; }
-      .lightbox__share { bottom: 16px; left: 16px; top: auto; width: 30px; height: 30px; }
+
+      .lightbox__text {
+        padding: 20px 16px;
+      }
+
+      .lightbox__text h3.paragraph.is--big {
+        font-size: 18px;
+        margin-bottom: 14px;
+      }
+
+      .lightbox__close {
+        bottom: 16px;
+        right: 16px;
+        top: auto;
+        width: 24px;
+        height: 24px;
+      }
+
+      .lightbox__share {
+        bottom: 16px;
+        left: 16px;
+        top: auto;
+        width: 30px;
+        height: 30px;
+      }
+
       .lightbox__nav {
         top: 50%;
       }
-      .lightbox__prev { left: 6px; }
-      .lightbox__next { right: 6px; }
+
+      .lightbox__prev {
+        left: 6px;
+      }
+
+      .lightbox__next {
+        right: 6px;
+      }
 
       /* ── Hero: appear directly on mobile, no slide animation ── */
       .work-hero__title,
@@ -913,33 +1142,82 @@
         transform: none;
         transition: none;
       }
+
       .work-hero__line {
         transform: scaleX(1);
         transition: none;
       }
+
       .work-hero__desc,
       .work-hero__bottom {
         opacity: 1;
         transition: none;
       }
 
-      .work-hero { padding-top: 104px; }
-      .work-hero__title { font-size: clamp(3.6rem, 20vw, 7rem); }
-      .work-hero__kicker, .work-hero__desc { font-size: 0.68rem; letter-spacing: 0.13em; }
+      .work-hero {
+        padding-top: 104px;
+      }
+
+      .work-hero__title {
+        font-size: clamp(3.6rem, 20vw, 7rem);
+      }
+
+      .work-hero__kicker,
+      .work-hero__desc {
+        font-size: 0.68rem;
+        letter-spacing: 0.13em;
+      }
     }
 
     @media (max-width: 480px) {
-      .ps__list { gap: 36px; padding: 0 16px; }
+      .ps__list {
+        gap: 36px;
+        padding: 0 16px;
+      }
 
-      .lightbox__text { padding: 14px 12px; }
-      .lightbox__text h3.paragraph.is--big { font-size: 16px; }
-      .lightbox__close { bottom: 12px; right: 12px; top: auto; width: 20px; height: 20px; }
-      .lightbox__share { bottom: 12px; left: 12px; top: auto; width: 25px; height: 25px; }
-      .lightbox__nav img { width: 18px; height: 18px; }
-      .video-mute-btn { width: 30px; height: 30px; bottom: 8px; right: 8px; }
+      .lightbox__text {
+        padding: 14px 12px;
+      }
 
-      .work-hero__title { font-size: 65px; }
-      .disclaimer { font-size: 11px; }
+      .lightbox__text h3.paragraph.is--big {
+        font-size: 16px;
+      }
+
+      .lightbox__close {
+        bottom: 12px;
+        right: 12px;
+        top: auto;
+        width: 20px;
+        height: 20px;
+      }
+
+      .lightbox__share {
+        bottom: 12px;
+        left: 12px;
+        top: auto;
+        width: 25px;
+        height: 25px;
+      }
+
+      .lightbox__nav img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .video-mute-btn {
+        width: 30px;
+        height: 30px;
+        bottom: 8px;
+        right: 8px;
+      }
+
+      .work-hero__title {
+        font-size: 65px;
+      }
+
+      .disclaimer {
+        font-size: 11px;
+      }
     }
 
     /* ================================================================
@@ -952,12 +1230,14 @@
       pointer-events: none;
       z-index: 5;
     }
+
     .grid-overlay-inner {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 0.75rem;
       height: 100%;
     }
+
     .grid-column {
       border-left: 1px solid rgba(255, 255, 255, 0.07);
       border-right: 1px solid rgba(255, 255, 255, 0.07);
@@ -980,7 +1260,7 @@
       padding: 3vw 2.5vw;
       position: relative;
       z-index: 5;
-    
+
     }
 
     .footer-brand-title {
@@ -1035,7 +1315,10 @@
       margin-bottom: 4px;
       transition: opacity 0.2s;
     }
-    .footer-contact-info a:hover { opacity: 0.6; }
+
+    .footer-contact-info a:hover {
+      opacity: 0.6;
+    }
 
     .footer-contact-info span {
       color: #ffffff;
@@ -1056,7 +1339,10 @@
       letter-spacing: 1.5px;
       transition: opacity 0.2s;
     }
-    .footer-nav-links a:hover { opacity: 0.5; }
+
+    .footer-nav-links a:hover {
+      opacity: 0.5;
+    }
 
     .footer-right-panel {
       display: flex;
@@ -1108,6 +1394,7 @@
       position: relative;
       z-index: 1;
     }
+
     .footer-parallax-copy {
       position: absolute;
       top: 30px;
@@ -1121,11 +1408,11 @@
       pointer-events: none;
     }
 
-     @media (max-width: 1440px) {
-     .footer-parallax-section {
-      height: 300px;
-      
-    }
+    @media (max-width: 1440px) {
+      .footer-parallax-section {
+        height: 300px;
+
+      }
     }
 
 
@@ -1145,14 +1432,25 @@
     }
 
     @media (max-width: 1024px) {
-      .footer-top { padding: 6vw 4vw; }
+      .footer-top {
+        padding: 6vw 4vw;
+      }
+
       .footer-copyright-bridge,
-      .footer-parallax-section { display: none !important; }
+      .footer-parallax-section {
+        display: none !important;
+      }
     }
 
     @media (max-width: 768px) {
-      .footer-top { padding: 32px 20px 40px; }
-      .footer-brand-title { margin-bottom: 24px; }
+      .footer-top {
+        padding: 32px 20px 40px;
+      }
+
+      .footer-brand-title {
+        margin-bottom: 24px;
+      }
+
       .footer-info-bar {
         font-size: 12px;
         letter-spacing: 1px;
@@ -1160,27 +1458,41 @@
         flex-wrap: wrap;
         gap: 8px;
       }
+
       .footer-main-content {
         grid-template-columns: 1fr;
         gap: 32px;
       }
+
       .footer-right-panel {
         align-items: flex-start;
         margin-top: 0;
       }
-      .footer-video-thumb { max-width: 100%; }
+
+      .footer-video-thumb {
+        max-width: 100%;
+      }
+
       .footer-nav-links {
         gap: 16px;
         margin-top: 24px;
         flex-wrap: wrap;
       }
-      
+
     }
 
     @media (max-width: 480px) {
-      .footer-top { padding: 24px 16px 32px; }
-      .footer-nav-links { gap: 12px; }
-      .footer-contact-info span { font-size: 16px; }
+      .footer-top {
+        padding: 24px 16px 32px;
+      }
+
+      .footer-nav-links {
+        gap: 12px;
+      }
+
+      .footer-contact-info span {
+        font-size: 16px;
+      }
     }
 
     /* ================================================================
@@ -1194,7 +1506,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.08); */
       padding: 10px;
       border-top: 1px solid #313131;
-    border-bottom: 1px solid #313131;
+      border-bottom: 1px solid #313131;
     }
 
     .lab-marquee__track {
@@ -1230,14 +1542,33 @@
     }
 
     @keyframes sep-spin {
-      0%   { transform: rotate(0deg); }
-      40%  { transform: rotate(180deg); }
-      60%  { transform: rotate(180deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      40% {
+        transform: rotate(180deg);
+      }
+
+      60% {
+        transform: rotate(180deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .lab-marquee__track { transform: none !important; }
+      .lab-marquee__track {
+        transform: none !important;
+      }
+    }
+  </style>
+  <style id="seo-nav-cloak">
+    .ns-showcase-row__index::before,
+    .ns-showcase-row__title-layer::before {
+      content: attr(data-text);
     }
   </style>
 </head>
@@ -1251,7 +1582,8 @@
     <div class="page-transition-curtain js-page-transition-curtain"></div>
     <div class="page-transition-frame js-page-transition-frame">
       <div class="page-transition-loader js-page-transition-loader"></div>
-      <div class="page-transition-counter js-page-transition-counter">[ <span class="js-page-transition-counter-num">00</span> ]</div>
+      <div class="page-transition-counter js-page-transition-counter">[ <span
+          class="js-page-transition-counter-num">00</span> ]</div>
       <div class="page-transition-panel js-page-transition-panel">
         <div class="page-transition-meta is-top-left">NUDOT</div>
         <div class="page-transition-meta is-top-right js-page-transition-meta-to">lab.html</div>
@@ -1283,113 +1615,114 @@
       <button class="ns-icon ns-hamburger" id="nav-scroll-menu-btn" data-cursor="OPEN" aria-label="Open menu"
         aria-expanded="false" aria-controls="nav-scroll-dropdown">
         <svg class="ns-ham-svg" viewBox="0 0 24 24">
-          <line class="ns-ham-l1" x1="5" y1="9"  x2="19" y2="9"></line>
+          <line class="ns-ham-l1" x1="5" y1="9" x2="19" y2="9"></line>
           <line class="ns-ham-l2" x1="5" y1="15" x2="19" y2="15"></line>
         </svg>
       </button>
     </nav>
     <div class="ns-dropdown" id="nav-scroll-dropdown" aria-hidden="true">
-          <div class="ns-dropdown__inner" id="nav-scroll-dropdown-content">
-            <div class="ns-menu-stage">
-              <!-- <div class="ns-menu-topline ns-dropdown__item">
+      <div class="ns-dropdown__inner" id="nav-scroll-dropdown-content">
+        <div class="ns-menu-stage">
+          <!-- <div class="ns-menu-topline ns-dropdown__item">
               <span class="ns-menu-topline__brand">NUDOT CREATIVE STUDIO</span>
               <a class="ns-menu-topline__contact" href="#site-footer">CONTACT</a>
             </div> -->
 
-              <div class="ns-menu-rows">
-                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home">
-                  <span class="ns-showcase-row__index">( 首頁 )</span>
-                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
-                    <img src="images/nav/1.webp" data-nav-src="images/nav/1.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                  <span class="ns-showcase-row__title">
-                    <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">HOME</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">HOME</span>
-                    </span>
-                  </span>
-                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
-                    <img src="images/nav/2.webp" data-nav-src="images/nav/2.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                </a>
+          <div class="ns-menu-rows">
+            <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home" aria-label="首頁">
+              <span class="ns-showcase-row__index" data-text="( 首頁 )"></span>
+              <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                <img src="images/nav/1.webp" data-nav-src="images/nav/1.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+              <span class="ns-showcase-row__title">
+                <span class="ns-showcase-row__title-track">
+                  <span class="ns-showcase-row__title-layer is-primary" data-text="HOME"></span>
+                  <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="HOME"></span>
+                </span>
+              </span>
+              <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                <img src="images/nav/2.webp" data-nav-src="images/nav/2.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+            </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About">
-                  <span class="ns-showcase-row__index">( 核點創意 )</span>
-                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
-                    <img src="images/nav/3.webp" data-nav-src="images/nav/3.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                  <span class="ns-showcase-row__title">
-                    <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">ABOUT</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">ABOUT</span>
-                    </span>
-                  </span>
-                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
-                    <img src="images/nav/4.webp" data-nav-src="images/nav/4.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                </a>
+            <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About" aria-label="核點創意">
+              <span class="ns-showcase-row__index" data-text="( 核點創意 )"></span>
+              <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                <img src="images/nav/3.webp" data-nav-src="images/nav/3.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+              <span class="ns-showcase-row__title">
+                <span class="ns-showcase-row__title-track">
+                  <span class="ns-showcase-row__title-layer is-primary" data-text="ABOUT"></span>
+                  <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="ABOUT"></span>
+                </span>
+              </span>
+              <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                <img src="images/nav/4.webp" data-nav-src="images/nav/4.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+            </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work">
-                  <span class="ns-showcase-row__index">( 設計案例 )</span>
-                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
-                    <img src="images/nav/5.webp" data-nav-src="images/nav/5.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                  <span class="ns-showcase-row__title">
-                    <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">WORK</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">WORK</span>
-                    </span>
-                  </span>
-                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
-                    <img src="images/nav/6.webp" data-nav-src="images/nav/6.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                </a>
+            <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work" aria-label="設計案例">
+              <span class="ns-showcase-row__index" data-text="( 設計案例 )"></span>
+              <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                <img src="images/nav/5.webp" data-nav-src="images/nav/5.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+              <span class="ns-showcase-row__title">
+                <span class="ns-showcase-row__title-track">
+                  <span class="ns-showcase-row__title-layer is-primary" data-text="WORK"></span>
+                  <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="WORK"></span>
+                </span>
+              </span>
+              <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                <img src="images/nav/6.webp" data-nav-src="images/nav/6.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+            </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs">
-                  <span class="ns-showcase-row__index">( 核點實驗室 )</span>
-                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
-                    <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                  <span class="ns-showcase-row__title">
-                    <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">LABS</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">LABS</span>
-                    </span>
-                  </span>
-                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
-                    <img src="images/nav/8.webp" data-nav-src="images/nav/8.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                </a>
+            <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs" aria-label="核點實驗室">
+              <span class="ns-showcase-row__index" data-text="( 核點實驗室 )"></span>
+              <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+              <span class="ns-showcase-row__title">
+                <span class="ns-showcase-row__title-track">
+                  <span class="ns-showcase-row__title-layer is-primary" data-text="LABS"></span>
+                  <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="LABS"></span>
+                </span>
+              </span>
+              <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                <img src="images/nav/8.webp" data-nav-src="images/nav/8.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+            </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="contact.php" data-transition-label="Contact">
-                  <span class="ns-showcase-row__index">( 聯繫我們 )</span>
-                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
-                    <img src="images/nav/9.webp" data-nav-src="images/nav/9.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                  <span class="ns-showcase-row__title">
-                    <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">CONTACT</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">CONTACT</span>
-                    </span>
-                  </span>
-                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
-                    <img src="images/nav/10.webp" data-nav-src="images/nav/10.webp" alt="" width="300" height="200"
-                      loading="lazy" decoding="async">
-                  </span>
-                </a>
-              </div>
-            </div>
+            <a class="ns-showcase-row ns-dropdown__item" href="contact.php" data-transition-label="Contact"
+              aria-label="聯繫我們">
+              <span class="ns-showcase-row__index" data-text="( 聯繫我們 )"></span>
+              <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                <img src="images/nav/9.webp" data-nav-src="images/nav/9.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+              <span class="ns-showcase-row__title">
+                <span class="ns-showcase-row__title-track">
+                  <span class="ns-showcase-row__title-layer is-primary" data-text="CONTACT"></span>
+                  <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="CONTACT"></span>
+                </span>
+              </span>
+              <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                <img src="images/nav/10.webp" data-nav-src="images/nav/10.webp" alt="" width="300" height="200"
+                  loading="lazy" decoding="async">
+              </span>
+            </a>
           </div>
         </div>
+      </div>
+    </div>
   </div>
 
   <div class="lightbox">
@@ -1399,24 +1732,30 @@
         <div class="lightbox__media">
           <img class="lightbox__img" src="" alt="Zoomed Image">
           <video class="lightbox__video" id="lightbox-video" preload="none" playsinline loop></video>
-          <iframe class="lightbox__yt" id="lightbox-yt-frame" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe class="lightbox__yt" id="lightbox-yt-frame" src="" title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
           <div class="yt-overlay" id="yt-overlay">
             <button class="yt-play-btn" id="yt-play-btn" aria-label="播放 / 暫停">
-              <svg id="yt-btn-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+              <svg id="yt-btn-icon" viewBox="0 0 24 24">
+                <polygon points="5,3 19,12 5,21" />
+              </svg>
             </button>
             <div class="yt-progress-wrap" id="yt-progress-wrap">
               <div class="yt-progress-fill" id="yt-progress-fill"></div>
             </div>
             <button class="video-mute-btn" id="video-mute-btn" aria-label="靜音切換">
-              <svg class="vm-icon vm-icon--muted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="#fff" stroke="none"/>
-                <line x1="23" y1="9" x2="17" y2="15"/>
-                <line x1="17" y1="9" x2="23" y2="15"/>
+              <svg class="vm-icon vm-icon--muted" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="#fff" stroke="none" />
+                <line x1="23" y1="9" x2="17" y2="15" />
+                <line x1="17" y1="9" x2="23" y2="15" />
               </svg>
-              <svg class="vm-icon vm-icon--sound" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="#fff" stroke="none"/>
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              <svg class="vm-icon vm-icon--sound" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="#fff" stroke="none" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
               </svg>
             </button>
           </div>
@@ -1472,8 +1811,10 @@
       <p class="work-hero__kicker">（ 核點實驗室 ）</p>
       <div class="work-hero__tags" id="lab-filter-tabs">
         <button class="lab-filter-btn is--active" data-filter="ALL">ALL</button>
+        <button class="lab-filter-btn" data-filter="網頁動態設計">網頁動態設計</button>
         <button class="lab-filter-btn" data-filter="動態影像生成">動態影像生成</button>
         <button class="lab-filter-btn" data-filter="高階商業視覺圖像生成">高階商業視覺圖像生成</button>
+
         <!-- <button class="lab-filter-btn" data-filter="DESIGN">DESIGN</button>
         <button class="lab-filter-btn" data-filter="TECHNOLOGY">TECHNOLOGY</button>
         <button class="lab-filter-btn" data-filter="UX/UI">UX/UI</button> -->
@@ -1485,50 +1826,70 @@
     <div class="ps__list-wrap">
       <div class="ps__list">
 
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/d1.mp4">
+            <img src="images/lab/d1.webp" alt="3D動態網頁設計">
+          </a>
+          <div class="sb__item-desc">
+            <h3 class="paragraph is--big">3D Web Design</h3>
+            <div class="np__tags">
+              <span class="np__date">JUN 25, 2026</span>
+              <div class="ll__list"><span class="ll__item">網頁動態設計</span></div>
+            </div>
+            <div class="link-group">View Details</div>
+
+          </div>
+        </article>
+
+
+
         <article class="sb__item">
           <a href="#" class="sb__item-link" data-video-src="images/lab/swatch.mp4">
-            <img src="images/lab/swatch.webp" alt="Presentation Screen">
+            <img src="images/lab/swatch.webp" alt="動態影像生成的機械腕錶視覺網頁設計展示">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">SKELETON WATCH VISUAL SHOWCASE</h3>
             <div class="np__tags">
               <span class="np__date">MAY 25, 2025</span>
-                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
-        <article class="sb__item">
-          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/p1.webp" data-lightbox-alt="RING SCENARIO SHOWCASE">
-            <img src="images/lab/p1-1.webp" alt="RING SCENARIO SHOWCASE">
-          </a>
-          <div class="sb__item-desc">
-            <h3 class="paragraph is--big">RING SCENARIO SHOWCASE</h3>
-            <div class="np__tags">
-              <span class="np__date">JANUARY 15, 2026</span>
-              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
-            </div>
-            <div class="link-group">View Details</div>
-              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
-          </div>
-        </article>
+        <!--<article class="sb__item">-->
+        <!--  <a href="#" class="sb__item-link" data-lightbox-src="images/lab/p1.webp" data-lightbox-alt="RING SCENARIO SHOWCASE">-->
+        <!--    <img src="images/lab/p1-1.webp" alt="RING SCENARIO SHOWCASE">-->
+        <!--  </a>-->
+        <!--  <div class="sb__item-desc">-->
+        <!--    <h3 class="paragraph is--big">RING SCENARIO SHOWCASE</h3>-->
+        <!--    <div class="np__tags">-->
+        <!--      <span class="np__date">JANUARY 15, 2026</span>-->
+        <!--      <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>-->
+        <!--    </div>-->
+        <!--    <div class="link-group">View Details</div>-->
+        <!--      <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>-->
+        <!--  </div>-->
+        <!--</article>-->
 
         <article class="sb__item">
           <a href="#" class="sb__item-link" data-video-src="images/lab/car.mp4">
-             <img src="images/lab/car.webp" alt="AI 動態影像 汽車">
+            <img src="images/lab/car.webp" alt="AI 動態影像 汽車">
           </a>
           <div class="sb__item-desc">
-              <h3 class="paragraph is--big">DYNAMIC SCENARIO: CROWN SPORT</h3>
+            <h3 class="paragraph is--big">DYNAMIC SCENARIO: CROWN SPORT</h3>
             <div class="np__tags">
               <span class="np__date">OCTOBER 24, 2025</span>
               <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
-          
-            
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
+
+
           </div>
         </article>
 
@@ -1543,22 +1904,24 @@
               <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-               <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
         <article class="sb__item">
-           <a href="#" class="sb__item-link" data-lightbox-src="images/lab/lg_cont.webp" data-lightbox-alt="AI生成 檯燈展示">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/lg_cont.webp" data-lightbox-alt="AI生成 檯燈展示">
             <img src="images/lab/lg.webp" alt="RING SCENARIO SHOWCASE">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">ICONIC LIGHTING SHOWCASE</h3>
             <div class="np__tags">
               <span class="np__date">FEBRUARY 14, 2025</span>
-            <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1573,7 +1936,8 @@
               <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1588,7 +1952,8 @@
               <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1603,22 +1968,24 @@
               <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
         <article class="sb__item">
-        <a href="#" class="sb__item-link" data-lightbox-src="images/lab/ch_cont.webp" data-lightbox-alt="AI生成 坐墊展示">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/ch_cont.webp" data-lightbox-alt="AI生成 坐墊展示">
             <img src="images/lab/ch.webp" alt="Shoe motion blur">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">CUSHION VISUAL SHOWCASE</h3>
             <div class="np__tags">
               <span class="np__date">SEPTEMBER 28, 2025</span>
-                <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1630,29 +1997,31 @@
             <h3 class="paragraph is--big">VASE VISUAL SHOWCASE</h3>
             <div class="np__tags">
               <span class="np__date">SEPTEMBER 24, 2025</span>
-               <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
         </article>
 
         <article class="sb__item">
-         <a href="#" class="sb__item-link" data-video-src="images/lab/w.mp4">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/w.mp4">
             <img src="images/lab/w.webp" alt="Presentation Screen">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">DARK GIRL GROUP DANCE VISUAL</h3>
             <div class="np__tags">
               <span class="np__date">AUGUST 15, 2025</span>
-             <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
         <article class="sb__item">
-           <a href="#" class="sb__item-link" data-video-src="images/lab/s.mp4">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/s.mp4">
             <img src="images/lab/s.webp" alt="Presentation Screen">
           </a>
           <div class="sb__item-desc">
@@ -1662,13 +2031,14 @@
               <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
 
         <article class="sb__item">
-         <a href="#" class="sb__item-link" data-lightbox-src="images/lab/lg3_cont.webp" data-lightbox-alt="AI生成 花瓶展示">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/lg3_cont.webp" data-lightbox-alt="AI生成 花瓶展示">
             <img src="images/lab/lg3.webp" alt="Shoe motion blur">
           </a>
           <div class="sb__item-desc">
@@ -1678,28 +2048,31 @@
               <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-              <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
 
-           <article class="sb__item">
-         <a href="#" class="sb__item-link" data-video-src="images/lab/w2.mp4">
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/w2.mp4">
             <img src="images/lab/w2.webp" alt="Presentation Screen">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">RETRO KOREA FASHION EDITORIAL</h3>
             <div class="np__tags">
               <span class="np__date">JULY 22, 2025</span>
-             <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
         <article class="sb__item">
-            <a href="#" class="sb__item-link" data-lightbox-src="images/lab/c_cont.webp?v=1" data-lightbox-alt="AI生成 地毯展示">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/c_cont.webp?v=1"
+            data-lightbox-alt="AI生成 地毯展示">
             <img src="images/lab/c.webp?v=1" alt="Shoe motion blur">
           </a>
           <div class="sb__item-desc">
@@ -1709,21 +2082,23 @@
               <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
         </article>
 
         <article class="sb__item">
-             <a href="#" class="sb__item-link" data-video-src="images/lab/n.mp4">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/n.mp4">
             <img src="images/lab/n.webp" alt="Presentation Screen">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">NUCLEAR SPORTS DRINK CAN DESIGN</h3>
             <div class="np__tags">
               <span class="np__date">JUNE 18, 2025</span>
-                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1739,7 +2114,8 @@
               <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1751,15 +2127,16 @@
             <h3 class="paragraph is--big">OUTDOOR LIFESTYLE CAMPAIGN</h3>
             <div class="np__tags">
               <span class="np__date">MAY 14, 2025</span>
-                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
 
-           <article class="sb__item">
+        <article class="sb__item">
           <a href="#" class="sb__item-link" data-video-src="images/lab/cloth.mp4">
             <img src="images/lab/cloth.webp" alt="Presentation Screen">
           </a>
@@ -1767,45 +2144,48 @@
             <h3 class="paragraph is--big">NUDOT APPAREL VISUAL CONCEPT</h3>
             <div class="np__tags">
               <span class="np__date">MAY 14, 2025</span>
-                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
-       
+
 
         <article class="sb__item">
-           <a href="#" class="sb__item-link" data-video-src="images/lab/logocube.mp4">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/logocube.mp4">
             <img src="images/lab/logocube.webp" alt="Presentation Screen">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">CREATIVE TOOLS GLASS CUBE CONCEPT</h3>
             <div class="np__tags">
               <span class="np__date">APRIL 10, 2025</span>
-               <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
 
 
 
-             <article class="sb__item">
-             <a href="#" class="sb__item-link" data-video-src="images/lab/cc.mp4">
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-video-src="images/lab/cc.mp4">
             <img src="images/lab/cc.webp" alt="Presentation Screen">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">FLOATING ECOSYSTEM VISUAL CONCEPT</h3>
             <div class="np__tags">
               <span class="np__date">JUNE 18, 2025</span>
-                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1821,27 +2201,30 @@
               <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
-    <article class="sb__item">
-           <a href="#" class="sb__item-link" data-lightbox-src="images/lab/w1_cont.webp" data-lightbox-alt="AI生成 人物辦公室情境展示">
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/w1_cont.webp"
+            data-lightbox-alt="AI生成 人物辦公室情境展示">
             <img src="images/lab/w1.webp" alt="Shoe motion blur">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">OFFICE LIFESTYLE SCENARIO</h3>
             <div class="np__tags">
               <span class="np__date">MAY 14, 2025</span>
-                <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
 
-           <article class="sb__item">
+        <article class="sb__item">
           <a href="#" class="sb__item-link" data-video-src="images/lab/tk.mp4">
             <img src="images/lab/tk.webp" alt="Presentation Screen">
           </a>
@@ -1849,27 +2232,29 @@
             <h3 class="paragraph is--big">URBAN STREETWEAR VISUAL SCENE</h3>
             <div class="np__tags">
               <span class="np__date">MAY 14, 2025</span>
-                <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
+              <div class="ll__list"><span class="ll__item">動態影像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
-       
 
-           <article class="sb__item">
-           <a href="#" class="sb__item-link" data-lightbox-src="images/lab/k1_cont.webp" data-lightbox-alt="AI生成 兒童情境展示">
+
+        <article class="sb__item">
+          <a href="#" class="sb__item-link" data-lightbox-src="images/lab/k1_cont.webp" data-lightbox-alt="AI生成 兒童情境展示">
             <img src="images/lab/k1.webp" alt="Shoe motion blur">
           </a>
           <div class="sb__item-desc">
             <h3 class="paragraph is--big">CHILDREN FASHION LIFESTYLE SHOWCASE</h3>
             <div class="np__tags">
               <span class="np__date">MAY 14, 2025</span>
-                <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
+              <div class="ll__list"><span class="ll__item">高階商業視覺圖像生成</span></div>
             </div>
             <div class="link-group">View Details</div>
-             <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed by, or sponsored by the featured brand.</div>
+            <div class="disclaimer">Disclaimer: This is an experimental visual concept. Not affiliated with, endorsed
+              by, or sponsored by the featured brand.</div>
           </div>
         </article>
 
@@ -1923,42 +2308,45 @@
   <!-- ============================================================
        FOOTER
   ============================================================ -->
-    <footer class="site-footer" id="site-footer">
-        <div class="footer-top">
-          <div class="footer-main-content">
-            <div>
-              <div class="footer-contact-info">
-                <a href="mailto:hello@nudot.com.tw">hello@nudot.com.tw</a>
-                <span>+8869 83 750 522</span>
-              </div>
-              <div style="color:#575757;font-size:14px;margin-top:8px;">臺中市北屯區文心路三段447號</div>
-              <nav class="footer-nav-links">
-                <a href="https://www.instagram.com/nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Instagram">Instagram</a>
-                <a href="https://www.threads.com/@nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Threads">Threads</a>
-                <a href="https://www.facebook.com/profile.php?id=61588727983387&locale=zh_TW" target="_blank" rel="noopener noreferrer"
-                  data-transition-label="Facebook">Facebook</a>
-              </nav>
-            </div>
-            <div class="footer-right-panel">
-              <div class="footer-video-thumb">
-                <video autoplay muted loop playsinline preload="metadata" width="320" height="180" disableremoteplayback>
-                  <source src="images/footer.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-top">
+      <div class="footer-main-content">
+        <div>
+          <div class="footer-contact-info">
+            <a href="mailto:hello@nudot.com.tw">hello@nudot.com.tw</a>
+            <span>+8869 83 750 522</span>
           </div>
-
+          <div style="color:#575757;font-size:14px;margin-top:8px;">臺中市北屯區文心路三段447號</div>
+          <nav class="footer-nav-links">
+            <a href="https://www.instagram.com/nudotlabs" target="_blank" rel="noopener noreferrer"
+              data-transition-label="Instagram">Instagram</a>
+            <a href="https://www.threads.com/@nudotlabs" target="_blank" rel="noopener noreferrer"
+              data-transition-label="Threads">Threads</a>
+            <a href="https://www.facebook.com/profile.php?id=61588727983387&locale=zh_TW" target="_blank"
+              rel="noopener noreferrer" data-transition-label="Facebook">Facebook</a>
+          </nav>
         </div>
+        <div class="footer-right-panel">
+          <div class="footer-video-thumb">
+            <video autoplay muted loop playsinline preload="metadata" width="320" height="180" disableremoteplayback>
+              <source src="images/footer.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
 
-        <div class="footer-parallax-section" id="footer-parallax-section">
-          <div class="footer-parallax-bg" id="footer-parallax-bg" data-bg="images/footer.webp"
-            style="--footer-bg-image: url('images/footer.webp');"></div>
-          <div class="footer-parallax-copy">
-            <div>核點創意有限公司</div>
-            <div>&#169; 2026 NUDOT STUDIO. ALL RIGHTS RESERVED.</div>
-          </div>        </div>
+    </div>
 
-      </footer>
+    <div class="footer-parallax-section" id="footer-parallax-section">
+      <div class="footer-parallax-bg" id="footer-parallax-bg" data-bg="images/footer.webp"
+        style="--footer-bg-image: url('images/footer.webp');"></div>
+      <div class="footer-parallax-copy">
+        <div>核點創意有限公司</div>
+        <div>&#169; 2026 NUDOT STUDIO. ALL RIGHTS RESERVED.</div>
+      </div>
+    </div>
+
+  </footer>
 
   <!-- ============================================================
        FILM GRAIN
@@ -1978,7 +2366,7 @@
   <!-- ============================================================
        CURSOR
   ============================================================ -->
-  <div id="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true" data-cursor-label="EXPLORE" data-cursor-side="right"></div>
 
   <!-- ============================================================
@@ -2041,8 +2429,8 @@
       // Stagger hourglass spins so they don't all tick in unison
       (function () {
         var sepImgs = document.querySelectorAll('.lab-marquee__sep img');
-        var half    = Math.round(sepImgs.length / 2); // first set count
-        var period  = 3; // must match sep-spin duration in CSS
+        var half = Math.round(sepImgs.length / 2); // first set count
+        var period = 3; // must match sep-spin duration in CSS
         sepImgs.forEach(function (img, i) {
           img.style.animationDelay = '-' + ((i % half) * (period / half)).toFixed(3) + 's';
         });
@@ -2066,22 +2454,22 @@
         }, '-=0.6');
       });
 
-      var lightbox             = document.querySelector('.lightbox');
-      var lightboxBg           = document.querySelector('.lightbox__bg');
-      var lightboxContentWrap  = document.querySelector('.lightbox__content-wrap');
-      var lightboxImg          = document.querySelector('.lightbox__img');
-      var lightboxVideo        = document.getElementById('lightbox-video');
-      var lightboxYt           = document.querySelector('.lightbox__yt');
+      var lightbox = document.querySelector('.lightbox');
+      var lightboxBg = document.querySelector('.lightbox__bg');
+      var lightboxContentWrap = document.querySelector('.lightbox__content-wrap');
+      var lightboxImg = document.querySelector('.lightbox__img');
+      var lightboxVideo = document.getElementById('lightbox-video');
+      var lightboxYt = document.querySelector('.lightbox__yt');
       var lightboxTextContainer = document.querySelector('.lightbox__text');
-      var lightboxClose        = document.querySelector('.lightbox__close');
-      var lightboxNavPrev      = document.querySelector('.lightbox__prev');
-      var lightboxNavNext      = document.querySelector('.lightbox__next');
-      var lightboxShare        = document.querySelector('.lightbox__share');
-      var lightboxToast        = document.getElementById('lightbox-toast');
-      var videoMuteBtn         = document.getElementById('video-mute-btn');
-      var lightboxTimeline     = null;
-      var currentIndex         = -1;
-      var toastTimeout         = null;
+      var lightboxClose = document.querySelector('.lightbox__close');
+      var lightboxNavPrev = document.querySelector('.lightbox__prev');
+      var lightboxNavNext = document.querySelector('.lightbox__next');
+      var lightboxShare = document.querySelector('.lightbox__share');
+      var lightboxToast = document.getElementById('lightbox-toast');
+      var videoMuteBtn = document.getElementById('video-mute-btn');
+      var lightboxTimeline = null;
+      var currentIndex = -1;
+      var toastTimeout = null;
 
       function updateHash(idx) {
         history.replaceState(null, '', window.location.pathname + window.location.search + '#item-' + idx);
@@ -2111,7 +2499,7 @@
         ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
         document.body.appendChild(ta);
         ta.focus(); ta.select();
-        try { document.execCommand('copy'); showToast(); } catch (e) {}
+        try { document.execCommand('copy'); showToast(); } catch (e) { }
         document.body.removeChild(ta);
       }
 
@@ -2134,12 +2522,12 @@
 
       var ytPlayer = null;
       var ytRaf = null;
-      var ytOverlay    = document.getElementById('yt-overlay');
-      var ytPlayBtn    = document.getElementById('yt-play-btn');
-      var ytBtnIcon    = document.getElementById('yt-btn-icon');
+      var ytOverlay = document.getElementById('yt-overlay');
+      var ytPlayBtn = document.getElementById('yt-play-btn');
+      var ytBtnIcon = document.getElementById('yt-btn-icon');
       var ytProgressWrap = document.getElementById('yt-progress-wrap');
       var ytProgressFill = document.getElementById('yt-progress-fill');
-      var PLAY_ICON  = '<polygon points="5,3 19,12 5,21"/>';
+      var PLAY_ICON = '<polygon points="5,3 19,12 5,21"/>';
       var PAUSE_ICON = '<rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/>';
 
       function ytProgressLoop() {
@@ -2148,7 +2536,7 @@
           var dur = ytPlayer.getDuration();
           var cur = ytPlayer.getCurrentTime();
           if (dur > 0) ytProgressFill.style.width = (cur / dur * 100) + '%';
-        } catch (e) {}
+        } catch (e) { }
         ytRaf = requestAnimationFrame(ytProgressLoop);
       }
 
@@ -2157,7 +2545,7 @@
           if (!ytPlayer) return;
           try {
             if (ytPlayer.getPlayerState() === 1) { ytPlayer.pauseVideo(); } else { ytPlayer.playVideo(); }
-          } catch (e) {}
+          } catch (e) { }
         });
       }
 
@@ -2168,21 +2556,21 @@
             var rect = ytProgressWrap.getBoundingClientRect();
             var pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
             ytPlayer.seekTo(pct * ytPlayer.getDuration(), true);
-          } catch (e) {}
+          } catch (e) { }
         });
       }
 
       // ── Pre-build item data array ──
       var itemsData = [];
       items.forEach(function (item) {
-        var link     = item.querySelector('.sb__item-link');
+        var link = item.querySelector('.sb__item-link');
         var thumbImg = item.querySelector('img');
         itemsData.push({
-          link:        link,
-          thumbImg:    thumbImg,
-          itemDesc:    item.querySelector('.sb__item-desc'),
-          ytId:        link.getAttribute('data-yt-id'),
-          videoSrc:    link.getAttribute('data-video-src'),
+          link: link,
+          thumbImg: thumbImg,
+          itemDesc: item.querySelector('.sb__item-desc'),
+          ytId: link.getAttribute('data-yt-id'),
+          videoSrc: link.getAttribute('data-video-src'),
           lightboxSrc: link.getAttribute('data-lightbox-src'),
           lightboxAlt: link.getAttribute('data-lightbox-alt') || thumbImg.alt
         });
@@ -2209,7 +2597,7 @@
         var d = itemsData[idx];
         // clear YT
         cancelAnimationFrame(ytRaf);
-        if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) {} ytPlayer = null; }
+        if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) { } ytPlayer = null; }
         if (ytOverlay) { ytOverlay.style.display = 'none'; ytOverlay.classList.remove('is-playing'); }
         if (ytProgressFill) ytProgressFill.style.width = '0%';
         lightboxYt.classList.remove('is-active');
@@ -2234,7 +2622,7 @@
             }
             if (muteVideo) { lightboxVideo.muted = true; } else { lightboxVideo.muted = false; }
             updateMuteIcon();
-            lightboxVideo.play().catch(function () {});
+            lightboxVideo.play().catch(function () { });
           }
         } else if (d.ytId) {
           lightboxYt.classList.add('is-active');
@@ -2244,7 +2632,7 @@
           if (ytBtnIcon) ytBtnIcon.innerHTML = PLAY_ICON;
           lightboxYt.src = 'https://www.youtube.com/embed/' + d.ytId + '?enablejsapi=1&rel=0&controls=0&modestbranding=1&iv_load_policy=3&playsinline=1&autoplay=1&mute=0';
           whenYTReady(function () {
-            if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) {} ytPlayer = null; }
+            if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) { } ytPlayer = null; }
             ytPlayer = new YT.Player(lightboxYt, {
               events: {
                 onReady: function () {
@@ -2296,7 +2684,7 @@
             lightboxVideo.src = nd.videoSrc;
             lightboxVideo.setAttribute('data-loaded', nd.videoSrc);
           }
-          lightboxVideo.play().catch(function () {});
+          lightboxVideo.play().catch(function () { });
         }
 
         gsap.to(lightboxContentWrap, {
@@ -2360,7 +2748,7 @@
             lightbox.classList.remove('is-active');
             gsap.set(lightbox, { visibility: 'hidden' });
             cancelAnimationFrame(ytRaf);
-            if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) {} ytPlayer = null; }
+            if (ytPlayer) { try { ytPlayer.destroy(); } catch (e) { } ytPlayer = null; }
             if (ytOverlay) { ytOverlay.style.display = 'none'; ytOverlay.classList.remove('is-playing'); }
             if (ytProgressFill) ytProgressFill.style.width = '0%';
             lightboxYt.src = '';
@@ -2377,10 +2765,10 @@
             clearHash();
           }
         })
-        .to([lightboxClose, lightboxShare, lightboxNavPrev, lightboxNavNext].filter(Boolean), { autoAlpha: 0, duration: 0.25 })
-        .to(textElements, { opacity: 0, y: -20, duration: 0.35, stagger: 0.04, ease: 'power3.in' }, '-=0.1')
-        .to(lightboxContentWrap, { clipPath: 'inset(0 0 100% 0)', duration: 0.75, ease: 'power4.inOut' }, '-=0.2')
-        .to(lightboxBg, { opacity: 0, duration: 0.5 }, '-=0.5');
+          .to([lightboxClose, lightboxShare, lightboxNavPrev, lightboxNavNext].filter(Boolean), { autoAlpha: 0, duration: 0.25 })
+          .to(textElements, { opacity: 0, y: -20, duration: 0.35, stagger: 0.04, ease: 'power3.in' }, '-=0.1')
+          .to(lightboxContentWrap, { clipPath: 'inset(0 0 100% 0)', duration: 0.75, ease: 'power4.inOut' }, '-=0.2')
+          .to(lightboxBg, { opacity: 0, duration: 0.5 }, '-=0.5');
       }
 
       lightboxClose.addEventListener('click', closeLightbox);
@@ -2404,9 +2792,9 @@
       // keyboard navigation
       document.addEventListener('keydown', function (e) {
         if (!lightbox.classList.contains('is-active')) return;
-        if (e.key === 'ArrowLeft')  navigateLightbox(-1);
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
         if (e.key === 'ArrowRight') navigateLightbox(1);
-        if (e.key === 'Escape')     closeLightbox();
+        if (e.key === 'Escape') closeLightbox();
       });
 
       // auto-open from URL hash (not a user gesture — video starts muted, user can unmute)
@@ -2433,7 +2821,7 @@
         if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
         e.preventDefault(); // kill the ~300ms synthetic click so it doesn't land on lightboxBg
         if (dx < 0) navigateLightbox(1);
-        else        navigateLightbox(-1);
+        else navigateLightbox(-1);
       });
     });
   </script>
@@ -2459,7 +2847,7 @@
       if (!window.gsap || !window.ScrollTrigger) return;
       gsap.registerPlugin(ScrollTrigger);
 
-      const footer   = document.getElementById("site-footer");
+      const footer = document.getElementById("site-footer");
       if (!footer) return;
 
       const parallaxBg = document.getElementById("footer-parallax-bg");
@@ -2469,21 +2857,21 @@
 
       const tl = gsap.timeline({ scrollTrigger: { trigger: footer, start: "top 85%" } });
 
-      const brandTitle  = footer.querySelector(".footer-brand-title");
-      const infoBar     = footer.querySelector(".footer-info-bar");
+      const brandTitle = footer.querySelector(".footer-brand-title");
+      const infoBar = footer.querySelector(".footer-info-bar");
       const description = footer.querySelector(".footer-description");
       const contactInfo = footer.querySelector(".footer-contact-info");
-      const navLinks    = footer.querySelector(".footer-nav-links");
-      const thumb       = footer.querySelector(".footer-video-thumb");
-      const cBridge     = document.getElementById("footer-c-bridge");
+      const navLinks = footer.querySelector(".footer-nav-links");
+      const thumb = footer.querySelector(".footer-video-thumb");
+      const cBridge = document.getElementById("footer-c-bridge");
 
-      if (brandTitle)  tl.from(brandTitle,  { y: 60, opacity: 0, duration: 1,   ease: "power3.out" }, 0);
-      if (infoBar)     tl.from(infoBar,     { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.2);
+      if (brandTitle) tl.from(brandTitle, { y: 60, opacity: 0, duration: 1, ease: "power3.out" }, 0);
+      if (infoBar) tl.from(infoBar, { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.2);
       if (description) tl.from(description, { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.35);
       if (contactInfo) tl.from(contactInfo, { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.45);
-      if (navLinks)    tl.from(navLinks,    { y: 15, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.55);
-      if (thumb)       tl.from(thumb,       { scale: 0.92, opacity: 0, duration: 0.9, ease: "power3.out" }, 0.3);
-      if (cBridge)     tl.from(cBridge,     { scale: 0, rotation: -45, duration: 0.9, ease: "back.out(1.7)" }, 0.5);
+      if (navLinks) tl.from(navLinks, { y: 15, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.55);
+      if (thumb) tl.from(thumb, { scale: 0.92, opacity: 0, duration: 0.9, ease: "power3.out" }, 0.3);
+      if (cBridge) tl.from(cBridge, { scale: 0, rotation: -45, duration: 0.9, ease: "back.out(1.7)" }, 0.5);
     });
   </script>
 
@@ -2537,8 +2925,21 @@
 
   <!-- Footer Reveal -->
   <style>
-    .frev-wrap { overflow: hidden; display: inline-block; vertical-align: bottom; }
-    .footer-video-cover { position: absolute; inset: 0; background: #0a0a0a; z-index: 2; pointer-events: none; transform-origin: right center; will-change: transform; }
+    .frev-wrap {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+
+    .footer-video-cover {
+      position: absolute;
+      inset: 0;
+      background: #0a0a0a;
+      z-index: 2;
+      pointer-events: none;
+      transform-origin: right center;
+      will-change: transform;
+    }
   </style>
   <script>
     (function () {
@@ -2546,9 +2947,9 @@
       if (!footer || !window.gsap) return;
 
       const contactInfo = footer.querySelector('.footer-contact-info');
-      const addrDiv     = footer.querySelector('.footer-main-content > div > div[style]');
-      const navLinks    = footer.querySelector('.footer-nav-links');
-      const thumb       = footer.querySelector('.footer-video-thumb');
+      const addrDiv = footer.querySelector('.footer-main-content > div > div[style]');
+      const navLinks = footer.querySelector('.footer-nav-links');
+      const thumb = footer.querySelector('.footer-video-thumb');
 
       const contactEmail = contactInfo ? contactInfo.querySelector('a') : null;
       const contactPhone = contactInfo ? contactInfo.querySelector('span') : null;
@@ -2590,7 +2991,7 @@
 
       if (contactEmail) tl.to(contactEmail, { y: '0%', duration: 1.2, ease: 'power4.out' }, 0);
       if (contactPhone) tl.to(contactPhone, { y: '0%', duration: 0.9, ease: 'power3.out' }, 0.2);
-      if (addrDiv)      tl.from(addrDiv,    { y: 14, opacity: 0, duration: 0.8, ease: 'power3.out' }, 0.35);
+      if (addrDiv) tl.from(addrDiv, { y: 14, opacity: 0, duration: 0.8, ease: 'power3.out' }, 0.35);
       if (navAnchors.length) tl.to(navAnchors, { y: '0%', duration: 0.85, stagger: 0.07, ease: 'power4.out' }, 0.48);
       if (videoCover) {
         tl.fromTo(videoCover,
@@ -2603,4 +3004,5 @@
   </script>
 
 </body>
+
 </html>

@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="lenis">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>最新文章 News｜核點 Nudot Studio・網頁設計 × 商業視覺 × AI 動態影像觀點</title>
+
+  <script>
+    (function () {
+      try {
+        var raw = sessionStorage.getItem('nudot:page-transition');
+        if (!raw) return;
+        var payload = JSON.parse(raw);
+        if (payload && payload.at && Date.now() - payload.at < 12000) {
+          document.documentElement.classList.add('has-pending-page-transition');
+        }
+      } catch (error) { }
+    })();
+  </script>
+
+  <!-- Google Analytics 4 (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-N53QVZL8TL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-N53QVZL8TL');
+  </script>
+
+  <!-- SEO:AUTO:START —— 由 blog_cont.php 依 ?id= 抓 Yoast 覆寫；直接讀 .html 時以下為 fallback -->
+  <meta name="description" content="核點 Nudot Studio 觀點誌 — 網頁設計、品牌識別、高階商業視覺與 AI 動態影像的最新文章、案例解析與創作洞察。">
+  <meta name="keywords" content="核點 Nudot, 設計觀點, 網頁設計文章, 品牌設計, 商業視覺, AI 動態影像, 台中網頁設計">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="核點 Nudot Studio">
+  <meta name="theme-color" content="#030303">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://nudot.com.tw/blog">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nudot.com.tw/blog">
+  <meta property="og:title" content="最新文章 Journal｜核點 Nudot Studio">
+  <meta property="og:description" content="核點 Nudot Studio 觀點誌 — 網頁設計、品牌識別、高階商業視覺與 AI 動態影像的最新文章與洞察。">
+  <meta property="og:image" content="https://nudot.com.tw/images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="核點 Nudot Studio">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="最新文章 Journal｜核點 Nudot Studio">
+  <meta name="twitter:description" content="核點 Nudot Studio 觀點誌 — 網頁設計、商業視覺與 AI 動態影像的最新文章。">
+  <meta name="twitter:image" content="https://nudot.com.tw/images/og.jpg">
+  <!-- SEO:AUTO:END -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pp-neue-montreal">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Bitcount+Grid+Single:wght@100..900&display=swap">
+  <link rel="stylesheet" href="cursor-shared.css?v=1">
+  <link rel="stylesheet" href="nav-menu-shared.css?v=1">
+  <link rel="stylesheet" href="page-transitions.css?v=1">
+  <link rel="stylesheet" href="project-creative-process.css?v=1">
+  <link rel="icon" href="images/fav.png" type="image/png">
+
+  <!-- GSAP 核心與 ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <!-- Lenis (Smooth Scroll) -->
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js" defer></script>
+  <script src="./transitions.js?v=1" defer></script>
+  <script src="cursor-shared.js?v=1" defer></script>
+
+  <style>
+    html { scrollbar-gutter: stable; }
+
+    :root {
+      --blog-accent: #c89a45;
+      --blog-line: rgba(255, 255, 255, 0.12);
+      --blog-muted: rgba(255, 255, 255, 0.5);
+      --blog-faint: rgba(255, 255, 255, 0.38);
+      --blog-card: rgba(255, 255, 255, 0.025);
+      --blog-card-border: rgba(255, 255, 255, 0.1);
+    }
+
+    html, body { background: #000; }
+
+    .blog-archive,
+    .page-work-pattern .blog-archive {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      background: transparent;
+      color: #fff;
+      isolation: isolate;
+    }
+
+    /* ── 背景影片（wavebg.mp4） ───────────────────────────────────── */
+    .blog-bg-video,
+    .blog-bg-tint {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blog-bg-video {
+      object-fit: cover;
+      background: #000;
+    }
+    .blog-bg-tint {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.68) 55%, rgba(0, 0, 0, 0.8) 100%);
+    }
+
+    .blog-wrap {
+      /* max-width: 1480px; */
+      margin: 0 auto;
+      padding: clamp(40px, 6vh, 80px) var(--work-side-pad) clamp(80px, 12vh, 140px);
+    }
+
+    /* ── Article detail（單篇文章，置中編排） ─────────────────────── */
+    .article {
+      width: 100%;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .article__kicker {
+      margin: 0;
+      text-align: center;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(20px, 2vw, 30px);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+    .article__divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.22);
+      margin: clamp(20px, 2.4vw, 34px) 0 clamp(60px, 9vw, 130px);
+    }
+    .article__datewrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(6px, 0.8vw, 12px);
+      margin-bottom: clamp(28px, 3.5vw, 52px);
+    }
+    .article__year {
+      font-family: 'Bitcount Grid Single', 'Noto Sans TC', sans-serif;
+      font-size: 40px;
+      letter-spacing: 0.14em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .article__day {
+      font-family: 'Bitcount Grid Single', 'Noto Sans TC', sans-serif;
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+
+    /* 頂部 close icon（連回 Journal） */
+    .article__close-top {
+      display: block;
+      width: fit-content;
+      margin: 0 auto clamp(22px, 2.6vw, 36px);
+      line-height: 0;
+      opacity: 0.85;
+      transition: opacity 0.3s ease, transform 0.4s var(--work-ease, ease);
+    }
+    .article__close-top:hover { opacity: 1; transform: rotate(90deg); }
+    .article__close-top img { width: clamp(16px, 1.5vw, 22px); height: auto; display: block; }
+    .article__title {
+    text-align: left;
+    font-family: 'Noto Sans TC';
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: 0.1em;
+    color: #fff;
+    padding-left: 20px;
+    }
+
+    .article__box{
+           margin: 2.2em auto;
+    max-width: 1440px;
+    display: flex;
+    }
+    .article__hero {
+      max-width: 1440px;
+      margin: clamp(50px, 7vw, 100px) auto 0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .article__hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .article__body {
+      max-width: 1440px;
+      margin: 0 auto;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: clamp(15px, 1.15vw, 18px);
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.74);
+    }
+    .article__body p { margin: 1.6em 0 1.6em; }
+    .article__body h2 {
+      margin: 2.2em 0 0.9em;
+      font-size: clamp(20px, 2vw, 28px);
+      font-weight: 600;
+      color: #fff;
+    }
+    .article__body h3 {
+      margin: 1.8em 0 0.7em;
+      font-size: clamp(17px, 1.6vw, 22px);
+      font-weight: 600;
+      color: #fff;
+    }
+    .article__body a {
+      color: var(--blog-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .article__body a:hover { text-decoration: none; }
+    .article__body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin: 1.4em 0;
+    }
+    .article__body ul,
+    .article__body ol { margin: 0 0 1.6em 1.4em; }
+    .article__body li { margin-bottom: 0.6em; }
+    .article__body blockquote {
+      margin: 1.6em 0;
+      padding: 0.2em 0 0.2em 1.2em;
+      border-left: 2px solid var(--blog-accent);
+      color: rgba(255, 255, 255, 0.6);
+      font-style: italic;
+    }
+    .article__back {
+      display: block;
+      width: fit-content;
+      margin: clamp(70px, 10vw, 130px) auto 0;
+      line-height: 0;
+      opacity: 0.7;
+      transition: opacity 0.3s ease, transform 0.4s var(--work-ease, ease);
+    }
+    .article__back:hover { opacity: 1; transform: rotate(90deg); }
+    .article__back img { width: clamp(22px, 2vw, 30px); height: auto; display: block; }
+
+    /* ── New Articles（文章下方 3 筆） ───────────────────────────── */
+    .more-articles { margin-top: clamp(80px, 12vw, 160px); }
+    .more-articles__label {
+      margin: 0 0 clamp(22px, 3vw, 46px);
+      text-align: center;
+      font-family: "Bitcount Grid Single", var(--work-font-body);
+      font-size: clamp(18px, 1.7vw, 24px);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #fff;
+    }
+    
+       .back_list{
+      width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    color: #fff;
+    font-family: "Bitcount Grid Single", var(--work-font-body);
+    text-decoration: auto;
+    font-size: 30px;
+    text-transform: uppercase;
+    }
+    .more-articles[hidden] { display: none; }
+
+    @media (max-width: 768px) {
+      .article__divider { margin-bottom: 46px; }
+      .article__body { margin-top: 54px; }
+    }
+
+    /* ── Hero (與 lab.html 一致) ─────────────────────────────────── */
+    .work-hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(130px, 18vh, 200px) var(--work-side-pad) 0;
+    }
+
+    .work-hero__top {
+        display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    column-gap: clamp(18px, 3vw, 48px);
+    padding-bottom: clamp(12px, 1.5vh, 20px);
+    justify-content: center;
+    }
+
+    .work-hero__title {
+      margin: 0;
+      font-family: "Zalando Sans SemiExpanded", "DM Sans", sans-serif;
+      font-size: clamp(64px, 9.5vw, 130px);
+      font-weight: 600;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      cursor: default;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: inline-block;
+      opacity: 0;
+      transform: translateX(18vw) translateZ(0);
+      transition:
+        opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+    }
+
+    .work-hero__center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .work-hero__desc {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: center;
+      align-self: center;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.35s;
+    }
+
+    .work-hero__code {
+      margin: 0;
+      font-family: "Zalando Sans SemiExpanded", "DM Sans", sans-serif;
+      font-size: clamp(64px, 9.5vw, 130px);
+      font-weight: 600;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: right;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      opacity: 0;
+      transform: translateX(-18vw) translateZ(0);
+      transition:
+        opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+    }
+
+    .work-hero__line {
+      width: 100%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.18);
+      transform-origin: center center;
+      transform: scaleX(0);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+    }
+
+    .work-hero__bottom {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: clamp(10px, 1.4vh, 18px) 0;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.45s;
+    }
+
+    .work-hero__year,
+    .work-hero__kicker,
+    .work-hero__tags {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    .work-hero__year {
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .work-hero__kicker {
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    .work-hero__tags {
+      font-size: 16px;
+display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    }
+
+    .work-hero-entered .work-hero__title {
+      opacity: 1;
+      transform: translateX(0) translateZ(0);
+    }
+    .work-hero-entered .work-hero__code {
+      opacity: 1;
+      transform: translateX(0) translateZ(0);
+    }
+    .work-hero-entered .work-hero__line {
+      transform: scaleX(1);
+    }
+    .work-hero-entered .work-hero__desc,
+    .work-hero-entered .work-hero__bottom {
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .work-hero { padding-top: clamp(110px, 15vh, 160px); }
+      .work-hero__top {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        row-gap: 10px;
+        padding-bottom: 16px;
+      }
+      .work-hero__title { text-align: center; }
+      .work-hero__desc {
+        max-width: 18em;
+        font-size: 13px;
+        line-height: 1.45;
+        text-align: center;
+      }
+      .work-hero__bottom {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 14px 0 0;
+      }
+      .work-hero__code,
+      .work-hero__year { display: none; }
+      .work-hero__tags { display: none; }
+      .work-hero__title { transform: translateX(8vw) translateZ(0); }
+      .work-hero__code  { transform: translateX(-8vw) translateZ(0); }
+    }
+
+    @media (max-width: 768px) {
+      .work-hero__title,
+      .work-hero__code {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .work-hero__line {
+        transform: scaleX(1);
+        transition: none;
+      }
+      .work-hero__desc,
+      .work-hero__bottom {
+        opacity: 1;
+        transition: none;
+      }
+      .work-hero { padding-top: 104px; }
+      .work-hero__title { font-size: clamp(3.6rem, 20vw, 7rem); }
+      .work-hero__kicker, .work-hero__desc { font-size: 0.68rem; letter-spacing: 0.13em; }
+    }
+
+    @media (max-width: 480px) {
+      .work-hero__title { font-size: 65px; }
+    }
+
+    /* ── Post list (timeline rows) ───────────────────────────────── */
+    .grid {
+      display: block;
+      border-top: 1px solid var(--blog-line);
+    }
+    .post {
+      position: relative;
+      display: grid;
+      grid-template-columns: clamp(120px, 14vw, 210px) 1fr auto;
+      align-items: center;
+      gap: clamp(24px, 4vw, 64px);
+      padding: clamp(26px, 3.2vw, 46px) clamp(6px, 1vw, 18px);
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px solid var(--blog-line);
+      transition: background 0.5s var(--work-ease), padding-left 0.5s var(--work-ease);
+    }
+    .post:hover {
+      background: rgba(255, 255, 255, 0.025);
+      padding-left: clamp(14px, 1.6vw, 30px);
+    }
+    .post-date {
+      font-family: "Bitcount Grid Single", var(--work-font-body);
+      font-size: clamp(15px, 1.5vw, 22px);
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.85);
+      white-space: nowrap;
+      transition: color 0.4s var(--work-ease);
+    }
+    .post-title {
+      font-family: 'Noto Sans TC', var(--work-font-body);
+      font-size: clamp(15px, 1.35vw, 21px);
+      font-weight: 500;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.82);
+      transition: color 0.4s var(--work-ease);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .post:hover .post-date,
+    .post:hover .post-title { color: #fff; }
+    .post-arrow {
+      justify-self: end;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 18px;
+      line-height: 1;
+      transition: transform 0.45s var(--work-ease), color 0.4s var(--work-ease);
+    }
+    .post:hover .post-arrow {
+      color: var(--blog-accent);
+      transform: translateX(6px);
+    }
+
+    /* ── Hover-reveal floating image ─────────────────────────────── */
+    .blog-hover-img {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: clamp(220px, 22vw, 340px);
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.92);
+      transition: opacity 0.35s var(--work-ease), transform 0.45s var(--work-ease);
+      will-change: transform, opacity;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    }
+    .blog-hover-img.is-visible {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .blog-hover-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (hover: none) {
+      .blog-hover-img { display: none; }
+    }
+
+    /* ── Loading / error ─────────────────────────────────────────── */
+    .loading {
+      font-family: var(--work-font-body);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blog-faint);
+      padding: 40px 0;
+    }
+    .error-box {
+      font-family: var(--work-font-body);
+      color: #e08a8a;
+      padding: 18px 20px;
+      background: rgba(224, 138, 138, 0.08);
+      border: 1px solid rgba(224, 138, 138, 0.25);
+      border-radius: 3px;
+      margin: 20px 0;
+      display: none;
+    }
+
+    /* ── Vertical grid line overlay（取自 lab.html） ─────────────── */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      padding: 0 var(--work-side-pad, 2rem);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .grid-overlay-inner {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.75rem;
+      height: 100%;
+    }
+    .grid-column {
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+    @media (max-width: 768px) {
+      .grid-overlay-inner { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* ── Skeleton（載入時的骨架，讓資料切換更絲滑） ──────────────── */
+    .post--sk { pointer-events: none; }
+    .post--sk .post-arrow { color: rgba(255, 255, 255, 0.12); }
+    .sk {
+      display: block;
+      height: 0.9em;
+      border-radius: 3px;
+      background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.04) 25%,
+        rgba(255, 255, 255, 0.09) 37%,
+        rgba(255, 255, 255, 0.04) 63%);
+      background-size: 400% 100%;
+      animation: sk-shimmer 1.4s ease infinite;
+    }
+    .sk-date { width: 70%; }
+    .sk-title { width: min(46%, 420px); height: 1.05em; }
+    @keyframes sk-shimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: 0 0; }
+    }
+
+    /* 文章頁載入骨架（版面比照 .article，資料到位時無縫替換） */
+    .article-sk .sk { border-radius: 6px; }
+    .sk-block { display: inline-block; }
+    .sk-hero { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+    .sk-line { height: 1em; margin: 0.9em 0; border-radius: 4px; }
+    .sk-line.is-mid { width: 82%; }
+    .sk-line.is-short { width: 58%; }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .post {
+        grid-template-columns: 1fr auto;
+        gap: 6px 20px;
+        padding: 22px 4px;
+      }
+      .post-date { grid-column: 1 / -1; font-size: 13px; color: var(--blog-faint); }
+      .post-title { font-size: 15px; -webkit-line-clamp: 3; }
+      .post:hover { padding-left: 4px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blog-reveal { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+   <style id="seo-nav-cloak">.ns-showcase-row__index::before,.ns-showcase-row__title-layer::before{content:attr(data-text);}</style>
+</head>
+
+<body class="shared-nav-page page-work-pattern">
+
+  <div class="page-transition-shell js-page-transition-shell" aria-hidden="true">
+    <div class="page-transition-curtain js-page-transition-curtain"></div>
+    <div class="page-transition-frame js-page-transition-frame">
+      <div class="page-transition-loader js-page-transition-loader"></div>
+      <div class="page-transition-counter js-page-transition-counter">[ <span
+          class="js-page-transition-counter-num">00</span> ]</div>
+      <div class="page-transition-panel js-page-transition-panel">
+        <div class="page-transition-meta is-top-left">NUDOT</div>
+        <div class="page-transition-meta is-top-right js-page-transition-meta-to">blog.html</div>
+        <div class="page-transition-copy">
+          <div class="page-transition-eyebrow js-page-transition-eyebrow">NUDOT CREATIVE STUDIO</div>
+          <div class="page-transition-title js-page-transition-title">JOURNAL</div>
+          <div class="page-transition-subtitle js-page-transition-subtitle">Shared page-transition layer for the
+            journal and article pages.</div>
+        </div>
+        <div class="page-transition-meta is-bottom-left">Digital / Motion / Interface</div>
+        <div class="page-transition-meta is-bottom-right">2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div data-barba="wrapper">
+    <div data-barba="container" data-barba-namespace="blog">
+
+      <!-- 頂部導覽 -->
+      <div id="nav_scroll_container" aria-label="Primary navigation">
+        <nav id="nav_scroll">
+          <a class="ns-icon" href="contact" data-cursor="CONTACT" aria-label="Contact">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a class="ns-logo" href="index" data-cursor="HOME" aria-label="NUDOT home">
+            <img src="images/pc_logo.svg" alt="NUDOT 核點創意" width="45" height="35" loading="lazy" decoding="async">
+          </a>
+          <button class="ns-icon ns-hamburger" id="nav-scroll-menu-btn" data-cursor="OPEN" aria-label="Open menu"
+            aria-expanded="false" aria-controls="nav-scroll-dropdown">
+            <svg class="ns-ham-svg" viewBox="0 0 24 24">
+              <line class="ns-ham-l1" x1="5" y1="9" x2="19" y2="9"></line>
+              <line class="ns-ham-l2" x1="5" y1="15" x2="19" y2="15"></line>
+            </svg>
+          </button>
+        </nav>
+        <div class="ns-dropdown" id="nav-scroll-dropdown" aria-hidden="true">
+          <div class="ns-dropdown__inner" id="nav-scroll-dropdown-content">
+            <div class="ns-menu-stage">
+            <div class="ns-menu-rows">
+                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home" aria-label="首頁">
+                  <span class="ns-showcase-row__index" data-text="( 首頁 )"></span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/1.webp" data-nav-src="images/nav/1.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="HOME"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="HOME"></span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/2.webp" data-nav-src="images/nav/2.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About" aria-label="核點創意">
+                  <span class="ns-showcase-row__index" data-text="( 核點創意 )"></span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/3.webp" data-nav-src="images/nav/3.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="ABOUT"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="ABOUT"></span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/4.webp" data-nav-src="images/nav/4.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work" aria-label="設計案例">
+                  <span class="ns-showcase-row__index" data-text="( 設計案例 )"></span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/5.webp" data-nav-src="images/nav/5.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="WORK"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="WORK"></span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/6.webp" data-nav-src="images/nav/6.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+
+                
+                     <a class="ns-showcase-row ns-dropdown__item" href="blog" data-transition-label="Labs" aria-label="核點洞察">
+                  <span class="ns-showcase-row__index" data-text="( 核點洞察 )"></span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="BLOG"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="BLOG"></span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/8.webp" data-nav-src="images/nav/8.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+
+
+                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs" aria-label="核點實驗室">
+                  <span class="ns-showcase-row__index" data-text="( 核點實驗室 )"></span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="LABS"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="LABS"></span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/8.webp" data-nav-src="images/nav/8.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+
+                <a class="ns-showcase-row ns-dropdown__item" href="contact" data-transition-label="Contact" aria-label="聯繫我們">
+                  <span class="ns-showcase-row__index" data-text="( 聯繫我們 )"></span>
+                  <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
+                    <img src="images/nav/9.webp" data-nav-src="images/nav/9.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                  <span class="ns-showcase-row__title">
+                    <span class="ns-showcase-row__title-track">
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="CONTACT"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="CONTACT"></span>
+                    </span>
+                  </span>
+                  <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
+                    <img src="images/nav/10.webp" data-nav-src="images/nav/10.webp" alt="" width="300" height="200"
+                      loading="lazy" decoding="async">
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <video class="blog-bg-video" autoplay muted loop playsinline preload="auto"
+        disableremoteplayback aria-hidden="true">
+        <source src="images/wavebg.mp4" type="video/mp4">
+      </video> -->
+      <div class="blog-bg-tint" aria-hidden="true"></div>
+
+      <div class="grid-overlay" aria-hidden="true">
+        <div class="grid-overlay-inner">
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+          <div class="grid-column"></div>
+        </div>
+      </div>
+
+      <main class="blog-archive work-archive" id="project-top">
+
+        <!-- Hero（結構與 lab.html 相同） -->
+        <header class="work-hero work-reveal">
+          <div class="work-hero__top">
+            <a class="back_list" href="blog.html" aria-label="Back to list">
+              ( back to list )
+            </a>
+          
+          </div>
+
+          <div class="work-hero__line"></div>
+
+          <div class="work-hero__bottom">
+            <p class="work-hero__year"> </p>
+            <p class="work-hero__kicker" id="post-category"> </p>
+           
+            
+            <div class="work-hero__tags"> </div>
+          </div>
+        </header>
+
+        
+
+        <div class="blog-wrap" style="padding-top: clamp(60px, 6vh, 80px);">
+          <div id="article-skeleton" class="article article-sk" aria-hidden="true">
+            <div class="work-hero__tags">
+              <span class="sk sk-block" style="width:56px;height:34px;"></span>
+              <span class="sk sk-block" style="width:66px;height:34px;"></span>
+            </div>
+            <div class="article__box">
+              <span class="sk sk-block" style="width:min(72%, 680px);height:38px;"></span>
+            </div>
+            <div class="article__hero"><span class="sk sk-hero"></span></div>
+            <div class="article__body">
+              <span class="sk sk-line"></span>
+              <span class="sk sk-line is-mid"></span>
+              <span class="sk sk-line"></span>
+              <span class="sk sk-line is-short"></span>
+              <span class="sk sk-line"></span>
+              <span class="sk sk-line is-mid"></span>
+              <span class="sk sk-line is-short"></span>
+            </div>
+          </div>
+          <div id="error" class="error-box"></div>
+
+          <article class="article" id="article-content" style="display: none;">
+           
+
+            <!-- <a class="article__close-top" href="blog.html" aria-label="Back to Journal">
+              <img src="images/lab/close.svg" alt="" aria-hidden="true">
+            </a> -->
+
+            <!-- <div class="article__datewrap">
+              <span class="article__year" id="post-year"></span>
+              <span class="article__day" id="post-day"></span>
+            </div> -->
+              <div class="work-hero__tags">  <span class="article__year" id="post-year"></span>
+              <span class="article__day" id="post-day"></span> </div>
+
+             <div class="article__box">  <img src="images/lab/next.svg" alt="" aria-hidden="true" style=" width: 12px;"> <h1 class="article__title" id="post-title">   </h1> </div>
+             <div class="article__hero" id="post-hero"></div>
+  
+
+            <div class="article__body" id="post-body"></div>
+            
+             
+
+            <section class="more-articles" id="more-section" aria-label="New Articles" hidden>
+             <!-- <p class="more-articles__label">( New Articles )</p> -->
+              <div class="grid" id="more-grid"></div>
+                <a class="back_list" href="blog.html" aria-label="Back to list">
+              ( back to list )
+            </a>
+            </section>
+
+            
+          </article>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- 標籤跑馬燈（內容取自 WP 文章標籤；沒有標籤時整條隱藏，樣式比照 contact.php 底部跑馬燈） -->
+  <style>
+    .tag-marquee {
+      width: 100%;
+      overflow: hidden;
+      background: #000;
+      border-top: 1px solid #313131;
+      border-bottom: 1px solid #313131;
+      clip-path: inset(100% 0 0 0);
+      padding: 10px;
+    }
+    .tag-marquee[hidden] { display: none; }
+    .tag-marquee__track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .tag-marquee__item {
+      font-family: 'Bitcount Prop Single', 'Bitcount Grid Single', monospace;
+      font-size: clamp(1.4rem, 4vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 0 clamp(20px, 3vw, 60px);
+    }
+    .tag-marquee__sep {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      width: clamp(20px, 2.8vw, 40px);
+    }
+    .tag-marquee__sep img {
+      width: 100%;
+      height: auto;
+      display: block;
+      animation: tag-sep-spin 3s ease-in-out infinite;
+    }
+    @keyframes tag-sep-spin {
+      0% { transform: rotate(0deg); }
+      40% { transform: rotate(180deg); }
+      60% { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tag-marquee__track { transform: none !important; }
+    }
+  </style>
+  <div class="tag-marquee" id="tag-marquee" aria-hidden="true" hidden>
+    <div class="tag-marquee__track" id="tag-marquee-track"></div>
+  </div>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-top">
+      <div class="footer-main-content">
+        <div>
+          <div class="footer-contact-info">
+            <a href="mailto:hello@nudot.com.tw">hello@nudot.com.tw</a>
+            <span>+8869 83 750 522</span>
+          </div>
+          <div style="color:#575757;font-size:14px;margin-top:8px;">臺中市北屯區文心路三段447號</div>
+          <nav class="footer-nav-links">
+            <a href="https://www.instagram.com/nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Instagram">Instagram</a>
+            <a href="https://www.threads.com/@nudotlabs" target="_blank" rel="noopener noreferrer" data-transition-label="Threads">Threads</a>
+            <a href="https://www.facebook.com/profile.php?id=61588727983387&locale=zh_TW" target="_blank" rel="noopener noreferrer" data-transition-label="Facebook">Facebook</a>
+          </nav>
+        </div>
+        <div class="footer-right-panel">
+          <div class="footer-video-thumb">
+            <video autoplay muted loop playsinline preload="metadata" width="320" height="180" disableremoteplayback>
+              <source src="images/footer.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-parallax-section" id="footer-parallax-section">
+      <div class="footer-parallax-bg" id="footer-parallax-bg" data-bg="images/footer.webp"
+        style="--footer-bg-image: url('images/footer.webp');"></div>
+      <div class="footer-parallax-copy">
+        <div>核點創意有限公司</div>
+        <div>&#169; 2026 NUDOT CREATIVE STUDIO. ALL RIGHTS RESERVED.</div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .site-footer { position: relative; overflow: visible; color: #fff; padding: 0; font-family: 'DM Sans', sans-serif; }
+    .footer-top { padding: 3vw 2.5vw; position: relative; z-index: 5; line-height: normal; }
+    .footer-main-content { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; }
+    .footer-contact-info a { display: block; color: #fff; text-decoration: none; font-size: clamp(20px, 3.5vw, 50px); font-weight: 400; margin-bottom: 4px; transition: opacity 0.2s; }
+    .footer-contact-info a:hover { opacity: 0.6; }
+    .footer-contact-info span { color: #ffffff; font-size: clamp(18px, 2.5vw, 30px); }
+    .footer-nav-links { display: flex; gap: 28px; margin-top: 38px; }
+    .footer-nav-links a { color: #fff; text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; transition: opacity 0.2s; }
+    .footer-nav-links a:hover { opacity: 0.5; }
+    .footer-right-panel { display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-start; }
+    .footer-video-thumb { width: 100%; max-width: 340px; aspect-ratio: 16 / 9; overflow: hidden; position: relative; }
+    .footer-video-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .footer-parallax-section { height: 50vh; width: 100%; overflow: hidden; position: relative; z-index: 1; }
+    .footer-parallax-copy { position: absolute; top: 30px; left: 40px; z-index: 3; color: rgba(255, 255, 255, 0.65); font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.06em; line-height: 1.7; pointer-events: none; }
+    @media (max-width: 1440px) { .footer-parallax-section { height: 300px; } }
+    .footer-parallax-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: var(--footer-bg-image, none); background-attachment: fixed; background-size: contain; background-position: bottom; opacity: 1; mix-blend-mode: luminosity; }
+    @media (max-width: 1024px) { .footer-top { padding: 6vw 4vw; } .footer-parallax-section { display: none !important; } }
+    @media (max-width: 768px) { .footer-top { padding: 1.5rem; } .footer-main-content { grid-template-columns: 1fr; gap: 32px; } .footer-right-panel { align-items: flex-start; } .footer-video-thumb { max-width: 100%; } .footer-nav-links { gap: 16px; margin-top: 24px; flex-wrap: wrap; } }
+    .frev-wrap { overflow: hidden; display: inline-block; vertical-align: bottom; }
+    .footer-video-cover { position: absolute; inset: 0; background: #0a0a0a; z-index: 2; pointer-events: none; transform-origin: right center; will-change: transform; }
+  </style>
+
+  <canvas id="film-grain-canvas" class="work-noise-canvas" aria-hidden="true"></canvas>
+  <script src="noise.js?v=3"></script>
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true" data-cursor-label="EXPLORE" data-cursor-side="right"></div>
+
+  <!-- ── Blog data (WordPress REST API) ─────────────────────────── -->
+  <script>
+    /* API 串接參考 demo/blog_cont.html：以 ?id= 抓單篇文章 */
+    const API_BASE = '/api/wp-json/wp/v2';
+
+    /* 前台正式網域（給 Google 的標準網址用，避免指向資料來源） */
+    const SITE_ORIGIN = 'https://nudot.com.tw';
+
+    /* 產生「指向自己網域」的文章標準網址：https://nudot.com.tw/blog_cont?id=123
+       用無副檔名乾淨網址，與 blog_cont.php 的 canonical 一致，避免被 .htaccess 301。 */
+    function frontCanonical(post) {
+      return `${SITE_ORIGIN}/blog_cont?id=${post.id}`;
+    }
+
+    function stripHtml(html) {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      return div.textContent || '';
+    }
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+    function normalizeApiUrl(value) {
+      return value ? String(value) : '';
+    }
+    function normalizeApiHtml(html) {
+      return html || '';
+    }
+    async function readApiError(res) {
+      try {
+        const data = await res.json();
+        if (data && data.error && data.error.message) return data.error.message;
+      } catch (error) { }
+      return '伺服器回應 ' + res.status;
+    }
+    async function fetchJson(url) {
+      const res = await fetch(url, {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: { Accept: 'application/json' }
+      });
+      if (!res.ok) throw new Error(await readApiError(res));
+      return res.json();
+    }
+    const pad2 = n => String(n).padStart(2, '0');
+
+    function getPostId() {
+      return new URLSearchParams(window.location.search).get('id') || '';
+    }
+
+    function isValidPostId(id) {
+      return /^\d+$/.test(String(id));
+    }
+
+    /* ── Yoast SEO：把 API 的 yoast_head_json 動態注入 <head> ───────── */
+    function upsertMeta(attr, key, content) {
+      if (content === undefined || content === null || content === '') return;
+      let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', String(content));
+    }
+    function upsertLink(rel, href) {
+      if (!href) return;
+      let el = document.head.querySelector(`link[rel="${rel}"]`);
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('href', href);
+    }
+
+    /**
+     * 讀取 post.yoast_head_json 並更新 <head> 內的 SEO 標籤。
+     * 有成功套用回傳 true；找不到 Yoast 資料回傳 false（讓呼叫端走預設值）。
+     */
+    function applyYoastSeo(post) {
+      const y = post && post.yoast_head_json;
+      if (!y) return false;
+
+      // Title
+      if (y.title) document.title = y.title;
+
+      // Description
+      upsertMeta('name', 'description', y.description);
+      // Robots：前台（nudot.com.tw）一律 index, follow，不沿用 Yoast 的 robots。
+      // 這樣即使資料來源維持 noindex，
+      // 前台仍可被 Google 正常索引。保留 max-snippet / max-image-preview 等進階指示。
+      upsertMeta('name', 'robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+
+      // Canonical：強制指向自己的網域，不用 Yoast 回傳的 WP 後端網址
+      const canonical = frontCanonical(post);
+      upsertLink('canonical', canonical);
+
+      // Open Graph
+      upsertMeta('property', 'og:locale', y.og_locale);
+      upsertMeta('property', 'og:type', y.og_type);
+      upsertMeta('property', 'og:title', y.og_title);
+      upsertMeta('property', 'og:description', y.og_description);
+      upsertMeta('property', 'og:url', canonical);
+      upsertMeta('property', 'og:site_name', '核點 Nudot Studio'); // 固定前台品牌，不用 WP 後台網站標題
+      upsertMeta('property', 'article:published_time', y.article_published_time);
+      upsertMeta('property', 'article:modified_time', y.article_modified_time);
+
+      // og:image —— 優先後台精選圖片 → Yoast 社群圖 → 網站預設圖
+      const yImg = Array.isArray(y.og_image) && y.og_image[0];
+      const img = featuredOgImage(post)
+        || (yImg && yImg.url ? { url: normalizeApiUrl(yImg.url), width: yImg.width, height: yImg.height } : null)
+        || { url: `${SITE_ORIGIN}/images/og.jpg`, width: 1200, height: 630 };
+      img.url = normalizeApiUrl(img.url);
+      upsertMeta('property', 'og:image', img.url);
+      if (img.width) upsertMeta('property', 'og:image:width', img.width);
+      if (img.height) upsertMeta('property', 'og:image:height', img.height);
+
+      // Twitter
+      upsertMeta('name', 'twitter:card', y.twitter_card || 'summary_large_image');
+      upsertMeta('name', 'twitter:title', y.twitter_title || y.og_title);
+      upsertMeta('name', 'twitter:description', y.twitter_description || y.og_description);
+      upsertMeta('name', 'twitter:image', img.url);
+
+      // JSON-LD：精簡自製 BlogPosting，只輸出必要欄位且全部指向自己網域。
+      // 不用 Yoast 整包 schema graph，避免暴露後端網域、作者頁、WordPress 結構等資訊。
+      const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+        headline: stripHtml((post.title && post.title.rendered) || y.og_title || y.title || ''),
+        url: canonical
+      };
+      if (y.description) schema.description = y.description;
+      if (img && img.url) schema.image = img.url;
+      if (y.article_published_time) schema.datePublished = y.article_published_time;
+      if (y.article_modified_time) schema.dateModified = y.article_modified_time;
+      schema.author = { '@type': 'Organization', name: '核點 Nudot Studio', url: SITE_ORIGIN };
+      let s = document.getElementById('site-schema');
+      if (!s) {
+        s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.id = 'site-schema';
+        document.head.appendChild(s);
+      }
+      s.textContent = JSON.stringify(schema);
+      return true;
+    }
+
+    function featuredImage(post) {
+      const media = post._embedded && post._embedded['wp:featuredmedia'];
+      return normalizeApiUrl((media && media[0] && media[0].source_url) || '');
+    }
+
+    /* 從後台精選圖片挑最適合 OG 的尺寸：寬度 ≥1200 中最小的；都 <1200 就挑最大的。
+       沒設精選圖回傳 null。與 blog_cont.php 的 pick_featured_image() 邏輯一致。 */
+    function featuredOgImage(post) {
+      const media = post._embedded && post._embedded['wp:featuredmedia'];
+      const m = media && media[0];
+      if (!m || m.code) return null;
+      const det = m.media_details || {};
+      const sizes = det.sizes || {};
+      let best = null;
+      Object.keys(sizes).forEach(k => {
+        const s = sizes[k];
+        if (!s || !s.source_url || !s.width) return;
+        if (!best) { best = s; return; }
+        const bOk = best.width >= 1200, sOk = s.width >= 1200;
+        if (sOk && (!bOk || s.width < best.width)) best = s;
+        else if (!sOk && !bOk && s.width > best.width) best = s;
+      });
+      if (best) return { url: normalizeApiUrl(best.source_url), width: best.width, height: best.height };
+      return m.source_url ? { url: normalizeApiUrl(m.source_url), width: det.width, height: det.height } : null;
+    }
+
+    /* 取文章標籤名稱（用 taxonomy==='post_tag' 過濾，不依賴 wp:term 的 index 順序） */
+    function getPostTags(post) {
+      const groups = (post._embedded && post._embedded['wp:term']) || [];
+      const flat = [];
+      groups.forEach(g => Array.isArray(g) && g.forEach(t => t && flat.push(t)));
+      return flat.filter(t => t.taxonomy === 'post_tag' && t.name).map(t => t.name);
+    }
+
+    /* 底部標籤跑馬燈：內容為文章標籤；沒有標籤就整條隱藏。樣式/動畫比照 contact.php */
+    function renderTagMarquee(post) {
+      const wrap = document.getElementById('tag-marquee');
+      const track = document.getElementById('tag-marquee-track');
+      if (!wrap || !track) return;
+
+      const tags = getPostTags(post);
+      if (!tags.length) { wrap.hidden = true; return; } // 沒標籤 → 隱藏
+
+      const sep = '<span class="tag-marquee__sep"><img src="images/contact.svg?v=2" alt=""></span>';
+      const oneRound = tags.map(t => '<span class="tag-marquee__item">' + escapeHtml(t) + '</span>' + sep).join('');
+      // 標籤少時重複填滿寬度，再整體複製一份做無縫 -50% loop
+      const repeat = Math.max(4, Math.ceil(8 / tags.length));
+      let base = '';
+      for (let i = 0; i < repeat; i++) base += oneRound;
+      track.innerHTML = base + base;
+
+      wrap.hidden = false;
+
+      const noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (window.gsap && window.ScrollTrigger) {
+        // 進場：由下往上揭開
+        gsap.to(wrap, {
+          clipPath: 'inset(0% 0 0 0)', duration: 1.0, ease: 'power3.inOut',
+          scrollTrigger: { trigger: wrap, start: 'top 92%' }
+        });
+        // 隨頁面捲動水平位移
+        if (!noMotion) {
+          gsap.to(track, {
+            x: '-50%', ease: 'none',
+            scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 1 }
+          });
+        }
+        // 分隔符沙漏錯開旋轉
+        const sepImgs = track.querySelectorAll('.tag-marquee__sep img');
+        const half = Math.max(1, Math.round(sepImgs.length / 2));
+        sepImgs.forEach((img, i) => { img.style.animationDelay = '-' + ((i % half) * (3 / half)).toFixed(3) + 's'; });
+        window.ScrollTrigger.refresh();
+      } else {
+        wrap.style.clipPath = 'inset(0% 0 0 0)'; // 無 gsap 時直接顯示
+      }
+    }
+
+    function formatDateDot(date) {
+      const d = new Date(date);
+      return `${d.getFullYear()}.${pad2(d.getMonth() + 1)}.${pad2(d.getDate())}`;
+    }
+
+    /* 載入骨架 → 內容：直接移除骨架，絲滑感交給下方 revealArticle 的模糊淡入 */
+    function hideSkeleton() {
+      const sk = document.getElementById('article-skeleton');
+      if (sk) sk.style.display = 'none';
+    }
+
+    /* 文章進場（gsap.from：即使動畫沒跑，元素仍維持可見，不會卡在透明） */
+    function revealArticle() {
+      const noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!window.gsap || noMotion) return;
+      const els = ['.article__divider', '.article__close-top', '#article-content .work-hero__tags', '#post-title', '#post-hero', '#post-body']
+        .map(s => document.querySelector(s))
+        .filter(el => el && el.offsetParent !== null && (el.id !== 'post-hero' || el.children.length));
+      gsap.from(els, {
+        opacity: 0, y: 26, filter: 'blur(8px)',
+        duration: 0.95, ease: 'power3.out', stagger: 0.09,
+        onComplete: () => els.forEach(el => { el.style.filter = ''; el.style.willChange = 'auto'; })
+      });
+    }
+
+    /* 文章下方「New Articles」：抓最近文章（排除當前），顯示 3 筆 */
+    function renderMore(posts) {
+      const grid = document.getElementById('more-grid');
+      grid.innerHTML = posts.map(p => `
+        <a class="post" href="blog_cont?id=${encodeURIComponent(p.id)}">
+          <span class="post-date">${formatDateDot(p.date)}</span>
+          <span class="post-title">${escapeHtml(stripHtml(p.title.rendered))}</span>
+          <span class="post-arrow" aria-hidden="true"><img src="images/lab/next.svg" alt="" aria-hidden="true" width="15"></span>
+        </a>
+      `).join('');
+      document.getElementById('more-section').hidden = false;
+
+      // 動態插入的卡片重新綁定圓形鼠標（cursor-shared.js 只在載入時綁一次）
+      if (window.NudotCursor) window.NudotCursor.refresh(grid);
+
+      const noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (window.gsap && !noMotion) {
+        gsap.from('.more-articles__label', { opacity: 0, y: 16, duration: 0.7, ease: 'power3.out' });
+        gsap.from('#more-grid .post', { opacity: 0, y: 24, duration: 0.8, ease: 'power3.out', stagger: 0.08 });
+      }
+    }
+
+    async function loadMore(currentId) {
+      try {
+        const posts = (await fetchJson(`${API_BASE}/posts?per_page=4&_embed`))
+          .filter(p => p && p.id && String(p.id) !== String(currentId))
+          .slice(0, 3);
+        if (posts.length) renderMore(posts);
+      } catch (e) { /* 靜默失敗，不影響主文章 */ }
+    }
+
+    function renderArticle(post) {
+      const d = new Date(post.date);
+
+      // 年份 + 月日（1201 格式）
+      document.getElementById('post-year').textContent = d.getFullYear();
+      document.getElementById('post-day').textContent = pad2(d.getMonth() + 1) + pad2(d.getDate());
+
+      // 文章類別（取 _embed 內的分類名稱）
+      const catEl = document.getElementById('post-category');
+      if (catEl) {
+        const terms = (post._embedded && post._embedded['wp:term']) || [];
+        const cats = (terms[0] || []).map(t => t && t.name).filter(Boolean);
+        catEl.textContent = cats.length ? '( ' + cats.join('、') + ' )' : '';
+      }
+
+      // 標題（畫面上的 H1 一律用純文字標題）
+      const title = stripHtml(post.title.rendered);
+      document.getElementById('post-title').textContent = title;
+
+      // SEO：優先套用 Yoast 的 yoast_head_json；抓不到才用預設標題
+      if (!applyYoastSeo(post)) {
+        document.title = title + '｜核點 Nudot Studio';
+      }
+
+      // 主視覺（有精選圖才顯示）
+      const img = featuredImage(post);
+      const heroEl = document.getElementById('post-hero');
+      if (img) {
+        heroEl.innerHTML = `<img src="${escapeHtml(img)}" alt="${escapeHtml(title)}" loading="lazy" decoding="async">`;
+      } else {
+        heroEl.style.display = 'none';
+      }
+
+      // 內文
+      document.getElementById('post-body').innerHTML = normalizeApiHtml((post.content && post.content.rendered) || '');
+
+      // 底部標籤跑馬燈（沒標籤會自動隱藏）
+      renderTagMarquee(post);
+
+      // 顯示內容：移除骨架 → 內容用 GSAP 模糊淡入絲滑揭開
+      hideSkeleton();
+      document.getElementById('article-content').style.display = 'block';
+
+      revealArticle();
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+    }
+
+    async function load() {
+      const errEl = document.getElementById('error');
+      const postId = getPostId();
+
+      if (!postId) {
+        hideSkeleton();
+        errEl.style.display = 'block';
+        errEl.textContent = '未指定文章 ID（請在網址加上 ?id=123）';
+        return;
+      }
+      if (!isValidPostId(postId)) {
+        hideSkeleton();
+        errEl.style.display = 'block';
+        errEl.textContent = '文章 ID 格式不正確';
+        return;
+      }
+
+      loadMore(postId);
+
+      try {
+        const post = await fetchJson(`${API_BASE}/posts/${encodeURIComponent(postId)}?_embed`);
+        renderArticle(post);
+      } catch (e) {
+        hideSkeleton();
+        errEl.style.display = 'block';
+        errEl.textContent = '文章載入失敗: ' + e.message;
+      }
+    }
+
+    /* Hero 進場動畫（與 blog.html 一致：加上 work-hero-entered 才會顯示標題） */
+    (function () {
+      var hero = document.querySelector('.work-hero');
+      if (!hero) return;
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          hero.classList.add('work-hero-entered');
+        });
+      });
+    }());
+
+    /* 垂直格線進場（取自 lab.html） */
+    (function () {
+      var cols = document.querySelectorAll('.grid-column');
+      if (!cols.length || !window.gsap) return;
+      var noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (noMotion) { cols.forEach(function (el) { el.style.opacity = 1; }); return; }
+      gsap.set(cols, { opacity: 0, scaleY: 0 });
+      gsap.to(cols, {
+        opacity: 1, scaleY: 1, duration: 1.2, stagger: 0.08,
+        ease: 'power2.out', transformOrigin: 'top',
+        onComplete: function () { cols.forEach(function (el) { el.style.willChange = 'auto'; }); }
+      });
+    }());
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', load);
+    } else {
+      load();
+    }
+  </script>
+
+  <!-- Footer reveal -->
+  <script>
+    (function () {
+      const footer = document.getElementById('site-footer');
+      if (!footer || !window.gsap) return;
+
+      const contactInfo = footer.querySelector('.footer-contact-info');
+      const addrDiv = footer.querySelector('.footer-main-content > div > div[style]');
+      const navLinks = footer.querySelector('.footer-nav-links');
+      const thumb = footer.querySelector('.footer-video-thumb');
+
+      const contactEmail = contactInfo ? contactInfo.querySelector('a') : null;
+      const contactPhone = contactInfo ? contactInfo.querySelector('span') : null;
+
+      if (contactEmail) {
+        const ew = document.createElement('div');
+        ew.style.overflow = 'hidden';
+        contactEmail.parentNode.insertBefore(ew, contactEmail);
+        ew.appendChild(contactEmail);
+        gsap.set(contactEmail, { y: '105%' });
+      }
+      if (contactPhone) {
+        const pw = document.createElement('div');
+        pw.style.cssText = 'overflow:hidden;display:block;';
+        contactPhone.parentNode.insertBefore(pw, contactPhone);
+        pw.appendChild(contactPhone);
+        gsap.set(contactPhone, { display: 'inline-block', y: '105%' });
+      }
+
+      const navAnchors = navLinks ? [...navLinks.querySelectorAll('a')] : [];
+      navAnchors.forEach(a => {
+        const wrap = document.createElement('span');
+        wrap.className = 'frev-wrap';
+        a.parentNode.insertBefore(wrap, a);
+        wrap.appendChild(a);
+      });
+      gsap.set(navAnchors, { y: '120%' });
+
+      let videoCover = null;
+      if (thumb) {
+        videoCover = document.createElement('div');
+        videoCover.className = 'footer-video-cover';
+        thumb.appendChild(videoCover);
+      }
+
+      const tl = gsap.timeline({ scrollTrigger: { trigger: footer, start: 'top 82%' } });
+      if (contactEmail) tl.to(contactEmail, { y: '0%', duration: 1.2, ease: 'power4.out' }, 0);
+      if (contactPhone) tl.to(contactPhone, { y: '0%', duration: 0.9, ease: 'power3.out' }, 0.2);
+      if (addrDiv) tl.from(addrDiv, { y: 14, opacity: 0, duration: 0.8, ease: 'power3.out' }, 0.35);
+      if (navAnchors.length) tl.to(navAnchors, { y: '0%', duration: 0.85, stagger: 0.07, ease: 'power4.out' }, 0.48);
+      if (videoCover) tl.fromTo(videoCover, { scaleX: 1 }, { scaleX: 0, duration: 0.85, ease: 'power4.inOut', transformOrigin: 'right center' }, 0.1);
+    })();
+  </script>
+
+  <!-- Lenis smooth scroll -->
+  <script>
+    (function () {
+      if (typeof Lenis === 'undefined') return;
+      var lenis = new Lenis({
+        duration: 1.2,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 0.85,
+        touchMultiplier: 1.2,
+      });
+      window._lenis = lenis;
+      if (window.ScrollTrigger) lenis.on('scroll', window.ScrollTrigger.update);
+      function raf(time) { lenis.raf(time); window.requestAnimationFrame(raf); }
+      window.requestAnimationFrame(raf);
+    })();
+  </script>
+
+</body>
+
+</html>

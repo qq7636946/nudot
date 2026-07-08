@@ -614,6 +614,33 @@
         display: none;
       }
     }
+    
+    
+        /* FWA of the Day 徽章 */
+    .fwa-badge {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 99000;
+      pointer-events: auto;
+      display: block;
+      width: 110px;
+      height: auto;
+      opacity: 0.88;
+      transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+     
+    }
+
+    
+
+    .fwa-badge img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    
+    
 
     .grid-section {
       position: relative;
@@ -1093,6 +1120,29 @@
 
     .face.bottom {
       transform: rotateX(-90deg) translateZ(var(--scene-depth));
+    }
+
+    /* 🎯 Lines／Wireframe mode for cube: faces become transparent with glowing borders,
+       media hidden. Toggled via .is-line-mode on .cube during the marquee text phase. */
+    .face-media {
+      transition: opacity 0.5s ease;
+    }
+
+    .cube.is-line-mode .face {
+      background-color: transparent !important;
+      box-shadow: none !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.5) !important;
+      animation: ndWireframeGlow 2.4s ease-in-out infinite alternate;
+    }
+
+    .cube.is-line-mode .face-media {
+      opacity: 0 !important;
+    }
+
+    @keyframes ndWireframeGlow {
+      0%   { border-color: rgba(255, 255, 255, 0.35); }
+      50%  { border-color: rgba(255, 255, 255, 0.75); }
+      100% { border-color: rgba(255, 255, 255, 0.35); }
     }
 
     .mobile-cube-section,
@@ -1997,6 +2047,8 @@
       .bottom-footer{
               align-items: start;
       }
+      
+      /*.overlay-ui {padding: 2vw 3vw;}*/
     }
 
     /* =========================================================
@@ -2008,7 +2060,7 @@
       overflow: visible;
       pointer-events: none;
       z-index: 25;
-      padding-bottom: 15vh;
+   padding-bottom: clamp(10vh, calc(241.2vh - 2265px), 800px);
     }
 
     .stm-section .stm-el {
@@ -4487,6 +4539,8 @@
       .footer-parallax-section {
         display: none !important;
       }
+      /*FWA徽章*/
+      .fwa-badge{display:none;}
     }
 
     @media (max-width: 768px) {
@@ -4645,8 +4699,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "NUDOT 核點創意",
-    "url": "https://nudot.studio",
-    "logo": "https://nudot.studio/images/pc_logo.svg",
+    "url": "https://nudot.com.tw/",
+    "logo": "https://nudot.com.tw/images/pc_logo.svg",
     "description": "台灣頂尖品牌策略設計工作室，專精品牌識別、數位互動、Gen-AI Visual 與網頁開發，打造 AWW／FWA 等級視覺體驗。",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -4658,6 +4712,7 @@
     }
   }
   </script>
+  <style id="seo-nav-cloak">.ns-showcase-row__index::before,.ns-showcase-row__title-layer::before{content:attr(data-text);}</style>
 </head>
 
 <body>
@@ -4733,16 +4788,16 @@
           </div> -->
 
               <div class="ns-menu-rows">
-                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home">
-                  <span class="ns-showcase-row__index">( 首頁 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="index" data-transition-label="Home" aria-label="首頁">
+                  <span class="ns-showcase-row__index" data-text="( 首頁 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/1.webp" data-nav-src="images/nav/1.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">HOME</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">HOME</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="HOME"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="HOME"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -4751,16 +4806,16 @@
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About">
-                  <span class="ns-showcase-row__index">( 核點創意 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="about" data-transition-label="About" aria-label="核點創意">
+                  <span class="ns-showcase-row__index" data-text="( 核點創意 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/3.webp" data-nav-src="images/nav/3.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">ABOUT</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">ABOUT</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="ABOUT"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="ABOUT"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -4769,16 +4824,16 @@
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work">
-                  <span class="ns-showcase-row__index">( 設計案例 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="work" data-transition-label="Work" aria-label="設計案例">
+                  <span class="ns-showcase-row__index" data-text="( 設計案例 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/5.webp" data-nav-src="images/nav/5.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">WORK</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">WORK</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="WORK"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="WORK"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -4787,16 +4842,16 @@
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs">
-                  <span class="ns-showcase-row__index">( 核點實驗室 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="lab" data-transition-label="Labs" aria-label="核點實驗室">
+                  <span class="ns-showcase-row__index" data-text="( 核點實驗室 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/7.webp" data-nav-src="images/nav/7.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">LABS</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">LABS</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="LABS"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="LABS"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -4805,16 +4860,16 @@
                   </span>
                 </a>
 
-                <a class="ns-showcase-row ns-dropdown__item" href="contact" data-transition-label="Contact">
-                  <span class="ns-showcase-row__index">( 聯繫我們 )</span>
+                <a class="ns-showcase-row ns-dropdown__item" href="contact" data-transition-label="Contact" aria-label="聯繫我們">
+                  <span class="ns-showcase-row__index" data-text="( 聯繫我們 )"></span>
                   <span class="ns-showcase-row__thumb is-left" aria-hidden="true">
                     <img src="images/nav/9.webp" data-nav-src="images/nav/9.webp" alt="" width="300" height="200"
                       loading="lazy" decoding="async">
                   </span>
                   <span class="ns-showcase-row__title">
                     <span class="ns-showcase-row__title-track">
-                      <span class="ns-showcase-row__title-layer is-primary">CONTACT</span>
-                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true">CONTACT</span>
+                      <span class="ns-showcase-row__title-layer is-primary" data-text="CONTACT"></span>
+                      <span class="ns-showcase-row__title-layer is-accent" aria-hidden="true" data-text="CONTACT"></span>
                     </span>
                   </span>
                   <span class="ns-showcase-row__thumb is-right" aria-hidden="true">
@@ -5066,6 +5121,15 @@
                 </a>
               </div>
             </div>
+            
+            
+              <!-- FWA of the Day 徽章 -->
+            <a class="fwa-badge" href="https://thefwa.com/cases/nudot-studio" target="_blank" rel="noopener noreferrer"
+              aria-label="FWA - Favourite Website Awards: Site of the Day" data-cursor="FWA">
+              <img src="images/fotd.png" alt="FWA Favourite Website Award" width="100" height="100" loading="lazy" decoding="async">
+            </a>
+            
+            
 
             <div class="overlay-ui">
               <div class="overlay-top">
@@ -7511,6 +7575,21 @@
           const revealTotal = p_PreExit - p_TextOut;
           const revealPr = Math.max(0, Math.min((progress - p_TextOut) / revealTotal, 1));
 
+          // 🎯 3D → 線條模式：進入第二塊（marquee text 區）時 cube 變成 wireframe，
+          //    離開第二塊（進入 tumble/spin）時恢復 3D。
+          //    線條區間：p_TextOut ~ p_Tumble（marquee 文字顯示期間）
+          if (progress <= p_Tumble) {
+            // 進入線條模式：face 變透明 wireframe，media 隱藏
+            if (cube && !cube.classList.contains('is-line-mode')) {
+              cube.classList.add('is-line-mode');
+            }
+          } else {
+            // 離開線條模式：恢復 3D 實體
+            if (cube && cube.classList.contains('is-line-mode')) {
+              cube.classList.remove('is-line-mode');
+            }
+          }
+
           // 🎯 取代字串串接，啟動 GSAP 高速變形
           gsap.set(titleSubtitle, { yPercent: (1 - easeInOutCubic(Math.max(0, Math.min(revealPr / 0.40, 1)))) * 130 });
           gsap.set(titleLine1, { yPercent: (1 - easeInOutCubic(Math.max(0, Math.min((revealPr - 0.08) / 0.42, 1)))) * 130 });
@@ -7593,6 +7672,11 @@
           currentX = 360;
           currentY = targetY_Phase1 + 360;
 
+          // 離開線條模式（已過 zoom 進入 STM 區域）
+          if (cube && cube.classList.contains('is-line-mode')) {
+            cube.classList.remove('is-line-mode');
+          }
+
           gsap.set(section2, { opacity: 0, pointerEvents: 'none', zIndex: 18 });
           gsap.set(imgOverlay, { opacity: 0 });
 
@@ -7610,6 +7694,11 @@
           if (dwBlackOverlay) gsap.set(dwBlackOverlay, { opacity: 0 });
           if (stmLogoEl) stmLogoEl.classList.remove('is-visible');
           gsap.set(newTextGroup, { opacity: 0 });
+
+          // 回到頂部時恢復 3D 實體
+          if (cube && cube.classList.contains('is-line-mode')) {
+            cube.classList.remove('is-line-mode');
+          }
 
           resetReveal();
         }
