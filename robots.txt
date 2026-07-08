@@ -1,0 +1,64 @@
+# robots.txt - 最嚴格設置，禁止所有爬蟲訪問
+# 此網站暫未對搜尋引擎開放
+
+# 禁止所有搜尋引擎爬蟲
+User-agent: *
+Disallow: /
+
+# 禁止特定的侵入性爬蟲
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Yandexbot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# 禁止爬蟲爬取特定目錄（額外保護）
+User-agent: *
+Disallow: *.json
+Disallow: *.xml
+Disallow: *.pdf
+Disallow: /admin
+Disallow: /api
+Disallow: /?
+
+# 設置爬取延遲
+Crawl-delay: 10
+
+# 設置請求速率
+Request-rate: 0/1
+
+# Sitemap（保持為空，不提供給搜尋引擎）
+# Sitemap: (不提供任何 sitemap)
